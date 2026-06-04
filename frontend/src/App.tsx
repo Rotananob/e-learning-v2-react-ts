@@ -12,6 +12,8 @@ import ChatbotPage from './pages/ChatbotPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ProfilePage from './pages/ProfilePage';
 import AboutPage from './pages/AboutPage';
+import CommunityPage from './pages/CommunityPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -44,6 +46,12 @@ export default function App() {
           } />
           <Route path="/profile-sittingDashboard" element={
             <ProtectedRoute><ProfilePage /></ProtectedRoute>
+          } />
+          <Route path="/community" element={
+            <ProtectedRoute><CommunityPage /></ProtectedRoute>
+          } />
+          <Route path="/leaderboard" element={
+            <ProtectedRoute><LeaderboardPage /></ProtectedRoute>
           } />
 
           {/* ========== LEGACY URL REDIRECTS ========== */}

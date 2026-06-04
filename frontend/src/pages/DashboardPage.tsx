@@ -267,12 +267,10 @@ export default function DashboardPageAdvanced() {
       }}>
         <div style={{ padding: '24px 16px', flexGrow: 1, overflowY: 'auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
-            <div style={{ width: 48, height: 48, borderRadius: 12, background: 'linear-gradient(135deg,#2563eb,#06D6A0)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>
-              <i className="fa-solid fa-graduation-cap" />
-            </div>
+            <img src="/assets/img/images/logo.png" alt="Rotana Logo" style={{ width: 48, height: 48, borderRadius: 12, objectFit: 'cover' }} />
             <div>
               <div style={{ fontWeight: 'bold', fontSize: 16, color: '#f8fafc' }}>Rotana</div>
-              <div style={{ fontSize: 11, color: '#64748b' }}>Education Pro</div>
+              <div style={{ fontSize: 11, color: '#64748b' }}>Education</div>
             </div>
           </div>
 
@@ -314,8 +312,11 @@ export default function DashboardPageAdvanced() {
           <Link to="/leaderboard" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#fbbf24', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 8 }}>
             <i className="fa-solid fa-trophy" /> ឈានលើគេ
           </Link>
-          <Link to="/community" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#38bdf8', textDecoration: 'none', borderRadius: 10, fontSize: 14 }}>
+          <Link to="/community" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#38bdf8', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 8 }}>
             <i className="fa-solid fa-users" /> សហគមន៍
+          </Link>
+          <Link to="/chatbot" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#a855f7', textDecoration: 'none', borderRadius: 10, fontSize: 14 }}>
+            <i className="fa-solid fa-robot" /> AI Chatbot
           </Link>
         </div>
 
