@@ -239,7 +239,7 @@ export default function CommunityPage() {
                           <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#334155', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
                             <i className="fa-solid fa-user" style={{ color: '#94a3b8', fontSize: 12 }} />
                           </div>
-                          <div style={{ background: 'rgba(255,255,255,0.04)', padding: '10px 14px', borderRadius: 14, borderRadiusTopLeft: 4 }}>
+                          <div style={{ background: 'rgba(255,255,255,0.04)', padding: '10px 14px', borderRadius: 14, borderTopLeftRadius: 4 }}>
                             <div style={{ fontWeight: 'bold', fontSize: 13, color: '#e2e8f0', marginBottom: 4 }}>{comment.authorName}</div>
                             <div style={{ fontSize: 14, color: '#cbd5e1' }}>{comment.content}</div>
                           </div>

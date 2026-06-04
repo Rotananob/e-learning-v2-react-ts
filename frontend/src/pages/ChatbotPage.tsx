@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { marked } from 'marked';
-import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
 import { sendChatMessage } from '../services/chatbotApi';
 import type { ChatMessage } from '../types';
