@@ -72,6 +72,14 @@ node_modules/
 
 # dotenv environment variables file
 .env
+.env.*
+.env.local
+.env.*.local
+
+# Build output
+dist/
+dist-ssr/
 
 # dataconnect generated files
 .dataconnect
+

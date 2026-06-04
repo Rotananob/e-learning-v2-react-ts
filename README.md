@@ -1,219 +1,81 @@
-# Rotana E-Learning Platform
+# Rotana E-Learning Platform (v2.0)
 
-<div align="center">
+Rotana E-Learning is a free IT and Coding education platform in the Khmer language. Version 2.0 has been completely rewritten from vanilla HTML/CSS/JS to a modern **React.js + TypeScript** architecture for better performance, maintainability, and scalability.
 
-**Empowering Cambodian Youth with Free, Modern IT Education in Khmer**
+## 🚀 Features
+- **Modern React Architecture:** Built with Vite, React 18, and TypeScript.
+- **Firebase Authentication:** Secure email/password login and registration.
+- **AI Chatbot Tutor:** Integrated with Gemini API via an Express backend to assist students with code and IT concepts in Khmer.
+- **Learning Dashboard:** Tracks study time (with UTC+7 Cambodia timezone alignment), course progress, and favorites.
+- **PWA Ready:** Installable as a Progressive Web App on mobile and desktop.
+- **Dark/Light Mode:** First-class dark mode support with a custom CSS design system.
+- **Responsive UI:** Modern glassmorphism and gradient aesthetics, perfectly tailored for both desktop and mobile screens.
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Firebase](https://img.shields.io/badge/Firebase-Hosting-orange.svg)](https://firebase.google.com)
-[![Node.js](https://img.shields.io/badge/Node.js-14%2B-green.svg)](https://nodejs.org)
-
-[Website](https://rotana-elearning.web.app) • [Facebook](https://web.facebook.com/TheRotanaNob) • [Telegram](https://t.me/rotananobSETEC) • [Instagram](https://instagram.com/nob_rotana)
-
-</div>
-
----
-
-## About Rotana E-Learning
-
-Rotana E-Learning is a cutting-edge, free, and open-source e-learning platform designed to democratize IT education for Cambodian youth. We are committed to providing high-quality, industry-relevant courses delivered in the Khmer language, making technology skills accessible to everyone, regardless of their background.
-
-**Our mission:** Inspire, educate, and empower the next generation of digital creators, developers, entrepreneurs, and innovators across Cambodia.
-
----
-
-## Key Features
-
-- **18+ Comprehensive Courses** - Web Development, App Development, AI, Cybersecurity, Design, Marketing, and more
-- **Modern Responsive Design** - Beautiful mobile-first UI with professional Khmer fonts
-- **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, JSON-LD structured data
-- **Interactive Learning** - User dashboard, progress tracking, certificate generation
-- **Firebase Powered** - Cloud hosting, authentication, real-time database
-- **Fully Responsive** - Works perfectly on desktop, tablet, and mobile
-- **Secure & Private** - User authentication, protected endpoints, privacy-focused
-- **Open Source** - Easy to extend, customize, fork, and contribute
-
----
-
-## Technology Stack
-
-**Frontend:**
-- HTML5, CSS3, JavaScript (ES6+)
-- Font Awesome Icons
-- Google Fonts (Angkor, Noto Sans Khmer, Poppins)
-- Responsive CSS Grid & Flexbox
-
-**Backend:**
-- Node.js with Express.js
-- Firebase Hosting & Firestore Database
-- Firebase Authentication & Security Rules
-
-**Deployment:**
-- Firebase CLI
-- GitHub Version Control
-- Ready for CI/CD integration
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-rotana-elearning/
-├── index.html                 # Landing page
-├── dashboard.html             # User dashboard
-├── oldversion.html            # Legacy showcase
-├── login.html                 # Authentication
-├── register.html              # Registration
-├── chatbot.html               # AI Chatbot
-├── Q&A.html                   # Q&A Section
-├── profile-sitting.html       # User settings
-├── privacy-policy.html        # Privacy policy
-├── assets/
-│   ├── css/                   # Stylesheets
-│   ├── images/                # Images & logos
-│   ├── js/                    # JavaScript files
-│   └── videos/                # Video content
-├── script.js                  # Main JavaScript
-├── server.js                  # Node.js backend
-├── firebase.json              # Firebase config
-├── firestore.rules            # Security rules
-└── package.json               # Dependencies
+d:\WEB Development\Rotana-Elearning(New)\
+├── frontend/             # The React + Vite Application
+│   ├── src/              # React source code
+│   │   ├── components/   # Reusable UI elements (Modals, ProtectedRoute)
+│   │   ├── contexts/     # AuthContext (Firebase User State)
+│   │   ├── hooks/        # Custom hooks (e.g., useLearningTimer)
+│   │   ├── pages/        # Route components (Home, Login, Dashboard, etc.)
+│   │   ├── services/     # API integration (Firebase, Chatbot)
+│   │   ├── types/        # TypeScript interfaces
+│   │   ├── App.tsx       # React Router setup
+│   │   └── main.tsx      # Entry point & PWA SW registration
+│   ├── public/           # Static assets (manifest, SW, icons)
+│   ├── .env              # Environment variables (Firebase keys)
+│   └── vite.config.ts    # Vite config with backend proxy
+├── server.js             # Express Backend (Chatbot API via Gemini)
+└── _archive/             # Legacy v1.0 HTML files (Archived)
 ```
 
----
+## 🛠️ How to Run Locally
 
-## Quick Start
+### 1. Prerequisites
+- Node.js (v18+)
+- A Firebase Project (with Authentication enabled)
 
-### Installation
+### 2. Setup Environment Variables
+In the `frontend` directory, create a `.env` file (this is ignored by Git) and add your Firebase credentials:
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+```
 
+### 3. Start the Application
+You will need to run both the React frontend and the Express backend.
+
+**Terminal 1 (Backend):**
 ```bash
-# Clone the repository
-git clone https://github.com/Rotananob/e-Learning.git
-cd e-Learning
-
-# Install dependencies
 npm install
-
-# For Firebase
-npm install -g firebase-tools
-```
-
-### Local Development
-
-**Using Live Server (VS Code):**
-- Install "Live Server" extension
-- Right-click `index.html` → "Open with Live Server"
-
-**Using Python:**
-```bash
-python -m http.server 8000
-```
-
-**Using Node.js:**
-```bash
 npm start
-# or with auto-reload
-npm run dev
+# Runs on http://localhost:3001
 ```
 
-### Firebase Deployment
-
+**Terminal 2 (Frontend):**
 ```bash
-# Login to Firebase
-firebase login
-
-# Deploy to Firebase Hosting
-firebase deploy
+cd frontend
+npm install
+npm run dev
+# Runs on http://localhost:5173
 ```
 
----
+## 🌐 Deployment (Hosting)
+To deploy the frontend to Firebase Hosting or Vercel:
+1. `cd frontend`
+2. `npm run build`
+3. Deploy the generated `dist/` folder.
 
-## Course Categories
-
-Web Development • App Development • AI & Machine Learning
-Cybersecurity • Graphic Design • Video Editing • Databases
-Cloud Computing • DevOps • Digital Marketing • Freelancing
-Network Programming • IoT & Robotics • Game Development
-Data Science • Microsoft Office • WordPress
-
----
-
-## API Reference
-
-```
-GET  /                    # Homepage
-GET  /dashboard           # User dashboard
-POST /api/auth/login      # User login
-POST /api/auth/register   # User registration
-GET  /api/courses         # Get all courses
-GET  /api/courses/:id     # Get course details
-POST /api/progress        # Update learning progress
-GET  /api/certificates    # Generate certificate
-```
-
----
-
-## Browser Support
-
-| Browser | Support |
-|---------|---------|
-| Chrome | Latest |
-| Firefox | Latest |
-| Safari | Latest |
-| Edge | Latest |
-| Mobile Safari | iOS 12+ |
-| Chrome Mobile | Android 6+ |
-
----
-
-## Contributing
-
-We welcome contributions! Here's how:
-
-1. **Fork** this repository
-2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
-3. **Make** your changes
-4. **Commit**: `git commit -m 'Add amazing feature'`
-5. **Push**: `git push origin feature/amazing-feature`
-6. **Submit** a Pull Request
-
-### Development Guidelines
-- Follow existing code style
-- Test thoroughly on mobile & desktop
-- Update documentation for new features
-- Ensure responsive design
-
----
-
-## Contact & Support
-
-- **Facebook:** [Rotana NOB Community](https://web.facebook.com/TheRotanaNob)
-- **Telegram:** [@rotananobSETEC](https://t.me/rotananobSETEC)
-- **Instagram:** [@nob_rotana](https://instagram.com/nob_rotana)
-- **Q&A Forum:** [Visit Q&A Section](Q&A.html)
-
----
-
-## License
-
-This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
-
-Free for educational and commercial use.
-
----
-
-## Acknowledgments
-
-- Built with passion for Cambodian IT education
-- Thanks to all contributors and supporters
-- Inspired by making technology accessible to all
-
----
-
-<div align="center">
-
-Made with ❤️ in Cambodia | 2024-2026
-
-Star us on GitHub if you find this helpful!
-
-</div>
+## 👥 Authors
+- **Rotana NOB** - Founder & Lead Developer
+- **Chan Tola** - Co-Developer
+- **Nob Phearom** - Content Creator
+- **Nhem Dalin** - UI/UX Designer
