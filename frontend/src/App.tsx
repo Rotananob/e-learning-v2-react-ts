@@ -16,8 +16,6 @@ import CommunityPage from './pages/CommunityPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import NotFoundPage from './pages/NotFoundPage';
-import LeaderboardPage from './pages/LeaderboardPage';
-import CommunityPage from './pages/CommunityPage';
 
 export default function App() {
   return (
@@ -55,12 +53,7 @@ export default function App() {
           <Route path="/profile-sittingDashboard" element={
             <ProtectedRoute><ProfilePage /></ProtectedRoute>
           } />
-          <Route path="/community" element={
-            <ProtectedRoute><CommunityPage /></ProtectedRoute>
-          } />
-          <Route path="/leaderboard" element={
-            <ProtectedRoute><LeaderboardPage /></ProtectedRoute>
-          } />
+
 
           {/* ========== LEGACY URL REDIRECTS ========== */}
           <Route path="/Q&A" element={<Navigate to="/dashboard" replace />} />
