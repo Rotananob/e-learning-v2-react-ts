@@ -9,13 +9,13 @@ import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestor
 
 // ======= EXTENDED COURSES DATA (20+ COURSES) =======
 const defaultCourses: Course[] = [
-  { id: 'web-basic', title: 'Web Basic (HTML/CSS/JS)', category: 'Web Development', description: 'រៀន HTML, CSS, JavaScript ពីដំបូង', icon: <i className="fa-solid fa-globe" />, lessons: [{ name: 'HTML Intro', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' }, { name: 'CSS Basics', link: 'https://www.youtube.com/embed/yfoY53QXEnI' }, { name: 'JavaScript Basics', link: 'https://www.youtube.com/embed/W6NZfCO5SIk' }] },
-  { id: 'react', title: 'React JS', category: 'Web Development', description: 'React.js + Hooks + TypeScript', icon: <i className="fa-brands fa-react" />, lessons: [{ name: 'React Intro', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' }, { name: 'React Hooks', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' }] },
+  { id: 'web-basic', title: 'Web Basic (HTML/CSS/JS)', category: 'Web Development', description: 'រៀន HTML, CSS, JavaScript ពីដំបូង', icon: <i className="fa-solid fa-globe" />, lessons: [{ name: 'ភាគ ១: HTML Intro', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' }, { name: 'ភាគ ២: CSS Basics', link: 'https://www.youtube.com/embed/yfoY53QXEnI' }, { name: 'ភាគ ៣: JavaScript Basics', link: 'https://www.youtube.com/embed/W6NZfCO5SIk' }, { name: 'ភាគ ៤: DOM Manipulation', link: 'https://www.youtube.com/embed/yfoY53QXEnI' }, { name: 'ភាគ ៥: Project ជាក់ស្ដែង', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' }] },
+  { id: 'react', title: 'React JS', category: 'Web Development', description: 'React.js + Hooks + TypeScript', icon: <i className="fa-brands fa-react" />, lessons: [{ name: 'ភាគ ១: React Intro', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' }, { name: 'ភាគ ២: Components & Props', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' }, { name: 'ភាគ ៣: React Hooks', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' }, { name: 'ភាគ ៤: API Integration', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' }] },
   { id: 'vue', title: 'Vue.js', category: 'Web Development', description: 'Vue 3 Framework ដែលរីករាយក្នុងការប្រើប្រាស់', icon: <i className="fa-brands fa-vuejs" />, lessons: [{ name: 'Vue Intro', link: 'https://www.youtube.com/embed/FXpIoQ_rT_c' }] },
   { id: 'nextjs', title: 'Next.js Fullstack', category: 'Web Development', description: 'Next.js 14 + TypeScript + Database', icon: <i className="fa-brands fa-neos" />, lessons: [{ name: 'Next.js Course', link: 'https://www.youtube.com/embed/ZjAqacIC_3c' }] },
   { id: 'tailwind', title: 'Tailwind CSS', category: 'Web Development', description: 'រចនា UI យ៉ាងលឿន ដោយ Tailwind', icon: <i className="fa-brands fa-css3-alt" />, lessons: [{ name: 'Tailwind Basics', link: 'https://www.youtube.com/embed/UBOj6rqRUME' }] },
   { id: 'typescript', title: 'TypeScript', category: 'Web Development', description: 'JavaScript ដែលមានប្រភេទ Type-Safe', icon: <i className="fa-solid fa-code" />, lessons: [{ name: 'TS Intro', link: 'https://www.youtube.com/embed/gieEQFIfgYc' }] },
-  { id: 'python', title: 'Python Programming', category: 'Programming', description: 'Python ពីចាប់ផ្ដើមដល់ Advanced', icon: <i className="fa-brands fa-python" />, lessons: [{ name: 'Python Intro', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }] },
+  { id: 'python', title: 'Python Programming', category: 'Programming', description: 'Python ពីចាប់ផ្ដើមដល់ Advanced', icon: <i className="fa-brands fa-python" />, lessons: [{ name: 'ភាគ ១: Python Intro', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }, { name: 'ភាគ ២: Variables & Types', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }, { name: 'ភាគ ៣: Functions & OOP', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }] },
   { id: 'java', title: 'Java Programming', category: 'Programming', description: 'Java OOP រៀង', icon: <i className="fa-brands fa-java" />, lessons: [{ name: 'Java Basics', link: 'https://www.youtube.com/embed/eIrMbAQSU34' }] },
   { id: 'cpp', title: 'C++ Programming', category: 'Programming', description: 'C++ សម្រាប់ Development', icon: <i className="fa-solid fa-code" />, lessons: [{ name: 'C++ Basics', link: 'https://www.youtube.com/embed/vLnPwxZdW4Y' }] },
   { id: 'csharp', title: 'C# .NET', category: 'Programming', description: 'C# សម្រាប់ Desktop & Web', icon: <i className="fa-brands fa-windows" />, lessons: [{ name: 'C# Intro', link: 'https://www.youtube.com/embed/GhQdlIFylQ8' }] },
@@ -275,8 +275,9 @@ export default function DashboardPageAdvanced() {
           </div>
 
           <div style={{ background: 'rgba(37,99,235,0.15)', borderRadius: 12, padding: '14px 16px', marginBottom: 24 }}>
-            <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8 }}>
+            <div style={{ fontSize: 13, color: '#94a3b8', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
               <i className="fa-solid fa-user-circle" /> {displayName}
+              {learningSeconds >= 300 && <i className="fa-solid fa-circle-check" style={{ color: '#3b82f6', fontSize: 14 }} title="Verified Learner" />}
             </div>
             <div style={{ fontSize: 12, color: '#06D6A0', marginBottom: 4 }}>
               <i className="fa-solid fa-hourglass-half" /> {formatKhmer(learningSeconds)}
@@ -315,8 +316,16 @@ export default function DashboardPageAdvanced() {
           <Link to="/community" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#38bdf8', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 8 }}>
             <i className="fa-solid fa-users" /> សហគមន៍
           </Link>
-          <Link to="/chatbot" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#a855f7', textDecoration: 'none', borderRadius: 10, fontSize: 14 }}>
+          <Link to="/chatbot" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#a855f7', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 24 }}>
             <i className="fa-solid fa-robot" /> AI Chatbot
+          </Link>
+
+          <div style={{ fontSize: 11, color: '#64748b', textTransform: 'uppercase', marginBottom: 12, paddingLeft: 8, fontWeight: 700 }}>ផ្សេងៗ</div>
+          <Link to="/about-us" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#94a3b8', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 8 }}>
+            <i className="fa-solid fa-circle-info" /> អំពីពួកយើង (About Us)
+          </Link>
+          <Link to="/privacy-policy" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', color: '#94a3b8', textDecoration: 'none', borderRadius: 10, fontSize: 14 }}>
+            <i className="fa-solid fa-shield-halved" /> ឯកជនភាព និងរបៀបប្រើ
           </Link>
         </div>
 
@@ -351,9 +360,19 @@ export default function DashboardPageAdvanced() {
             <i className="fa-solid fa-magnifying-glass" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#64748b', fontSize: 14 }} />
           </div>
 
-          <div style={{ position: 'relative' }}>
-            <button onClick={() => setShowNotifications(!showNotifications)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', color: '#f8fafc', cursor: 'pointer', width: 40, height: 40, borderRadius: '50%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <i className="fa-solid fa-bell" style={{ fontSize: 18 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+              <img 
+                src={userProfile.profileImage || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=2563eb&color=fff`} 
+                alt="Profile" 
+                style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }}
+                title="ចុចដើម្បីប្ដូររូបភាព Profile"
+              />
+              <input type="file" style={{ display: 'none' }} accept="image/*" onChange={handleImageUpload} />
+            </label>
+            <div style={{ position: 'relative' }}>
+              <button onClick={() => setShowNotifications(!showNotifications)} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', color: '#f8fafc', cursor: 'pointer', width: 40, height: 40, borderRadius: '50%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <i className="fa-solid fa-bell" style={{ fontSize: 18 }} />
               {unreadCount > 0 && (
                 <span style={{ position: 'absolute', top: -2, right: -2, background: '#ef4444', color: 'white', fontSize: 10, padding: '2px 6px', borderRadius: 10 }}>
                   {unreadCount}
@@ -380,6 +399,7 @@ export default function DashboardPageAdvanced() {
                 </div>
               </div>
             )}
+            </div>
           </div>
         </nav>
 
@@ -438,16 +458,29 @@ export default function DashboardPageAdvanced() {
                         <i className="fa-solid fa-chevron-down" style={{ fontSize: 12 }} />
                       </button>
                       <div style={{ display: 'none', padding: '12px 0 0', marginTop: 12 }}>
-                        {course.lessons.map((lesson, li) => (
-                          <div key={li} style={{ padding: '10px 12px', background: 'rgba(15,23,42,0.5)', borderRadius: 8, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,0.03)' }}>
-                            <span style={{ flexGrow: 1, fontSize: 13, color: '#cbd5e1' }}>
-                              <i className="fa-solid fa-play" style={{ marginRight: 8, color: '#3b82f6' }} />{lesson.name}
-                            </span>
-                            <button onClick={() => { setVideoSrc(embedUrl(lesson.link)); markLessonDone(course.id, li); }} style={{ padding: '6px 10px', background: '#2563eb', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 12, fontFamily: 'inherit' }}>
-                              ចាក់
-                            </button>
-                          </div>
-                        ))}
+                        {course.lessons.map((lesson, li) => {
+                          const isFav = favorites.some(f => f.link === lesson.link);
+                          const toggleFav = () => {
+                            let newFavs;
+                            if (isFav) newFavs = favorites.filter(f => f.link !== lesson.link);
+                            else newFavs = [...favorites, { name: lesson.name, link: lesson.link }];
+                            setFavorites(newFavs);
+                            localStorage.setItem('favorites', JSON.stringify(newFavs));
+                          };
+                          return (
+                            <div key={li} style={{ padding: '10px 12px', background: 'rgba(15,23,42,0.5)', borderRadius: 8, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,0.03)' }}>
+                              <span style={{ flexGrow: 1, fontSize: 13, color: '#cbd5e1' }}>
+                                <i className="fa-solid fa-play" style={{ marginRight: 8, color: '#3b82f6' }} />{lesson.name}
+                              </span>
+                              <button onClick={toggleFav} style={{ background: 'transparent', border: 'none', color: isFav ? '#fbbf24' : '#64748b', cursor: 'pointer', fontSize: 16 }}>
+                                <i className={isFav ? "fa-solid fa-star" : "fa-regular fa-star"} />
+                              </button>
+                              <button onClick={() => { setVideoSrc(embedUrl(lesson.link)); markLessonDone(course.id, li); }} style={{ padding: '6px 10px', background: '#2563eb', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 12, fontFamily: 'inherit' }}>
+                                ចាក់
+                              </button>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   );
