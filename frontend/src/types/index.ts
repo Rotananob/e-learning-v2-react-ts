@@ -1,4 +1,5 @@
 // TypeScript interfaces for the Rotana E-Learning project
+import type { ReactNode } from 'react';
 
 export interface User {
   uid: string;
@@ -12,7 +13,7 @@ export interface Course {
   title: string;
   category: string;
   description: string;
-  icon: string;
+  icon: ReactNode | string;
   lessons: Lesson[];
   completed?: boolean;
 }

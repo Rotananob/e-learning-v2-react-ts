@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import CookieConsent from '../components/common/CookieConsent';
 
 const courses = [
-  { icon: '🌐', title: 'Web Development', desc: 'HTML, CSS, JavaScript, React' },
-  { icon: '🐍', title: 'Python Programming', desc: 'Python, Django, Flask, AI/ML' },
-  { icon: '📱', title: 'Mobile Development', desc: 'Android, Flutter, React Native' },
-  { icon: '🎮', title: 'Game Development', desc: 'Unity, Pygame, Web Games' },
-  { icon: '🗄️', title: 'Database Design', desc: 'MySQL, MongoDB, Firebase' },
-  { icon: '🔒', title: 'Cybersecurity', desc: 'Network security, Ethical Hacking' },
+  { icon: <i className="fa-solid fa-globe" />, title: 'Web Development', desc: 'HTML, CSS, JavaScript, React' },
+  { icon: <i className="fa-brands fa-python" />, title: 'Python Programming', desc: 'Python, Django, Flask, AI/ML' },
+  { icon: <i className="fa-solid fa-mobile-screen" />, title: 'Mobile Development', desc: 'Android, Flutter, React Native' },
+  { icon: <i className="fa-solid fa-gamepad" />, title: 'Game Development', desc: 'Unity, Pygame, Web Games' },
+  { icon: <i className="fa-solid fa-database" />, title: 'Database Design', desc: 'MySQL, MongoDB, Firebase' },
+  { icon: <i className="fa-solid fa-lock" />, title: 'Cybersecurity', desc: 'Network security, Ethical Hacking' },
 ];
 
 function Countdown() {
@@ -111,7 +111,7 @@ export default function HomePage() {
           {/* Under Construction / Progress Section */}
           <section style={{ background: 'rgba(30,41,59,0.8)', backdropFilter: 'blur(10px)', borderRadius: 20, padding: '2.5rem', marginBottom: '3rem', border: '1px solid rgba(37,99,235,0.2)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'linear-gradient(to right,#2563EB,#06D6A0)' }} />
-            <div style={{ textAlign: 'center', fontSize: '4rem', marginBottom: '1.5rem', animation: 'float 3s ease-in-out infinite' }}>🔨</div>
+            <div style={{ textAlign: 'center', fontSize: '4rem', marginBottom: '1.5rem', animation: 'float 3s ease-in-out infinite' }}><i className="fa-solid fa-hammer" /></div>
             <h3 style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '1rem', color: '#F8FAFC' }}>
               កំពុងសាងសង់វគ្គថ្មីៗ
             </h3>
@@ -140,14 +140,14 @@ export default function HomePage() {
 
           {/* Countdown */}
           <section style={{ background: 'rgba(30,41,59,0.7)', borderRadius: 20, padding: '2.5rem', marginBottom: '3rem', textAlign: 'center', border: '1px solid rgba(37,99,235,0.2)' }}>
-            <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#F8FAFC' }}>⏳ រង់ចាំ Launch ជាផ្លូវការ</h3>
+            <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#F8FAFC' }}><i className="fa-solid fa-hourglass-half" /> រង់ចាំ Launch ជាផ្លូវការ</h3>
             <Countdown />
           </section>
 
           {/* Courses Preview */}
           <section style={{ marginBottom: '3rem' }}>
             <h3 style={{ textAlign: 'center', fontSize: '1.8rem', marginBottom: '2rem', background: 'linear-gradient(to right,#F8FAFC,#2563EB)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              📚 វគ្គដែលនឹងមានក្នុងឆាប់ៗ
+              <i className="fa-solid fa-book" /> វគ្គដែលនឹងមានក្នុងឆាប់ៗ
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.5rem' }}>
               {courses.map((c, i) => (
@@ -169,10 +169,10 @@ export default function HomePage() {
           <section style={{ textAlign: 'center', paddingBottom: '3rem' }}>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
               {[
-                { to: '/about-us', label: '👥 អំពីយើង' },
-                { to: '/chatbot', label: '🤖 AI Tutor' },
-                { to: '/privacy-policy', label: '🔒 Privacy Policy' },
-                { to: '/dashboard', label: '📊 Dashboard' },
+                { to: '/about-us', label: <><i className="fa-solid fa-users" /> អំពីយើង</> },
+                { to: '/chatbot', label: <><i className="fa-solid fa-robot" /> AI Tutor</> },
+                { to: '/privacy-policy', label: <><i className="fa-solid fa-lock" /> Privacy Policy</> },
+                { to: '/dashboard', label: <><i className="fa-solid fa-chart-pie" /> Dashboard</> },
               ].map((lk) => (
                 <Link key={lk.to} to={lk.to} style={{ color: '#64748b', fontSize: 14, textDecoration: 'none', padding: '6px 16px', background: 'rgba(255,255,255,0.05)', borderRadius: 20, border: '1px solid rgba(255,255,255,0.1)' }}>
                   {lk.label}

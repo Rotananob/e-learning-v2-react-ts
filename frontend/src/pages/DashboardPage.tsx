@@ -9,7 +9,7 @@ import type { Favorite, Course } from '../types';
 const defaultCourses: Course[] = [
   {
     id: 'web-basic', title: 'Web Basic (HTML/CSS/JS)', category: 'Web Development',
-    description: 'រៀន HTML, CSS, JavaScript ពីដំបូង', icon: '🌐',
+    description: 'រៀន HTML, CSS, JavaScript ពីដំបូង', icon: <i className="fa-solid fa-globe" />,
     lessons: [
       { name: 'HTML Intro', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' },
       { name: 'CSS Basics', link: 'https://www.youtube.com/embed/yfoY53QXEnI' },
@@ -18,7 +18,7 @@ const defaultCourses: Course[] = [
   },
   {
     id: 'python', title: 'Python Programming', category: 'Programming',
-    description: 'Python ពីចាប់ផ្ដើមដល់ Advanced', icon: '🐍',
+    description: 'Python ពីចាប់ផ្ដើមដល់ Advanced', icon: <i className="fa-brands fa-python" />,
     lessons: [
       { name: 'Python Intro', link: 'https://www.youtube.com/embed/rfscVS0vtbw' },
       { name: 'Python OOP', link: 'https://www.youtube.com/embed/Ej_02ICOIgs' },
@@ -26,7 +26,7 @@ const defaultCourses: Course[] = [
   },
   {
     id: 'react', title: 'React JS', category: 'Web Development',
-    description: 'React.js + Hooks + TypeScript', icon: '⚛️',
+    description: 'React.js + Hooks + TypeScript', icon: <i className="fa-brands fa-react" />,
     lessons: [
       { name: 'React Intro', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' },
       { name: 'React Hooks', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' },
@@ -34,14 +34,14 @@ const defaultCourses: Course[] = [
   },
   {
     id: 'game-dev', title: 'Game Development', category: 'Game',
-    description: 'Pygame, Unity, Web Games', icon: '🎮',
+    description: 'Pygame, Unity, Web Games', icon: <i className="fa-solid fa-gamepad" />,
     lessons: [
       { name: 'Pygame Basics', link: 'https://www.youtube.com/embed/FfWpgLFMI7w' },
     ]
   },
   {
     id: 'flutter', title: 'Flutter / Mobile Dev', category: 'Mobile',
-    description: 'Flutter, Dart, Android App', icon: '📱',
+    description: 'Flutter, Dart, Android App', icon: <i className="fa-solid fa-mobile-screen" />,
     lessons: [
       { name: 'Flutter Intro', link: 'https://www.youtube.com/embed/1gDhl4leEzA' },
     ]
@@ -138,20 +138,20 @@ export default function DashboardPage() {
 
           {/* User Info */}
           <div style={{ background: 'rgba(37,99,235,0.15)', borderRadius: 12, padding: '12px 14px', marginBottom: 20 }}>
-            <div style={{ fontSize: 13, color: '#94a3b8' }}>👤 {displayName}</div>
+            <div style={{ fontSize: 13, color: '#94a3b8' }}><i className="fa-solid fa-user" /> {displayName}</div>
             <div style={{ fontSize: 12, color: '#06D6A0', marginTop: 4 }}>
-              ⏳ {formatKhmer(learningSeconds)}
+              <i className="fa-solid fa-hourglass-half" /> {formatKhmer(learningSeconds)}
             </div>
             <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>
-              ✅ {completedCourses.length} វគ្គបានរៀន
+              <i className="fa-solid fa-circle-check" style={{ color: '#06D6A0' }} /> {completedCourses.length} វគ្គបានរៀន
             </div>
           </div>
 
           {/* Nav */}
           {[
-            { icon: '📚', label: 'វគ្គសិក្សា', tab: 'courses' as const },
-            { icon: '⭐', label: 'ចំណូលចិត្ត', tab: 'favorites' as const },
-            { icon: '👤', label: 'ព្រំដែន', tab: 'profile' as const },
+            { icon: <i className="fa-solid fa-book" />, label: 'វគ្គសិក្សា', tab: 'courses' as const },
+            { icon: <i className="fa-solid fa-star" style={{ color: '#fbbf24' }} />, label: 'ចំណូលចិត្ត', tab: 'favorites' as const },
+            { icon: <i className="fa-solid fa-user" />, label: 'ព្រំដែន', tab: 'profile' as const },
           ].map((item) => (
             <button key={item.tab} onClick={() => { setActiveTab(item.tab); if (window.innerWidth <= 768) setSidebarOpen(false); }}
               style={{ width: '100%', padding: '10px 12px', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 10, background: activeTab === item.tab ? 'rgba(37,99,235,0.25)' : 'transparent', border: 'none', borderRadius: 10, color: '#f8fafc', cursor: 'pointer', fontSize: 14, fontFamily: 'inherit', textAlign: 'left', transition: 'all 0.2s' }}>
@@ -162,20 +162,20 @@ export default function DashboardPage() {
           <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.07)', margin: '12px 0' }} />
 
           <Link to="/chatbot" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', color: '#a5b4fc', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 6 }}>
-            🤖 AI Tutor (Chatbot)
+            <i className="fa-solid fa-robot" /> AI Tutor (Chatbot)
           </Link>
           <Link to="/profile-sitting" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', color: '#94a3b8', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 6 }}>
-            ⚙️ ការកំណត់ Profile
+            <i className="fa-solid fa-gear" /> ការកំណត់ Profile
           </Link>
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', color: '#94a3b8', textDecoration: 'none', borderRadius: 10, fontSize: 14, marginBottom: 6 }}>
-            🏠 ទំព័រដើម
+            <i className="fa-solid fa-house" /> ទំព័រដើម
           </Link>
         </div>
 
         {/* Logout */}
         <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <button onClick={handleLogout} style={{ width: '100%', padding: '10px', background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 10, color: '#ef4444', cursor: 'pointer', fontSize: 14, fontFamily: 'inherit' }}>
-            🚪 ចាកចេញ
+            <i className="fa-solid fa-right-from-bracket" /> ចាកចេញ
           </button>
         </div>
       </aside>
@@ -195,7 +195,7 @@ export default function DashboardPage() {
           <div style={{ position: 'relative', maxWidth: 300, width: '100%' }}>
             <input
               type="text"
-              placeholder="🔍 ស្វែងរកមេរៀន..."
+              placeholder="ស្វែងរកមេរៀន..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ width: '100%', padding: '8px 14px 8px 36px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, color: '#f8fafc', fontSize: 13, fontFamily: 'inherit', outline: 'none' }}
@@ -204,7 +204,7 @@ export default function DashboardPage() {
           </div>
 
           <Link to="/chatbot" style={{ padding: '8px 16px', background: 'linear-gradient(135deg,#7c3aed,#4f46e5)', color: 'white', borderRadius: 10, textDecoration: 'none', fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap' }}>
-            🤖 AI Tutor
+            <i className="fa-solid fa-robot" /> AI Tutor
           </Link>
         </nav>
 
