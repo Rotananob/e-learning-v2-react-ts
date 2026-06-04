@@ -37,10 +37,32 @@ export default function CommunityPage() {
     try {
       const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
       const unsubscribe = onSnapshot(q, (snapshot) => {
-        const fetchedPosts = snapshot.docs.map(doc => ({
+        let fetchedPosts = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         })) as Post[];
+        
+        // Viral Algorithm (Like Facebook/Reddit)
+        // Score = (Likes * 2) + (Comments * 3)
+        // Viral Rank = Score / (Age_In_Hours + 2)^1.5
+        const now = Date.now();
+        fetchedPosts.sort((a, b) => {
+          const timeA = a.createdAt?.toMillis ? a.createdAt.toMillis() : now;
+          const timeB = b.createdAt?.toMillis ? b.createdAt.toMillis() : now;
+          
+          const ageHoursA = (now - timeA) / (1000 * 60 * 60);
+          const ageHoursB = (now - timeB) / (1000 * 60 * 60);
+          
+          const scoreA = (a.likes?.length || 0) * 2 + (a.comments?.length || 0) * 3;
+          const scoreB = (b.likes?.length || 0) * 2 + (b.comments?.length || 0) * 3;
+          
+          // Give base score of 1 to every post so new posts aren't always 0
+          const viralScoreA = (scoreA + 1) / Math.pow(Math.max(ageHoursA, 0) + 2, 1.5);
+          const viralScoreB = (scoreB + 1) / Math.pow(Math.max(ageHoursB, 0) + 2, 1.5);
+          
+          return viralScoreB - viralScoreA;
+        });
+
         setPosts(fetchedPosts);
       });
       return unsubscribe;
@@ -135,7 +157,7 @@ export default function CommunityPage() {
           <i className="fa-solid fa-arrow-left" />
         </Link>
         <span style={{ fontWeight: 'bold', fontSize: 16, color: '#f8fafc', flexGrow: 1, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <i className="fa-solid fa-users" style={{ color: '#38bdf8' }} /> សហគមន៍ចែករំលែក
+          <i className="fa-solid fa-users" style={{ color: '#38bdf8' }} /> សហគមន៍ (Trending) <i className="fa-solid fa-fire" style={{ color: '#ef4444', fontSize: 14 }}/>
         </span>
       </nav>
 

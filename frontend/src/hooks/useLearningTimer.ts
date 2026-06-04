@@ -1,4 +1,14 @@
 import { useEffect, useRef, useCallback } from 'react';
+import { db } from '../services/firebase';
+import { doc, setDoc, increment } from 'firebase/firestore';
+
+export function getWeekId(): string {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  const day = d.getDay() || 7;
+  d.setDate(d.getDate() - day + 1);
+  return `${d.getFullYear()}-W${d.getMonth() + 1}-${d.getDate()}`;
+}
 
 // Helper: Cambodia UTC+7
 function getCambodiaNow(): Date {
@@ -38,26 +48,44 @@ export function formatKhmer(secs: number): string {
   return `${toKh(h).padStart(2, '០')}:${toKh(m).padStart(2, '០')}:${toKh(s).padStart(2, '០')}`;
 }
 
-export function useLearningTimer(username?: string) {
+export function useLearningTimer(uid?: string, displayName?: string) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const lastSaveRef = useRef(0);
 
   const getSeconds = useCallback((): number => {
-    const key = getStorageKey(username);
+    const key = getStorageKey(uid || displayName);
     return parseInt(localStorage.getItem(key) || '0', 10);
-  }, [username]);
+  }, [uid, displayName]);
 
-  const saveSeconds = useCallback((secs: number) => {
-    const key = getStorageKey(username);
+  const saveSeconds = useCallback(async (secs: number) => {
+    const key = getStorageKey(uid || displayName);
     localStorage.setItem(key, String(secs));
-  }, [username]);
+    
+    // Sync to Firestore if user is logged in
+    const diff = secs - lastSaveRef.current;
+    if (uid && diff >= 60) {
+      try {
+        const weekId = getWeekId();
+        await setDoc(doc(db, `leaderboard_${weekId}`, uid), {
+          uid: uid,
+          displayName: displayName || 'Anonymous',
+          learningSeconds: increment(diff),
+          lastUpdated: new Date()
+        }, { merge: true });
+        lastSaveRef.current = secs;
+      } catch (err) {
+        console.error("Failed to sync timer to leaderboard");
+      }
+    }
+  }, [uid, displayName]);
 
   useEffect(() => {
     let learningTime = getSeconds();
     let lastTick = Date.now();
+    lastSaveRef.current = learningTime; // Fix initial sync logic
 
     intervalRef.current = setInterval(() => {
-      const key = getStorageKey(username);
+      const key = getStorageKey(uid || displayName);
       if (!localStorage.getItem(key)) {
         learningTime = 0;
         saveSeconds(0);
@@ -88,7 +116,7 @@ export function useLearningTimer(username?: string) {
       window.removeEventListener('beforeunload', handleUnload);
       saveSeconds(learningTime);
     };
-  }, [username, getSeconds, saveSeconds]);
+  }, [uid, displayName, getSeconds, saveSeconds]);
 
   return { getSeconds };
 }

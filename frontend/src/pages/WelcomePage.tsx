@@ -30,7 +30,7 @@ export default function WelcomePage() {
     navigate('/login');
   };
 
-  const displayName = currentUser?.displayName || currentUser?.email || 'អ្នកប្រើប្រាស់';
+  const displayName = currentUser?.displayName || (currentUser?.email ? currentUser.email.split('@')[0] : 'អ្នកប្រើប្រាស់');
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function WelcomePage() {
         }}>
           <h2 style={{ fontSize: 26, color: '#fff', display: 'flex', alignItems: 'center', gap: 10, fontWeight: 'bold' }}>
             <i className="fa fa-graduation-cap" style={{ color: '#fbbf24' }} />
-            Rotana E-learning <i className="fa fa-book" />
+            Rotana Education <i className="fa fa-book" />
           </h2>
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -108,7 +108,7 @@ export default function WelcomePage() {
             </div>
 
             <footer style={{ marginTop: 20, fontSize: 13, color: '#7f8c8d' }}>
-              last updates page 13/08/2025 © Rotana NOB
+              last updates page 13/08/2025 © Rotana Education
             </footer>
           </div>
 
