@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>🔍 Certificate Verification - Rotana E-Learning</title>
+    <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, "Noto Sans Khmer", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .verify-container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .verify-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .verify-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .verify-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cert-info {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .verify-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .verify-invalid {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(102, 126, 234, 0.2);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .verify-container {
+                padding: 30px 20px;
+            }
+
+            .verify-title {
+                font-size: 24px;
+            }
+
+            .verify-icon {
+                font-size: 60px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .info-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-container" id="verifyContainer">
+        <div class="loading">
+            <div class="spinner"></div>
+            <div class="verify-subtitle">កំពុងផ្ទៀងផ្ទាត់ Certificate...</div>
+        </div>
+    </div>
+
+    <!-- Firebase Configuration -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+            authDomain: "x-flow-studio.firebaseapp.com",
+            projectId: "x-flow-studio",
+            storageBucket: "x-flow-studio.appspot.com",
+            messagingSenderId: "608679807495",
+            appId: "1:608679807495:web:403bea2d684dc324d338a2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Get certificate ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const certId = urlParams.get('id');
+
+        async function verifyCertificate(certId) {
+            const container = document.getElementById('verifyContainer');
+
+            if (!certId) {
+                container.innerHTML = `
+                    <div class="verify-icon">❌</div>
+                    <div class="verify-title">Certificate ID មិនត្រឹមត្រូវ</div>
+                    <div class="verify-subtitle">សូមពិនិត្យ URL ឡើងវិញ</div>
+                    <a href="index" class="btn-back">
+                        <i class="fa fa-home"></i> ត្រឡប់ទៅទំព័រដើម
+                    </a>
+                `;
+                return;
+            }
+
+            try {
+                // Get certificate directly by document ID (certificate ID = document ID)
+                const certDocRef = doc(db, 'publicCertificates', certId);
+                const certDoc = await getDoc(certDocRef);
+                
+                let foundCert = null;
+                
+                if (certDoc.exists()) {
+                    foundCert = certDoc.data();
+                }
+
+                // If not found in Firestore, check localStorage as fallback
+                if (!foundCert) {
+                    const localCerts = JSON.parse(localStorage.getItem('certificates') || '[]');
+                    foundCert = localCerts.find(c => c.id === certId);
+                }
+
+                if (foundCert) {
+                    // Valid certificate found
+                    const issueDate = new Date(foundCert.issuedAt).toLocaleDateString('km-KH', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    container.innerHTML = `
+                        <div class="verify-icon">✅</div>
+                        <div class="verify-title">Certificate ត្រឹមត្រូវ!</div>
+                        <div class="verify-subtitle">Certificate នេះបានផ្តល់ឱ្យដោយ Rotana E-Learning Platform</div>
+                        
+                        <div class="cert-info">
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa fa-certificate"></i>
+                                    Certificate ID:
+                                </div>
+                                <div class="info-value">${foundCert.id}</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa fa-user"></i>
+                                    ឈ្មោះអ្នកទទួល:
+                                </div>
+                                <div class="info-value">${foundCert.userName}</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa fa-book"></i>
+                                    វគ្គសិក្សា:
+                                </div>
+                                <div class="info-value">${foundCert.courseTitle}</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa fa-calendar"></i>
+                                    កាលបរិច្ឆេទបញ្ចប់:
+                                </div>
+                                <div class="info-value">${foundCert.completedDate}</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">
+                                    <i class="fa fa-clock"></i>
+                                    ចេញផ្សាយនៅ:
+                                </div>
+                                <div class="info-value">${issueDate}</div>
+                            </div>
+                        </div>
+
+                        <div class="verify-badge">
+                            <i class="fa fa-check-circle"></i>
+                            ផ្ទៀងផ្ទាត់ដោយ Rotana E-Learning
+                        </div>
+
+                        <a href="index" class="btn-back">
+                            <i class="fa fa-home"></i> ត្រឡប់ទៅទំព័រដើម
+                        </a>
+                    `;
+                } else {
+                    // Invalid certificate
+                    container.innerHTML = `
+                        <div class="verify-icon">⚠️</div>
+                        <div class="verify-title">រកមិនឃើញ Certificate</div>
+                        <div class="verify-subtitle">
+                            Certificate ID នេះមិនមាននៅក្នុងប្រព័ន្ធរបស់យើង។<br>
+                            សូមពិនិត្យ ID ឡើងវិញ ឬទាក់ទងមកកាន់យើង។
+                        </div>
+                        
+                        <div class="verify-badge verify-invalid">
+                            <i class="fa fa-times-circle"></i>
+                            មិនអាចផ្ទៀងផ្ទាត់បាន
+                        </div>
+
+                        <a href="index" class="btn-back">
+                            <i class="fa fa-home"></i> ត្រឡប់ទៅទំព័រដើម
+                        </a>
+                    `;
+                }
+            } catch (error) {
+                console.error('Verification error:', error);
+                container.innerHTML = `
+                    <div class="verify-icon">❌</div>
+                    <div class="verify-title">បញ្ហាក្នុងការផ្ទៀងផ្ទាត់</div>
+                    <div class="verify-subtitle">សូមព្យាយាមម្តងទៀតក្រោយមួយភ្លែត</div>
+                    <a href="index" class="btn-back">
+                        <i class="fa fa-home"></i> ត្រឡប់ទៅទំព័រដើម
+                    </a>
+                `;
+            }
+        }
+
+        // Run verification
+        verifyCertificate(certId);
+    </script>
+    <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>

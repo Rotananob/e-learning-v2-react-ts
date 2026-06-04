@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+   <link rel="canonical" href="https://rotana-elearningg.web.app/dashboard.html" />
+  <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <title>Dashboard និង ថ្នាក់រៀន</title>
+  <link rel="icon" type="image/png" href="assets/css/fonts/images/logo.png">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+  <style>
+    /* 💬 Chat/Post UI */
+    :root{
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      --accent: #06b6d4;
+      --muted: #9aa4ad;
+      --text: #ffffff;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    body{ background: #0f1724; color:var(--text); font-family: "Segoe UI", Roboto, "Noto Sans Khmer", sans-serif; padding:0; margin:0; position: relative; }
+    
+    /* Decorative brand logo elements on page */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-image: url('assets/css/fonts/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-image: url('assets/css/fonts/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    /* 🔔 Notification UI */
+  .notification {
+    position: relative;
+  }
+  .notif-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+  .notif-dropdown {
+    position: absolute;
+    top: 36px;
+    right: 0;
+    background: #1f2937;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    width: 240px;
+    box-shadow: var(--card-shadow);
+    z-index: 99;
+  }
+  .notif-dropdown h4 {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+  .notif-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 160px;
+    overflow-y: auto;
+  }
+  .notif-dropdown li {
+    padding: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+    color: var(--text);
+  }
+  .notif-dropdown .btn-clear {
+    margin-top: 6px;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+  }
+
+  ... (backup file contains full original content) ...
+
+
+</html>
+[BACKUP of dashboard.html created on 2025-12-06T14:19:00]
+
+(If you need the full backup content, it's saved in the workspace file `dashboard.html.bak.20251206T141900`.)

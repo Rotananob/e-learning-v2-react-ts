@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Courses Display</title>
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .debug-info {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .debug-info h3 { color: #60a5fa; }
+    .success { color: #10b981; }
+    .error { color: #ef4444; }
+    #defaultCourses {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test Courses Display</h1>
+  
+  <div class="debug-info">
+    <h3>Debug Info:</h3>
+    <div id="debugOutput"></div>
+  </div>
+
+  <!-- Sidebar Menu (needed for category clicks) -->
+  <div class="sidebar-menu" style="display: none;">
+    <li data-category="all">All</li>
+    <li data-category="frontend">Frontend</li>
+    <li data-category="Backend">Backend</li>
+  </div>
+
+  <!-- Course Container -->
+  <div id="defaultCourses" class="course-list"></div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <button class="close-btn" onclick="closeVideoModal()">&times;</button>
+      <div id="videoContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    const debugOutput = document.getElementById('debugOutput');
+    function log(msg, isError = false) {
+      const p = document.createElement('p');
+      p.className = isError ? 'error' : 'success';
+      p.textContent = msg;
+      debugOutput.appendChild(p);
+    }
+
+    window.onerror = function(msg, url, line, col, error) {
+      log('❌ Error: ' + msg + ' (line ' + line + ')', true);
+      return false;
+    };
+
+    log('📌 Page loaded, waiting for script.js...');
+  </script>
+
+  <!-- Load script.js -->
+  <script src="script.js"></script>
+
+  <script>
+    // Check after script.js loads
+    setTimeout(() => {
+      const container = document.getElementById('defaultCourses');
+      if (container && container.children.length > 0) {
+        log('✅ Courses rendered! Found ' + container.children.length + ' items');
+      } else {
+        log('❌ No courses rendered! Container is empty', true);
+      }
+
+      // Check video modal
+      const modal = document.getElementById('videoModal');
+      if (modal) {
+        log('✅ Video modal exists');
+      } else {
+        log('❌ Video modal not found', true);
+      }
+
+      // Check if closeVideoModal function exists
+      if (typeof closeVideoModal === 'function') {
+        log('✅ closeVideoModal function exists');
+      } else {
+        log('❌ closeVideoModal function not defined', true);
+      }
+    }, 2000);
+  </script>
+</body>
+</html>

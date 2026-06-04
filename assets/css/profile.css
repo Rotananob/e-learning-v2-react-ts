@@ -1,0 +1,590 @@
+﻿/* ========================================= */
+/* Profile Settings CSS                    */
+/* Designed for Rotana eLearning Platform  */
+/* ========================================= */
+
+:root {
+  --profile-bg: linear-gradient(135deg, #06b6d4, #9333ea);
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--profile-bg);
+  min-height: 100vh;
+  font-family: 'Noto Sans Khmer', 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ========== Main Layout ========== */
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.page-header .muted {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+}
+
+/* ========== Grid Layout ========== */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== Cards ========== */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Preview Card ========== */
+.preview-card {
+  text-align: center;
+}
+
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+.avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 18px auto;
+}
+.avatar-wrap img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+  transition: var(--transition);
+}
+.avatar-wrap img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
+}
+.avatar-change {
+  background: var(--accent);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(6, 182, 212, 0.3);
+  z-index: 2;
+}
+.avatar-change:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+/* Username tightly grouped under avatar, flex for tick */
+.profile-username {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.18em;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-word;
+  text-align: center;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .avatar-wrap img {
+    width: 90px;
+    height: 90px;
+    border-width: 3px;
+  }
+  .avatar-change {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .profile-username {
+    font-size: 1em;
+  }
+}
+@media (max-width: 600px) {
+  .avatar-wrap img {
+    width: 90px;
+    height: 90px;
+    border-width: 3px;
+  }
+  .avatar-change {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .profile-username {
+    font-size: 1em;
+  }
+}
+
+.preview-info h2 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.preview-info .muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.preview-info p {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ========== Badges ========== */
+.badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(6, 182, 212, 0.25);
+}
+
+/* ========== Quick Actions ========== */
+.quick-actions {
+  margin-top: 20px;
+}
+
+.quick-actions h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.quick-actions .btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn.small {
+  padding: 10px 18px;
+  font-size: 13px;
+}
+
+.btn:not(.ghost) {
+  background: linear-gradient(135deg, var(--accent), #3b82f6);
+  color: white;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.btn:not(.ghost):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 2px solid var(--border);
+}
+
+.btn.ghost:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 16px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
+}
+
+.save-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+}
+
+/* ========== Form Card ========== */
+.form-card {
+  background: var(--card-bg);
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 20px;
+}
+
+.form-section h3 {
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-section h3::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Two Column Layout */
+.form-section.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 600px) {
+  .form-section.two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section.two-col > div {
+  padding: 0;
+}
+
+.form-section.two-col h3 {
+  font-size: 1rem;
+}
+
+/* ========== Form Elements ========== */
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  margin-top: 14px;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: #f9fafb;
+  color: var(--text-primary);
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ========== Toggle Row ========== */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.toggle-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* ========== Form Actions ========== */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 500px) {
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+/* ========== Toast Notification ========== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .avatar-wrap img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 15px;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  textarea,
+  select {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+}
+
+/* ========== Dark Mode Support ========== */
+body.dark-mode {
+  --card-bg: #1f2937;
+  --text-primary: #ffffff;
+  --text-muted: #9ca3af;
+  --border: #374151;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #374151;
+  border-color: #4b5563;
+  color: white;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+  background: #1f2937;
+  border-color: var(--accent);
+}
+
+/* ========== Animation ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.preview-card {
+  animation-delay: 0.1s;
+}
+
+.quick-actions {
+  animation-delay: 0.2s;
+}
+
+.form-card {
+  animation-delay: 0.3s;
+}
+
+/* ========== Profile Navigation Link ========== */
+.profile-nav-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  transition: var(--transition);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-nav-back:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Scrollbar ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}

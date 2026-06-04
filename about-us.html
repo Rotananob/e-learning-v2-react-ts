@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — RotanaNOB</title>
+  <link rel="stylesheet" href="assets/css/welcome.css">
+  <link rel="icon" href="assets/img/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{ --brand:#2563eb; --accent:#06d6a0; --muted:#6b7280; }
+    body{ font-family: 'Segoe UI', Roboto, 'Noto Sans Khmer', Arial, sans-serif; margin:0; padding:0; background:#f7fafc; color:#0f1724; }
+    .site-header{ display:flex; align-items:center; gap:16px; padding:14px 18px; background:linear-gradient(90deg,var(--brand),#38bdf8); color:#fff; }
+    .site-header img{ width:44px; height:44px; border-radius:8px; background:#fff; padding:4px; }
+    .site-nav{ margin-left:auto; display:flex; gap:12px; }
+    .site-nav a{ color:#fff; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; background:rgba(255,255,255,0.06); }
+
+    .about-hero{ text-align:center; padding:42px 18px; background:linear-gradient(120deg,#2563eb 60%,#38bdf8 100%); color:#fff; }
+    .about-hero h1{ margin:10px 0 6px; font-size:1.6rem; }
+    .about-hero p{ margin:0 auto; max-width:760px; color:#e6f6ff; }
+
+    .container{ max-width:1100px; margin:28px auto; padding:18px; }
+    .card-row{ display:flex; gap:18px; margin-bottom:18px; flex-wrap:wrap; }
+    .card{ background:#fff; border-radius:12px; padding:16px; box-shadow:0 6px 20px rgba(2,6,23,0.06); flex:1 1 220px; }
+    .stat { text-align:center; }
+    .stat .num{ font-size:1.6rem; font-weight:800; color:var(--brand); }
+    .stat .label{ color:var(--muted); }
+
+    .section-title{ margin-top:18px; margin-bottom:8px; color:var(--brand); font-weight:700; }
+    .about-list{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; list-style:none; padding:0; }
+    .about-list li{ background:#fff; padding:12px; border-radius:10px; box-shadow:0 4px 12px rgba(2,6,23,0.04); }
+
+    .team-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:12px; }
+    .member{ background:#fff; border-radius:12px; padding:14px; text-align:center; box-shadow:0 8px 24px rgba(2,6,23,0.06); }
+    .member img{ width:92px; height:92px; border-radius:50%; object-fit:cover; margin-bottom:8px; }
+    .member h4{ margin:6px 0 4px; color:var(--brand); }
+    .member p{ margin:0; color:var(--muted); font-size:0.95rem; }
+    .member .links{ margin-top:8px; display:flex; gap:8px; justify-content:center; }
+
+    .cta-row{ display:flex; gap:12px; justify-content:center; margin:18px 0; }
+    .btn{ padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:700; }
+    .btn.primary{ background:linear-gradient(90deg,var(--brand),#06b6d4); color:#fff; }
+    .btn.ghost{ border:2px solid var(--brand); color:var(--brand); background:transparent; }
+
+    .testimonials{ display:flex; gap:12px; flex-direction:column; }
+    .testi{ background:linear-gradient(180deg,#0f1724,#0b1220); color:#fff; padding:12px; border-radius:10px; }
+
+    footer.site-footer{ margin-top:28px; padding:18px; text-align:center; color:#475569; }
+
+    @media (max-width:800px){ .card-row{ flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <img src="assets/img/images/logo.png" alt="logo">
+    <div style="font-weight:800">RotanaNOB</div>
+        <nav class="site-nav">
+            <a href="/about-us">About</a>
+            <a href="/team">Team</a>
+            <a href="/vision">Vision</a>
+            <a href="/test-courses">Courses</a>
+        </nav>
+  </header>
+
+  <section class="about-hero">
+    <h1>Welcome to RotanaNOB — Free IT Courses for Cambodia</h1>
+    <p>Practical, hands-on lessons in Khmer for web, mobile, and general programming — built by local educators and developers.</p>
+  </section>
+
+  <main class="container">
+    <div class="card-row">
+      <div class="card stat">
+        <div class="num">120+</div>
+        <div class="label">Courses</div>
+      </div>
+      <div class="card stat">
+        <div class="num">25k+</div>
+        <div class="label">Learners</div>
+      </div>
+      <div class="card stat">
+        <div class="num">4.8</div>
+        <div class="label">Avg Rating</div>
+      </div>
+    </div>
+
+    <h3 class="section-title">Our Mission</h3>
+    <p>To empower Cambodian learners with free, practical IT education that helps build careers and opportunities.</p>
+
+    <h3 class="section-title">Curriculum Highlights</h3>
+    <ul class="about-list">
+      <li><strong>Web Development</strong><div>HTML, CSS, JavaScript, React — build real projects.</div></li>
+      <li><strong>Mobile</strong><div>Intro to Android, Flutter and PWAs.</div></li>
+      <li><strong>Programming</strong><div>Python, data, and algorithms.</div></li>
+    </ul>
+
+        <div class="cta-row">
+            <a class="btn primary" href="/register">Join for Free</a>
+            <a class="btn ghost" href="/test-courses">Browse Courses</a>
+        </div>
+
+    <h3 class="section-title">Meet the Team</h3>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/img/images/logo.png" alt="Rotana Nob">
+        <h4>Rotana Nob</h4>
+        <p>Founder & Lead Developer — curriculum design, platform maintainer.</p>
+        <div class="links"><a href="mailto:rotana@example.com"><i class="fa fa-envelope"></i></a></div>
+      </div>
+      <div class="member">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Sokha Kim">
+        <h4>Sokha Kim</h4>
+        <p>Frontend Engineer — responsive UI & accessibility.</p>
+        <div class="links"><a href="mailto:sokha@example.com"><i class="fa fa-envelope"></i></a></div>
+      </div>
+      <div class="member">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dara Chan">
+        <h4>Dara Chan</h4>
+        <p>Content Specialist — Khmer lessons and community support.</p>
+        <div class="links"><a href="mailto:dara@example.com"><i class="fa fa-envelope"></i></a></div>
+      </div>
+    </div>
+
+    <h3 class="section-title">What’s Next</h3>
+    <p>We plan to add mentorships, localized projects, and more advanced tracks to help learners enter the workforce.</p>
+
+    <h3 class="section-title">Testimonials</h3>
+    <div class="testimonials">
+      <div class="testi">“RotanaNOB helped me build my first website — excellent tutorials.” — Pheak</div>
+      <div class="testi">“Practical and free — highly recommended.” — Srey</div>
+    </div>
+
+    <footer class="site-footer">
+    © <strong>RotanaNOB</strong> — Free IT education for Cambodia · <a href="/contact">Contact</a> · <a href="/privacy-policy">Privacy</a>
+    </footer>
+  </main>
+
+        <script src="assets/js/router.js"></script>
+    </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="assets/css/welcome.css">
+        <link rel="icon" href="assets/img/images/logo.png" type="image/x-icon">
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+        h1 { color: #2d3e50; }
+        h2 { color: #3a4a5d; margin-top: 32px; }
+        p { color: #444; line-height: 1.7; }
+    </style>
+</head>
+<style>
+    .version-badge-v1 {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        z-index: 9999;
+        font-size: 1.15rem;
+        color: #fff;
+        background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+        padding: 10px 28px;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px #0002;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 2px solid #fff3;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none;
+    }
+    .version-badge-v1 i {
+        font-size: 1.3em;
+        color: #ffd700;
+        filter: drop-shadow(0 2px 6px #0002);
+    }
+    @media (max-width: 600px) {
+        .version-badge-v1 {
+            font-size: 0.98rem;
+            padding: 7px 14px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 12px;
+        }
+        .version-badge-v1 i { font-size: 1em; }
+    }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+    <div class="about-hero">
+        <img src="assets/img/images/logo.png" alt="RotanaNOB Logo" class="about-logo">
+        <h1>Welcome to <span style="color:#2563eb">RotanaNOB</span> (IT Course)</h1>
+        <p class="about-lead">Empowering Cambodia's next generation of IT professionals with free, high-quality, and practical technology education.</p>
+    </div>
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value">120+</div>
+                <div class="stat-label">Courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">25k+</div>
+                <div class="stat-label">Learners</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4.8</div>
+                <div class="stat-label">Avg Rating</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Our Mission</h2>
+        <p>To empower learners with practical IT knowledge and skills through accessible and engaging courses built for Cambodians.</p>
+
+        <h2 class="section-title">Curriculum Highlights</h2>
+        <div class="curriculum">
+            <div class="curr-card">
+                <strong>Web Development</strong>
+                <p>HTML, CSS, JavaScript, React and building real projects.</p>
+            </div>
+            <div class="curr-card">
+                <strong>Mobile Apps</strong>
+                <p>Introduction to Android, Flutter, and PWA development.</p>
+            </div>
+            <div class="curr-card">
+                <strong>Programming</strong>
+                <p>Python, algorithms, and practical coding exercises.</p>
+            </div>
+        </div>
+
+        <div class="cta-row">
+            <a href="/register" class="cta-btn">Join for Free — Register Now</a>
+            <a href="/test-courses" class="cta-outline">Browse Courses</a>
+        </div>
+
+        <h2 class="section-title">Meet the Developer & Team</h2>
+        <div class="team-section">
+            <div class="team-member">
+                <img src="assets/img/images/logo.png" alt="Developer" class="team-avatar">
+                <div class="team-name">Rotana Nob</div>
+                <div class="team-role">Founder & Lead Developer</div>
+            </div>
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="team-avatar">
+                <div class="team-name">Sokha Kim</div>
+                <div class="team-role">Frontend Engineer</div>
+            </div>
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" class="team-avatar">
+                <div class="team-name">Dara Chan</div>
+                <div class="team-role">Content Specialist</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">What’s Next</h2>
+        <p>We plan to expand our course catalog, add mentorship programs, and bring more localized content for Khmer learners.</p>
+
+        <h2 class="section-title">Testimonials</h2>
+        <div class="testimonials">
+            <div class="testi">
+                "RotanaNOB helped me build my first website — excellent tutorials and friendly mentors." <strong>- Pheak</strong>
+            </div>
+            <div class="testi">
+                "Practical and free — highly recommended for beginners." <strong>- Srey</strong>
+            </div>
+        </div>
+
+        <footer class="about-footer">
+            <div>© <strong>RotanaNOB</strong> — Free IT education for Cambodia</div>
+            <div class="footer-links">
+                <a href="/team">Team</a> · <a href="/vision">Vision</a> · <a href="/contact">Contact</a>
+            </div>
+        </footer>
+    </div>
+</head>
+<style>
+.about-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(120deg,#2563eb 60%,#38bdf8 100%);
+    color: #fff;
+    padding: 48px 12px 32px 12px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 24px #2563eb22;
+    margin-bottom: 32px;
+}
+.about-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px #2563eb44;
+    margin-bottom: 18px;
+    background: #fff;
+    object-fit: cover;
+}
+.about-lead {
+    font-size: 1.18em;
+    margin-top: 8px;
+    color: #e0e7ef;
+    max-width: 500px;
+    text-align: center;
+}
+.section-title {
+    color: #2563eb;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    font-size: 1.35em;
+    letter-spacing: 1px;
+}
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+}
+.about-list li {
+    margin-bottom: 10px;
+    font-size: 1.08em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.about-list i {
+    color: #06d6a0;
+    font-size: 1.2em;
+}
+.team-section {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin: 18px 0 32px 0;
+    flex-wrap: wrap;
+}
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f3f6fa;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px #2563eb11;
+    padding: 18px 22px 14px 22px;
+    min-width: 140px;
+    max-width: 180px;
+    margin-bottom: 12px;
+}
+.team-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px #2563eb22;
+    background: #fff;
+}
+.team-name {
+    font-weight: bold;
+    color: #2563eb;
+    font-size: 1.08em;
+    margin-bottom: 2px;
+    text-align: center;
+}
+.team-role {
+    color: #06d6a0;
+    font-size: 0.98em;
+    text-align: center;
+}
+.future-section {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin: 18px 0 32px 0;
+    flex-wrap: wrap;
+}
+.future-card {
+    background: #fffbe6;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #facc1533;
+    padding: 18px 22px 14px 22px;
+    min-width: 140px;
+    max-width: 180px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.future-card i {
+    color: #facc15;
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+.future-title {
+    font-weight: bold;
+    color: #2563eb;
+    font-size: 1.08em;
+    margin-bottom: 2px;
+    text-align: center;
+}
+.future-desc {
+    color: #444;
+    font-size: 0.98em;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .about-hero { padding: 32px 4vw 18px 4vw; border-radius: 0 0 18px 18px; }
+    .about-logo { width: 60px; height: 60px; }
+    .container { padding: 16px 4vw; }
+    .team-section, .future-section { gap: 10px; }
+    .team-member, .future-card { min-width: 110px; max-width: 98vw; padding: 12px 8px; }
+}
+/* New UI elements */
+.stats-row { display:flex; gap:16px; justify-content:center; margin-bottom:20px; }
+.stat-card { background: linear-gradient(180deg,#fff,#f3f7ff); padding:16px 18px; border-radius:12px; text-align:center; min-width:110px; box-shadow:0 4px 18px rgba(37,99,235,0.08); }
+.stat-value { font-size:1.6em; font-weight:700; color:#2563eb; }
+.stat-label { color:#567; font-size:0.95em; margin-top:6px; }
+.curriculum { display:flex; gap:16px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+.curr-card { background:#fff; border-radius:12px; padding:14px; min-width:170px; max-width:260px; box-shadow:0 6px 20px rgba(0,0,0,0.04); }
+.cta-row { display:flex; gap:12px; justify-content:center; margin:20px 0 28px 0; }
+.cta-btn { background:linear-gradient(90deg,#2563eb,#06b6d4); color:#fff; padding:12px 20px; border-radius:12px; text-decoration:none; font-weight:700; box-shadow:0 8px 24px rgba(37,99,235,0.14); }
+.cta-outline { border:2px solid #2563eb; color:#2563eb; padding:10px 18px; border-radius:12px; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+.testimonials { display:flex; flex-direction:column; gap:10px; margin:12px 0 24px 0; }
+.testi { background:#0f1724; color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+.about-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:28px; padding-top:18px; border-top:1px solid #e6eef9; color:#334155; font-size:0.95em; }
+.about-footer .footer-links a { color:#2563eb; text-decoration:none; margin:0 6px; }
+
+@media (max-width:600px) {
+    .stats-row { gap:10px; }
+    .stat-card { min-width:86px; padding:10px; }
+    .curr-card { min-width:150px; }
+    .about-footer { flex-direction:column; align-items:flex-start; gap:8px; }
+}
+</style>
+</body>
+</html>

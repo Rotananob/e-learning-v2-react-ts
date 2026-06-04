@@ -1,0 +1,944 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://rotana-elearningg.web.app/Q&A" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+
+    <title>ROTANA E-LEARNING - ការណែនាំប្រើប្រាស់</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Koulen', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* បន្ថែម smooth scrolling */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.8rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+       /* Section Styling */
+.section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Step Styling */
+.step {
+    display: flex;
+    margin-bottom: 3rem;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-number {
+    background: #6C63FF;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.step-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Image Placeholder Styling */
+.image-placeholder {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+}
+
+/* Tips Styling */
+.tips {
+    background: #e8f4fd;
+    border-left: 4px solid #6C63FF;
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin-top: 1rem;
+}
+
+.tips h4 {
+    color: #6C63FF;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.tips p {
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .section {
+        padding: 1rem;
+    }
+    
+    .section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .step {
+        flex-direction: column;
+        margin-bottom: 2rem;
+        gap: 1rem;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .step-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .image-placeholder {
+        margin: 1rem 0;
+        border-radius: 8px;
+    }
+    
+    .tips {
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* Tablet Devices (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section {
+        padding: 1.5rem;
+    }
+    
+    .step {
+        gap: 1.2rem;
+    }
+    
+    .image-placeholder {
+        margin: 1.2rem 0;
+    }
+}
+
+/* Small Laptops (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .section {
+        padding: 2rem;
+    }
+    
+    .step {
+        gap: 1.5rem;
+    }
+}
+
+/* Large Screens (1441px and above) */
+@media (min-width: 1441px) {
+    .section {
+        padding: 3rem;
+        max-width: 1400px;
+    }
+    
+    .step {
+        gap: 2rem;
+    }
+    
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .section {
+        padding: 1rem;
+    }
+    
+    .step {
+        margin-bottom: 1.5rem;
+    }
+    
+    .image-placeholder {
+        margin: 1rem 0;
+    }
+}
+
+/* High Resolution Screens */
+@media (min-resolution: 192dpi) {
+    .image-placeholder img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .image-placeholder {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .tips {
+        background: none;
+        border: 1px solid #ccc;
+    }
+}
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background-color: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--secondary-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 0.5rem;
+            }
+        }
+     
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+    .version-badge-v1 {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        z-index: 9999;
+        font-size: 1.15rem;
+        color: #fff;
+        background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+        padding: 10px 28px;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px #0002;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 2px solid #fff3;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none;
+    }
+    .version-badge-v1 i {
+        font-size: 1.3em;
+        color: #ffd700;
+        filter: drop-shadow(0 2px 6px #0002);
+    }
+    @media (max-width: 600px) {
+        .version-badge-v1 {
+            font-size: 0.98rem;
+            padding: 7px 14px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 12px;
+        }
+        .version-badge-v1 i { font-size: 1em; }
+    }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+    <button onclick="window.history.back()" style="position:fixed;top:18px;left:12px;z-index:9999;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:1.1em;box-shadow:0 2px 8px #2563eb33;cursor:pointer;display:flex;align-items:center;gap:7px;">
+        <span style="font-size:1.3em;">&#8592;</span> ត្រឡប់ក្រោយ
+    </button>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Rotana<br> E-learning</span>
+            </div>
+            <h1>ការណែនាំប្រើប្រាស់គេហទំព័រ</h1>
+            <p>រៀនដោយងាយស្រួល និងមានប្រសិទ្ធភាព</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+
+                 <li><a href="/oldversion"><i class="fas fa-home"></i> ទំព័រដើម</a></li>
+
+                <li><a href="#getting-started" class="active">ការចាប់ផ្តើម</a></li>
+
+                <li><a href="#using-platform">ការប្រើប្រាស់វេទិការសិក្សា</a></li>
+                <li><a href="#faq">សំណួរញឹកញាប់</a></li>
+                <li><a href="#contact">ទាក់ទង</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="section">
+            <h2><i class="fas fa-play-circle"></i> ការចាប់ផ្តើម</h2>
+              
+              <div class="step">
+                <div class="step-number">១</div>
+                <div class="step-content">
+                    <h3>ចូលទៅកាន់គេហទំព័រ</h3>
+                    <p>១.ចូលទៅកាន់គេហទំព័រ Rotana E-Learning ហើយចុចលើប៊ូតុងនៃវេបសាយនោះ</p>
+                    <p>២.បន្ទាប់មកចាប់ផ្ដើម ចុះឈ្មោះ </p>
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (1).JPEG">
+                    </div>
+                    <div class="tips">
+                        <h4>សម្គាល់</h4>
+                        <p>សម្រាប់ទូរស័ព្ទទាំង IOS និង androids ធ្វើការស្វែងរកក្នុង Chrome, Google និងចំពោះ​ laptop តាម Ding ឬ Google ។</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">២</div>
+                <div class="step-content">
+                    <h3>ដំណើរការចុះឈ្មោះ</h3>
+                    <p>១.សុំធ្វើការចុះឈ្មោះនៅក្នុងវេបសាយដើម្បីទទួលបានគណនី។</p>
+                    <p>២.ចុចលើកន្លែង ចុះឈ្មោះ និងបំពេញតាមបែបបទដែលបានបង្ហាញ ។</p>
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (2).JPEG">
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">៣</div>
+                <div class="step-content">
+                    <h3>របៀបចុះឈ្មោះ</h3>
+                    <p>*ធ្វើតាមវិធីណែនាំខាងក្រោមនេះរួចរាល់នោះអ្នកនឹងទទួលបានគណនីសម្រាប់ការសិក្សាហើយ។</p>
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (3).JPEG">
+                    </div>
+                </div>
+            </div>
+
+              <div class="step">
+                <div class="step-number">៤</div>
+                <div class="step-content">
+                    <h3>ការចូលគណនី និង ការភ្លេចលេខសង្ងាត់</h3>
+                    <p>១.វាយបំពេញតាមការណែនាំខាងក្រោមដើម្បីចូលរៀន។</p>
+                    <p>២.ប្រសិនបើភ្លេចលេខសង្ងាត់សុំចុចតាមការណែនាំខាងក្រោម។ </p>
+                    <div class="image-placeholder">
+                                                <img src="assets/img/images/1 (4).JPEG">
+
+                    </div>
+                    <div class="tips">
+                        <h4>គន្លឹះ</h4>
+                        <p>ប្រើអ៊ីមែលដែលអ្នកប្រើប្រាស់ជាទៀងទាត់ និងជ្រើសរើសលេខសម្ងាត់ដែលមានសុវត្ថិភាព។</p>
+                    </div>
+                </div>
+            </div>
+
+              <div class="step">
+                <div class="step-number">៥</div>
+                <div class="step-content">
+                    <h3>របៀបទទួលគណនីមកវិញបើភ្លេចលេខសង្ងាត់</h3>
+                    <p>*សូមអានការណែនាំខាងក្រោមនេះ </p>
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (5).JPEG">
+                    </div>
+                    <div class="tips">
+                        <h4>ចំណាំ</h4>
+                        <p>ត្រូវប្រាកដថា Email ដែលអ្នកបានចុះឈ្មោះនោះគឺជា Emaill ដែលអ្នកប្រើប្រាស់ជាប្រចាំ   </p>
+                    </div>
+                </div>
+            </div>
+
+              <div class="step">
+                <div class="step-number">៦</div>
+                <div class="step-content">
+                    <h3>វិធីផ្សេងដើម្បី​យកគណនីមកវិញ</h3>
+                    <p>ធ្វើតាមការណែនាំដែលមាននៅខាងក្រោមនេះ</p>
+                    <div class="image-placeholder">
+                                                <img src="assets/img/images/1 (6).JPEG">
+
+                    </div>
+                    <div class="tips">
+                    </div>
+                </div>
+            </div>
+
+
+               <div class="step">
+                <div class="step-number">៧</div>
+                <div class="step-content">
+                    <h3>ចូលទៅដល់ទំព័រស្វាគមន៏ និង ការប្រែប្រវិត្តិរូប</h3>
+                    <p>១.បន្ទាប់ពីចូលគណនីជោគជ័យនោះនឹងមានទំព័រស្វាគមន៏លោកអ្នកមុននឹងចូលរៀន</p>
+                    <p>២.សូមអាននិងធ្វើតាមការណែនាំខាងក្រោមនេះដើម្បីចូលរៀន </p>
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (7).JPEG">
+                    </div>
+                    <div class="tips">
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Using the Platform Section -->
+        <section id="using-platform" class="section">
+            <h2><i class="fas fa-laptop"></i> ការប្រើប្រាស់វេទិកាសិក្សា</h2>
+            <div class="step">
+                <div class="step-number">១</div>
+                <div class="step-content">
+                    <h3>ណែនាំមុននឹងសិក្សា</h3>
+                    <p>១.ក្នុង Dashboard នៃការសិក្សានេះ ទាំងអ្នកគ្នាចាំបាច់ត្រូវតែអានតាមការណែនាំខាងក្រោមដើម្បីឲការសិក្សាងាយស្រួលនិងងាយយល់សម្រាប់យើង។</p>
+                    <p>២.ប្រើមុខងារស្វែងរក ឬតម្រៀបតាមប្រភេទដើម្បីស្វែងរកវគ្គសិក្សាដែលអ្នកចាប់អារម្មណ៍។</p>
+                                        <p>៣.ចុចលើ category នៃប្រភេទមេរៀននីមួយៗ ដើម្បីរៀន ឬ មើលតាមការណែនាំខាងក្រោមនេះ</p>
+
+                    <div class="image-placeholder">
+                        <img src="assets/img/images/1 (8).JPEG">
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">២</div>
+                <div class="step-content">
+                    <h3>ការរៀន និង ការផុស​ផ្សេងៗ </h3>
+                    <p>១.ចុចលើវគ្គសិក្សាដែលអ្នកចាប់អារម្មណ៍ ។</p>
+                    <p>២.អាចផុស ឆាត និង ខម្មិន ឡាច(React) ហើយស៊ែរ ដើម្បីជជែកកំសាន្តជាមួយអ្នកសិក្សាដទៃទៀត និង ផុសរាល់ចង្ងល់ផ្សេងៗបាន </p>
+                    <div class="image-placeholder">
+                                                <img src="assets/img/images/1 (9).JPEG">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">៣</div>
+                <div class="step-content">
+                    <h3>ទំនាក់ទំនង និង វេបសាយដទៃទៀត </h3>
+                                        <p>១.យើងសុំឲទាំងអស់គ្នាផ្ដល់ជា Feedback មកយើងវិញផង 🙏 រាល់មតិផ្សេងៗទាំងអស់គ្នាអាចផ្ដល់មកយើងបានមិនថា វិជ្ជមាន ឬ អវិជ្ជមាន យើងរីករាយនឹងទទួលជានិច្ចដើម្បីអភិវឌ្ឃន៏ខ្លួនទៅមុខទាំងអស់គ្នា ។</p>
+
+                    <p>២.អាចប្រើប្រាស់សេវ៉ាកម្មឬវេបសាយដទៃៗទៀតរបស់យើងបានតាមរយះ Link ដែលយើងផ្ដល់ឲមានតែក្នុងវេបសាយនេះប៉ុណ្ណោះ ។</p>
+                    <p>៣.មានចង្ងល់ ឬ​ មានបំណងចង់ធ្វើ Website statistic&Dynamic , WordPress,Remote Support, Digital marketing , SEO , Vidoes Editting , Social Media Management(boots page,TikTok,Blue Verify,ដោះ Account ផ្សេងៗ) អាចទាក់ទងមកយើងបានផងដែរ ។</p>
+                    <div class="image-placeholder">
+                                                                        <img src="assets/img/images/1 (10).JPEG">
+
+                    </div>
+                    <div class="tips">
+                        <h4>បន្លែម</h4>
+                        <p>ថ្ងៃខាងមុខយើងនឹងដាក់មុខងារ ChatBot បន្លែម ហើយនិងមុខងារដទៃៗទៀតដើម្បីឲការសិក្សាកាន់តែមានប្រសិទ្ធភាពនិងគុណភាពដូចជា បង្កើតការ​ តេស្ត ការប្រឡង លំហាត់ Certificate បញ្ចប់វគ្គសិក្សា មេរៀនសៀវភៅ បន្លែមមេរៀនលក់ដែលមានគុណភាពនិងបង្រៀនផ្ទាល់ពីលោកគ្រូអ្នកគ្រូដែលមានបទពិសោធន៏ខ្ពស់ដែលជាវិឌីអូ Private​ គុណភាពមានការ​ Edit ល្អ និងពន្យល់លម្អិតក្បោះក្បាយ មិនមែនយកពី Youtube នោះឡើយ ។ ដោយបច្ចប្បន្នជាចំណុចចាប់ផ្តើមប៉ុណ្ណោះយើងដាក់ត្រឹមតែ វិឌីអូ ប្រមូលផ្ដុំពីប្រភពផ្សេងៗប៉ុណ្ណោះដើម្បីដាក់សាកនិងដើម្បីដឹងថាមានការគាំទ្រឬអត់ ប្រសិនបើមានការគំាទ្រយើងនឹងបន្លែមឆាប់ៗនេះ។ </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <h2><i class="fas fa-question-circle"></i> សំណួរដែលគេសួរញឹកញាប់</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ហេតុអ្វីមិន Download វិឌីអូ​ Youtube ឬ Coursera មកដាក់ក្នុងវេបសាយនេះតែម្ដងមកចាំបាច់ឲ play វិឌីអូដើម ពី Youtube ធ្វើអ្វី?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>*នេះជាសំណួរដ៏ល្អ យើងមិនអាចទាញយកវិឌីអូទាំងនោះមកដាក់ក្នុង​វេបសាយរបស់ខ្លួនបានទេ តែយើងអាចឲវិឌីអូទាំងនោះមើលបានក្នុងវេបសាយនេះដោយមិនចាំបាច់ចូលក្នុង App ឬ Website Youtube ទេប៉ុន្តែម្ចាស់កម្មសិទ្ធនៅតែជាម្ចាស់កម្មសិទ្ធដដែលព្រោះមានបង្ហាញCredit ឲពួកគាត់ដូចជាឈ្មោះ​ឆាណែលជាដើម។ យើងសុំឆ្លើយ២ចំណុចដោយខ្លីថា :</p>
+                                        <p>១. ដើម្បីជាការគោរពសិទ្ធដល់ម្ចាស់ និង ឲតម្លៃទៅដល់ម្ចាស់ដែលបានបង្រៀននោះ និង ផ្ដល់អត្ថប្រយោជន៏ដល់ពូកគាត់ដូចជា ប្រមូតឆាណែលដើម្បីទាក់ទាញអ្នកជាវផ្ទាល់ទៅកាន់​ឆាណែលរបស់គាត់និងបង្កើនចំនួនអ្នកទស្សនាចំពោះវិឌីអូរបស់ម្ចាស់កម្មសិទ្ធនោះ និង បង្កើនការស្គាល់កាន់តែច្រើនសម្រាប់ការបង្រៀនពួកគាត់ ហើយនេះក៏ជាការឲតម្លៃចំពោះវិស័យអប់រំផងដែរ ដូច្នេះយើងចាំបាច់ត្រូវតែឲតម្លៃពួកគាត់ខ្ពស់់ជាទីបំផុត។ </p>
+                    <p>២.យើងមិនអាច ទាញយក វិឌីអូផ្សេងៗមកដាក់ផ្ទាល់នោះទេ ដូចជាវេបសាយ Coursera ជាដើម។ ទោះជាមេរៀនខ្លះជាមេរៀនរបស់ខ្ញុំហើយខ្ញុំបានទិញដោយផ្ទាល់ក៏ដោយ ព្រោះចង់ឲតម្លៃនិងគោរពគោលការណ៏របស់គេផ្ទាល់។</p>
+
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើខ្ញុំអាចបង្កើតគណនីបានចំនួនប៉ុន្មាន?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>នេះក៏ជាសំណួរដែលមានអ្នកសួរច្រើនផងដែរ។ ជាទូទៅកាលពីមុនអ្នកអាចបង្កើតគណនីគ្មានដែនកំណត់ តែបច្ចប្បន្នយើងកំណត់ឲអ្នកប្រើប្រាស់បង្កើតគណនីច្រើនបំផុតត្រឹម១០ប៉ុណ្ណោះ បើយើងរកឃើញ Device ណាបង្កើតលើសពី១០នោះយើងនឹងលុបគណនីមុនៗរបស់ពួកគេចោល ដោយទុកមិនឲលើស ១០ នោះឡើយ។</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើខ្ញុំអាចទាញយកមេរៀនបានទេ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>ដើម្បីជាការឲតម្លៃទៅកាន់ម្ចាស់កម្មសិទ្ធគឺយើងមិនបានដាក់មុខងារទាញយកសម្រាប់វិឌីអូបង្រៀននោះទេ ប៉ុន្តែក៏មានមេរៀនមួយចំនួនអាចទាញយកបាន អាស្រ័យលើការសុំអនុញ្ញាតផ្ទាល់ពីម្ចាស់កម្មសិទ្ធវិឌីអូនោះ។ សម្រាប់មេរៀនដែលអាចទាញយកបាន អ្នកនឹងឃើញប៊ូតុង "ទាញយក" នៅក្បែរមេរៀននីមួយៗ។</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើមូលហេតុអ្វីខ្លះទើបគណនីខ្ញុំត្រូវបានបិទ និង លុប ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>គណនីរបស់អ្នកត្រូវបានបិទបន្ទាប់ពីគណនីនោះអសកម្មរយះពេល ៣ ទៅ ៤ ខែ និង ឈានដល់បិទចោលប្រសិនបើអសកម្ម១ឆ្នាំ ។     </p>
+                </div>
+            </div>
+
+                <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើខ្ញុំអាចទទួលបានការប្រឡង ការតេស្ត និង វិញ្ញាបនបត្របន្ទាប់ពីបញ្ចប់ការសិក្សានោះទេ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>ចំពោះមុខងារទាំងនេះយើងនឹងបើកឲមានដំណើរការឆាប់ៗនេះប្រសិនបើជំហានទី១នេះមានការគាំទ្រ ហើយយើងនិងធ្វើការ​ Update ទ្រង់ទ្រាយធំតែម្ដង ព្រោះបច្ចប្បន្នសុវត្ថិភាពនៃវេបសាយគឺនៅមានកម្រិតនិងចន្លោះប្រហោងផ្សេងៗដែលមិនអាចដាក់ឲប៉ង់ប្រាក់ឬទទួល​ Certificate បានឡើយដើម្បីការពារពី​ Hacker វាយប្រហារ ។     </p>
+                </div>
+            </div>
+
+                <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើខ្ញុំអាចរៀនក្នុងវេបសាយនេះប៉ុន្មានម៉ោងនិងប៉ុន្មានថ្ងៃក្នុង១សប្ដាហ៏ និង ទទួលបានពិន្ទុនោះទេ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>អ្នកអាចរៀនក្នុងវេបសាយនេះគ្មានដែនកំណត់ ហើយប្រព័ន្ធរបស់យើងនឹងចាប់នូវពេលវេលាដែលអ្នកបានចំណាយចំពោះការសិក្សាហើយពួកយើងនិងផ្ញើសារជូនដំណឹងដោយស្វ័យប្រវត្តិ(Auto)ក្នុង website នេះតាមរយះគណនីរបស់អ្នកភ្លាមៗចំពោះរយះពេលដែលអ្នកបានចំណាយពេលសិក្សាហើយពិន្ទរបស់អ្នកនិងកើនឡើងផងដែរហើយយើងនឹងដាក់ឈ្មោះ User Top10 ជារាងរៀលសប្ដាហ៏ឬខែ ដែលបានចំណាយពេលសិក្សាយូរជាងគេបំផុតក្នុងវេបសាយនេះដើម្បីជាគម្រូល្អឲអ្នកសិក្សាដទៃទៀតបានឃើញ។   </p>
+                </div>
+            </div>
+
+                <div class="faq-item">
+                <div class="faq-question">
+                    <span>តើវេបសាយនេះមានបង្រៀនតែផ្នែកបច្ចេកវិទ្យាទេឬ ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>បាទ គឺមានបង្រៀនតែផ្នែកនេះប៉ុណ្ណោះ ដើម្បីជួយឲសិស្សកាន់តែពូកែផ្នែកនេះ ហើយថ្ងៃខាងមុខយើងនឹងមានវេបសាយដ៏ធំដែលមានគ្រប់មុខជំនាញសិក្សាបានផងដែរ ហើយយើងនឹងផ្ដល់ Link វេបសាយនោះផ្ទាល់តាមរយះវេបសាយនេះតែម្ដង ។     </p>
+                </div>
+            </div> 
+
+                <div class="faq-item">
+                <div class="faq-question">
+                    <span>ប្រសិនបើខ្ញុំមានបញ្ហាផ្សេងៗនិងជំនួយផ្សេងៗធ្វើមិច?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>អ្នកអាចទាក់ទងមកកាន់អ៊ីមែល: support@rotana-elearning.com និង Telegram :  https://t.me/Rotanaelearning ឬ https://t.me/NobRotana
+
+
+
+  ។     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2><i class="fas fa-envelope"></i> ទាក់ទង</h2>
+            <p>ប្រសិនបើអ្នកមានសំណួរ ឬត្រូវការជំនួយបន្ថែម សូមទាក់ទងមកកាន់ពួកយើង៖</p>
+            <div class="tips">
+                <h4>ព័ត៌មានទាក់ទង</h4>
+                <p><i class="fas fa-envelope"></i> អ៊ីមែល: support@rotana-elearning.com</p>
+                <p><i class="fas fa-phone"></i>Telegram: https://t.me/NobRotana</p>
+                <p><i class="fas fa-map-marker-alt"></i> អាសយដ្ឋាន: ភ្នំពេញ, កម្ពុជា</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rotana E-Learning</h3>
+                    <p>វេទិកាសម្រាប់ការអប់រំនិងសិក្សាផ្នែក IT ដែលងាយស្រួលប្រើប្រាស់ និងមានគុណភាពដល់អ្នកសិក្សា។</p>
+                </div>
+                <div class="footer-section">
+                    <h3>ចុចដើម្បីទៅកាន់ទីតាំងផ្សេងៗរហ័ស</h3>
+                    <ul>
+                        <li><a href="#getting-started">ការចាប់ផ្តើម</a></li>
+                        <li><a href="#using-platform">ការប្រើប្រាស់វេទិកា</a></li>
+                        <li><a href="#faq">សំណួរញឹកញាប់</a></li>
+                        <li><a href="#contact">ទាក់ទង</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ទាក់ទងជាមួយពួកយើង</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contactt@rotanaelearning.com</li>
+                        <li><i class="fas fa-phone"></i> +855 99 4000 63</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ភ្នំពេញ, កម្ពុជា</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&last Updates Page 23/06/2025 រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ Rotana E-Learning. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                
+                const icon = question.querySelector('i');
+                if (answer.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+                
+                // Get target section
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    // Calculate scroll position with offset for fixed header
+                    const offsetTop = targetElement.offsetTop - 80;
+                    
+                    // Smooth scroll to target
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+      <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/691a1adb2c774a1958b08eab/1ja6vhr0d';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        
+        //  បង្កើតផ្នែកតូចៗនៃកូដ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36); // យកម៉ោងមកដាក់
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+
+        //  បំប្លែងទៅជាកូដសម្ងាត់វែង (Base64) ឱ្យមើលទៅកាច
+        // btoa គឺជា function បំប្លែងអក្សរធម្មតាទៅជាកូដ Base64
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        // ប្តូរ URL លើ Browser ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>

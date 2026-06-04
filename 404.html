@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - អត់មានទំព័រទេ!</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Styling សម្រាប់ UI ថ្មី */
+        :root {
+            /* កំណត់ពណ៌ចម្បងដែលអាចប្រើឡើងវិញបាន */
+            --primary-color: #3f51b5; /* ពណ៌ខៀវជ្រៅ */
+            --accent-color: #ff4081; /* ពណ៌ផ្កាឈូកសម្រាប់សង្កត់ធ្ងន់ */
+            --text-color: #f0f0f0; /* ពណ៌អក្សរស្រាល */
+            --card-bg: rgba(255, 255, 255, 0.95); /* ផ្ទៃខាងក្រោយ Card ស្រាល */
+        }
+
+        body {
+            /* 💡 ជំហានទី 2: Gradient Background */
+            font-family: 'Kantumruy Pro', sans-serif;
+            background: linear-gradient(135deg, #3f51b5 0%, #1e88e5 100%); /* Blue gradient */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden; /* លាក់អ្វីដែលលើស */
+        }
+
+        .container {
+            /* 💡 ជំហានទី 3: Card Design ស្អាត */
+            padding: 40px 60px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* ស្រមោលច្បាស់ */
+            text-align: center;
+            max-width: 90%;
+            transform: translateY(0);
+            transition: transform 0.5s ease-out;
+        }
+
+        h1 {
+            /* ភាពច្បាស់លាស់សម្រាប់លេខកូដកំហុស */
+            font-size: 140px;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin: 0;
+            text-shadow: 4px 4px var(--accent-color); /* ដាក់ស្រមោលពណ៌ដិត */
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+            margin: 15px 0 30px;
+            line-height: 1.6;
+        }
+
+        .home-button {
+            /* 💡 ជំហានទី 4: ប៊ូតុងទាក់ទាញ */
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            background-color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 50px; /* ធ្វើឱ្យមូលទាំងស្រុង */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .home-button:hover {
+            /* Hover Effect លើប៊ូតុង */
+            background-color: #e91e63;
+            transform: translateY(-3px); /* ធ្វើឱ្យប៊ូតុងលោតបន្តិច */
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
+        }
+        
+        /* Optional: សម្រាប់ភាពទាក់ទាញ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 1s ease-out both;
+        }
+
+    </style>
+</head>
+<style>
+    .version-badge-v1 {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        z-index: 9999;
+        font-size: 1.15rem;
+        color: #fff;
+        background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+        padding: 10px 28px;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px #0002;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border: 2px solid #fff3;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none;
+    }
+    .version-badge-v1 i {
+        font-size: 1.3em;
+        color: #ffd700;
+        filter: drop-shadow(0 2px 6px #0002);
+    }
+    @media (max-width: 600px) {
+        .version-badge-v1 {
+            font-size: 0.98rem;
+            padding: 7px 14px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 12px;
+        }
+        .version-badge-v1 i { font-size: 1em; }
+    }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>អត់មានទំព័រទេ!</h2>
+        <p>សូមអភ័យទោស ទំព័រដែលអ្នកបានស្នើសុំរកមិនឃើញទេ។ URL ដែលកំពុងស្វែងរកប្រហែលជាត្រូវបានផ្លាស់ប្តូរ ឬលុបចោល។</p>
+        
+        <a href="/" class="home-button">← ត្រលប់ទៅទំព័រដើមវិញ</a> 
+    </div>
+    <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>

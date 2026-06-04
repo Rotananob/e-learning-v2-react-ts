@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://rotana-elearningg.web.app/register" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ចុះឈ្មោះ - Rotana-FreeCourse</title>
+  <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Dongrek&family=Noto+Sans+Khmer:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2575fc;
+      --primary-dark: #1b5edc;
+      --error: #dc3545;
+      --radius: 14px;
+      --shadow: 0 12px 30px rgba(0,0,0,0.15);
+      --transition: all .3s ease;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: 'Dongrek', 'Noto Sans Khmer', sans-serif;
+      background: linear-gradient(-45deg, #6a11cb, #2575fc, #00c6ff, #f7797d);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
+    .register-container {
+      width:100%;
+      max-width:400px;
+      animation: fadeIn 1s ease;
+    }
+    .register-box {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align:center;
+      transition: var(--transition);
+    }
+    .register-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    }
+    .register-box h2 {
+      margin-bottom: 25px;
+      font-size: 26px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    /* pjo fields */
+    #registerForm input {
+      width:100%;
+      padding:14px;
+      margin-bottom:15px;
+      border:1px solid #ddd;
+      border-radius: var(--radius);
+      font-size:16px;
+      transition: var(--transition);
+    }
+    #registerForm input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,117,252,0.2);
+      outline:none;
+    }
+
+    /* kleng Button */
+    .btn {
+      width:100%;
+      padding:15px;
+      background: var(--primary);
+      color:white;
+      border:none;
+      border-radius: var(--radius);
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition: var(--transition);
+      box-shadow:0 8px 20px rgba(37,117,252,0.3);
+      position: relative;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow:0 10px 28px rgba(37,117,252,0.35);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn.loading {
+      pointer-events:none;
+      opacity:0.8;
+    }
+    .btn.loading::after {
+      content:"";
+      position:absolute;
+      right:16px;
+      top:50%;
+      transform:translateY(-50%);
+      width:18px;
+      height:18px;
+      border:3px solid #fff;
+      border-radius:50%;
+      border-top-color:transparent;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to {transform:translateY(-50%) rotate(360deg);}
+    }
+
+    .register-box p {
+      margin-top:18px;
+      font-size:14px;
+      color:#555;
+    }
+    .register-box a {
+      color: var(--primary);
+      font-weight:600;
+      text-decoration:none;
+      transition: var(--transition);
+    }
+    .register-box a:hover {
+      text-decoration:underline;
+    }
+
+    /* pel Error */
+    #register-error {
+      margin-top:10px;
+      color: var(--error);
+      font-weight:600;
+      min-height:20px;
+    }
+
+    footer {
+      margin-top:20px;
+      font-size:13px;
+      color:#fff;
+      text-align:center;
+      opacity:0.9;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(20px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* tver oy Responsive */
+    @media(max-width:600px) {
+      .register-box {
+        padding:30px 20px;
+      }
+      .register-box h2 {
+        font-size:22px;
+      }
+      .btn {
+        font-size:15px;
+        padding:13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<style>
+  /* Disable text selection for all elements */
+  * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    -moz-user-select: none !important;
+  }
+</style>
+<!-- Block F12, Ctrl+Shift+I, Ctrl+U, and right click -->
+<script>
+document.addEventListener('keydown', function(e) {
+  if (
+    e.key === 'F12' || e.keyCode === 123 ||
+    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) ||
+    (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+  ) {
+    e.preventDefault();
+    setTimeout(function(){
+      alert('សូមអភ័យទោស! មុខងារ Developer Tools និង View Source ត្រូវបានបិទ ដើម្បីការពារព័ត៌មាន។');
+    }, 10);
+    return false;
+  }
+}, true);
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  setTimeout(function(){
+    alert('សូមអភ័យទោស! មុខងារ Right Click ត្រូវបានបិទ ដើម្បីការពារព័ត៌មាន។');
+  }, 10);
+  return false;
+}, true);
+</script>
+ 
+  <div class="register-container">
+    <div class="register-box">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:10px;">
+        <img src="assets/img/images/logo.png" alt="Rotana E-Learning Logo" style="width:48px;height:48px;border-radius:12px;box-shadow:0 2px 8px #2563eb33;">
+        <h2 style="display:flex;align-items:center;gap:8px;font-size:26px;font-weight:700;color:#222;margin:0;">
+          <i class="fa fa-user-plus" style="color:#2563eb;"></i> ចុះឈ្មោះ
+        </h2>
+      </div>
+      <form id="registerForm">
+        <input type="text" id="regUsername" placeholder="ឈ្មោះពិតរបស់អ្នក" required>
+        <input type="email" id="regEmail" placeholder="អ៊ីមែល" required>
+        <input type="password" id="regPassword" placeholder="ពាក្យសម្ងាត់" required>
+        <input type="password" id="regConfirmPassword" placeholder="បញ្ជាក់ពាក្យសម្ងាត់" required>
+        <button type="submit" class="btn" id="registerBtn">ចុះឈ្មោះ</button>
+      </form>
+      <div style="margin:18px 0 0 0;padding:16px 12px;background:linear-gradient(90deg,#22c55e 60%,#38bdf8 100%);color:#fff;border-radius:12px;font-size:1.08em;font-weight:700;box-shadow:0 2px 12px #22c55e33;text-align:center;">
+        <span style="font-size:1.3em;">ចុះឈ្មោះបានភ្លាមៗ</span><br>
+        មិនចាំបាច់បញ្ជាក់អ៊ីមែលឬមកបំពេញកូដអីទេ។ ងាយស្រួលសម្រាប់អ្នកចង់រៀន <b>Free</b> ទាំងអស់គ្នា។
+      </div>
+      <p id="register-error"></p>
+      <p>មានគណនីរួចហើយ? <a href="/login">ចូល</a></p>
+      <p style="color:red;">មុខងារចុះឈ្មោះនេះនឹងបិទចុងខែនេះហើយ</p>       <a href="/reason"><h3></h3> ហេតុអ្វី?</a>
+
+    </div>
+  </div>
+
+  <footer>
+
+    © ១២/កក្កដា/២០២៥​  Powered by <strong> Rotana NOB</strong>
+  </footer> 
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      databaseURL: "https://x-flow-studio-default-rtdb.firebaseio.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.firebasestorage.app",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const registerForm = document.getElementById('registerForm');
+    const usernameInput = document.getElementById('regUsername');
+    const emailInput = document.getElementById('regEmail');
+    const passwordInput = document.getElementById('regPassword');
+    const confirmPasswordInput = document.getElementById('regConfirmPassword');
+    const errorDisplay = document.getElementById('register-error');
+    const registerBtn = document.getElementById('registerBtn');
+
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorDisplay.textContent = '';
+      registerBtn.classList.add("loading");
+
+      const username = usernameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+
+      if (password !== confirmPassword) {
+        errorDisplay.textContent = "ពាក្យសម្ងាត់មិនត្រូវគ្នា។";
+        registerBtn.classList.remove("loading");
+        return;
+      }
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: username });
+        alert("✅ ចុះឈ្មោះដោយជោគជ័យ! សូមចូលប្រើប្រាស់។");
+        window.location.href = "/login";
+      } catch (error) {
+        let errorMessage;
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            errorMessage = 'អ៊ីមែលនេះបានប្រើរួចហើយ។';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'អ៊ីមែលមិនត្រឹមត្រូវ។';
+            break;
+          case 'auth/weak-password':
+            errorMessage = 'ពាក្យសម្ងាត់ត្រូវមានយ៉ាងហោចណាស់ 6 តួ។';
+            break;
+          default:
+            errorMessage = 'មានកំហុសក្នុងការចុះឈ្មោះ។';
+        }
+        errorDisplay.textContent = errorMessage;
+        console.error("Register Error: ", error);
+      } finally {
+        registerBtn.classList.remove("loading");
+      }
+    });
+  </script>
+
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        
+        //  បង្កើតផ្នែកតូចៗនៃកូដ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36); // យកម៉ោងមកដាក់
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+
+        //  បំប្លែងទៅជាកូដសម្ងាត់វែង (Base64) ឱ្យមើលទៅកាច
+        // btoa គឺជា function បំប្លែងអក្សរធម្មតាទៅជាកូដ Base64
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        // ប្តូរ URL លើ Browser ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+<!-- Block right click and show alert every time -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  setTimeout(function(){
+    alert('Error please check your OS settings .');
+  }, 10);
+  return false;
+}, true);
+</script>
+</body>
+</html>

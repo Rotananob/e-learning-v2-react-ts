@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+   <link rel="canonical" href="https://rotana-elearningg.web.app/dashboard.html" />
+  <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <title>Dashboard និង ថ្នាក់រៀន</title>
+  <link rel="icon" type="image/png" href="assets/css/fonts/images/logo.png">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+  <style>
+    /* 💬 Chat/Post UI */
+    :root{
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      --accent: #06b6d4;
+      --muted: #9aa4ad;
+      --text: #ffffff;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    body{ background: #0f1724; color:var(--text); font-family: "Segoe UI", Roboto, "Noto Sans Khmer", sans-serif; padding:0; margin:0; position: relative; }
+    
+    /* Decorative brand logo elements on page */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-image: url('assets/css/fonts/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-image: url('assets/css/fonts/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    /* 🔔 Notification UI */
+  .notification {
+    position: relative;
+  }
+  .notif-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+  .notif-dropdown {
+    position: absolute;
+    top: 36px;
+    right: 0;
+    background: #1f2937;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    width: 240px;
+    box-shadow: var(--card-shadow);
+    z-index: 99;
+  }
+  .notif-dropdown h4 {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+  .notif-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 160px;
+    overflow-y: auto;
+  }
+  .notif-dropdown li {
+    padding: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+    color: var(--text);
+  }
+  .notif-dropdown .btn-clear {
+    margin-top: 6px;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+  }
+
+  /* 🎓 Certificate Styles */
+  .certificate-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: flex-start;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+  }
+  .certificate-modal.active {
+    display: flex;
+  }
+  .certificate-container {
+    position: relative;
+    background: white;
+    border: 20px solid transparent;
+    border-image: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF6347 50%, #FFD700 75%, #FFA500 100%) 1;
+    border-radius: 0;
+    padding: 0;
+    max-width: 1600px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 90vh;
+    margin: 15px auto;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.9), 
+                inset 0 0 0 3px #FFD700,
+                0 0 60px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    display: flex;
+    flex-direction: column;
+  }
+  /* Certificate Type 1: Single Course (Blue/Purple) - CLASSIC DESIGN */
+  .certificate-container.cert-course {
+    border-image: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%) 1;
+    box-shadow: 0 40px 100px rgba(102, 126, 234, 0.6), 
+                inset 0 0 0 3px #667eea,
+                0 0 60px rgba(102, 126, 234, 0.4);
+  }
+  .certificate-container.cert-course .certificate-content {
+    border-color: #667eea;
+    box-shadow: inset 0 0 40px rgba(102, 126, 234, 0.1);
+    padding: 60px 80px;
+  }
+  /* Classic ornate corners with detailed borders */
+  .certificate-container.cert-course .certificate-content::before,
+  .certificate-container.cert-course .certificate-content::after {
+    border-color: #667eea;
+    box-shadow: -5px -5px 15px rgba(102, 126, 234, 0.3);
+    width: 120px;
+    height: 120px;
+    border-width: 6px;
+  }
+  .certificate-container.cert-course .certificate-header {
+    border-bottom: 3px double #667eea;
+  }
+  .certificate-container.cert-course .certificate-header::after {
+    color: #667eea;
+    content: '✦';
+    font-size: 24px;
+  }
+  .certificate-container.cert-course .certificate-logo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3), 0 0 0 3px white, 0 0 0 5px #667eea;
+  }
+  
+  /* Course certificate - logo with accent glow */
+  .certificate-container.cert-course .certificate-corner-logo {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+  }
+  
+  .certificate-container.cert-course .certificate-watermark-logo {
+    opacity: 0.1;
+    filter: drop-shadow(0 0 4px rgba(102, 126, 234, 0.3));
+  }
+  /* Certificate Type 2: Book Reading (Teal/Green) - MODERN MINIMALIST */
+  .certificate-container.cert-book {
+    border-image: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #14b8a6 100%) 1;
+    box-shadow: 0 40px 100px rgba(20, 184, 166, 0.6), 
+                inset 0 0 0 3px #14b8a6,
+                0 0 60px rgba(20, 184, 166, 0.4);
+  }
+  .certificate-container.cert-book .certificate-content {
+    border-color: #14b8a6;
+    box-shadow: inset 0 0 40px rgba(20, 184, 166, 0.1);
+    padding: 50px 100px;
+    border-width: 2px;
+    border-style: solid;
+  }
+  /* Minimal clean corners - no decorative elements */
+  .certificate-container.cert-book .certificate-content::before,
+  .certificate-container.cert-book .certificate-content::after {
+    display: none;
+  }
+  .certificate-container.cert-book .certificate-header {
+    border-bottom: 1px solid #14b8a6;
+    margin-bottom: 40px;
+  }
+  .certificate-container.cert-book .certificate-header::after {
+    content: '';
+    display: none;
+  }
+  .certificate-container.cert-book .certificate-logo {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    border-color: #14b8a6;
+    box-shadow: 0 12px 30px rgba(20, 184, 166, 0.3), 0 0 0 3px white, 0 0 0 5px #14b8a6;
+    border-radius: 0;
+    transform: rotate(0deg);
+  }
+  
+  /* Book certificate - minimal corner logos */
+  .certificate-container.cert-book .certificate-corner-logo {
+    opacity: 0.12;
+    filter: drop-shadow(0 0 4px rgba(20, 184, 166, 0.4));
+  }
+  
+  .certificate-container.cert-book .certificate-watermark-logo {
+    opacity: 0.06;
+  }
+  /* Certificate Type 3: 10 Courses Milestone (Orange/Red) - DIPLOMA STYLE */
+  .certificate-container.cert-milestone10 {
+    border-image: linear-gradient(135deg, #f97316 0%, #dc2626 50%, #f97316 100%) 1;
+    box-shadow: 0 40px 100px rgba(249, 115, 22, 0.6), 
+                inset 0 0 0 3px #f97316,
+                0 0 60px rgba(249, 115, 22, 0.4);
+    border-width: 25px;
+  }
+  .certificate-container.cert-milestone10 .certificate-content {
+    border-color: #f97316;
+    box-shadow: inset 0 0 40px rgba(249, 115, 22, 0.1);
+    padding: 50px 80px;
+    border-width: 4px;
+    border-style: double;
+  }
+  /* Diploma style - corner seals/stamps */
+  .certificate-container.cert-milestone10 .certificate-content::before,
+  .certificate-container.cert-milestone10 .certificate-content::after {
+    border-color: #f97316;
+    box-shadow: -5px -5px 15px rgba(249, 115, 22, 0.3);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #f97316, #dc2626);
+    border-width: 4px;
+    border-style: solid;
+  }
+  .certificate-container.cert-milestone10 .certificate-content::before {
+    top: -40px;
+    left: -40px;
+  }
+  .certificate-container.cert-milestone10 .certificate-content::after {
+    bottom: -40px;
+    right: -40px;
+  }
+  .certificate-container.cert-milestone10 .certificate-header {
+    border-bottom: 4px double #f97316;
+  }
+  .certificate-container.cert-milestone10 .certificate-header::after {
+    color: #f97316;
+    content: '★';
+    font-size: 28px;
+  }
+  .certificate-container.cert-milestone10 .certificate-logo {
+    background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+    border-color: #f97316;
+    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.3), 0 0 0 3px white, 0 0 0 5px #f97316;
+  }
+  
+  /* 10 Courses certificate - prominent corner logos with glow */
+  .certificate-container.cert-milestone10 .certificate-corner-logo {
+    opacity: 0.18;
+    filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.6));
+  }
+  
+  .certificate-container.cert-milestone10 .certificate-watermark-logo {
+    opacity: 0.09;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.4));
+  }
+  /* Certificate Type 4: Ultimate Master (Gold/Yellow) - PREMIUM LUXURY */
+  .certificate-container.cert-ultimate {
+    border-image: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF6347 50%, #FFD700 75%, #FFA500 100%) 1;
+    box-shadow: 0 40px 100px rgba(255, 215, 0, 0.8), 
+                inset 0 0 0 3px #FFD700,
+                0 0 60px rgba(255, 215, 0, 0.6);
+  }
+  .certificate-container.cert-ultimate .certificate-content {
+    border-color: #FFD700;
+    box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.15);
+    padding: 60px 100px;
+    background: linear-gradient(135deg, #fffef7 0%, #fef3c7 50%, #fffef7 100%);
+    border-width: 5px;
+    border-style: ridge;
+  }
+  /* Luxury ornate corners with multiple layers */
+  .certificate-container.cert-ultimate .certificate-content::before,
+  .certificate-container.cert-ultimate .certificate-content::after {
+    border-color: #FFD700;
+    box-shadow: -5px -5px 15px rgba(255, 215, 0, 0.4), 
+                inset -3px -3px 10px rgba(255, 215, 0, 0.6);
+    width: 150px;
+    height: 150px;
+    border-width: 8px;
+    border-style: double;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+  }
+  .certificate-container.cert-ultimate .certificate-content::before::after {
+    content: '👑';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+  }
+  .certificate-container.cert-ultimate .certificate-header {
+    border-bottom: 5px double #FFD700;
+    padding-bottom: 30px;
+  }
+  .certificate-container.cert-ultimate .certificate-header::after {
+    color: #FFD700;
+    content: '♛';
+    font-size: 32px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  }
+  .certificate-container.cert-ultimate .certificate-logo {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border-color: #FFD700;
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4), 0 0 0 3px white, 0 0 0 5px #FFD700;
+    width: 120px;
+    height: 120px;
+    font-size: 60px;
+    border-width: 6px;
+  }
+  
+  /* Ultimate Master certificate - luxury logo styling with premium glow */
+  .certificate-container.cert-ultimate .certificate-corner-logo {
+    opacity: 0.22;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 8px rgba(255, 165, 0, 0.6));
+    width: 100px;
+    height: 100px;
+  }
+  
+  .certificate-container.cert-ultimate .certificate-watermark-logo {
+    opacity: 0.12;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    width: 350px;
+    height: 350px;
+  }
+  /* Force colors and gradients to render in screenshots/PDF */
+  .certificate-container,
+  .certificate-container *,
+  .certificate-content,
+  .certificate-content *,
+  .certificate-badge,
+  .certificate-logo {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  /* Ensure all gradients render properly */
+  .certificate-container.cert-course,
+  .certificate-container.cert-book,
+  .certificate-container.cert-milestone10,
+  .certificate-container.cert-ultimate {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  .certificate-content {
+    background: white;
+    padding: 60px 100px;
+    position: relative;
+    border: 3px solid #FFD700;
+    margin: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.1);
+    overflow: hidden;
+  }
+  /* Decorative corners */
+  .certificate-content::before,
+  .certificate-content::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 5px solid #FFD700;
+    z-index: 1;
+  }
+  .certificate-content::before {
+    top: -3px;
+    left: -3px;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: -5px -5px 15px rgba(255, 215, 0, 0.3);
+  }
+  .certificate-content::after {
+    bottom: -3px;
+    right: -3px;
+    border-left: none;
+    border-top: none;
+    box-shadow: 5px 5px 15px rgba(255, 215, 0, 0.3);
+  }
+  .certificate-header {
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px double #FFD700;
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+  }
+  .certificate-header::after {
+    content: '✦';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #FFD700;
+    background: white;
+    padding: 0 12px;
+  }
+  .certificate-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border: 5px solid #FFD700;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3),
+                0 0 0 3px white,
+                0 0 0 5px #FFD700;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+  }
+  
+  /* Rotana Logo in center of certificate */
+  .certificate-logo img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+  }
+  
+  /* Decorative logo corner elements */
+  .certificate-corner-logo {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0.15;
+    pointer-events: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .certificate-corner-logo.top-left {
+    top: 15px;
+    left: 15px;
+    transform: rotate(-15deg);
+  }
+  
+  .certificate-corner-logo.top-right {
+    top: 15px;
+    right: 15px;
+    transform: rotate(15deg);
+  }
+  
+  .certificate-corner-logo.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    transform: rotate(15deg);
+  }
+  
+  .certificate-corner-logo.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    transform: rotate(-15deg);
+  }
+  
+  /* Watermark logo - centered and very faint */
+  .certificate-watermark-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    opacity: 0.08;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  .certificate-title {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    font-family: 'Georgia', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+  /* Different title colors for each certificate type */
+  .certificate-container.cert-course .certificate-title {
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .certificate-container.cert-book .certificate-title {
+    background: linear-gradient(45deg, #14b8a6, #0d9488, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .certificate-container.cert-milestone10 .certificate-title {
+    background: linear-gradient(45deg, #f97316, #dc2626, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .certificate-container.cert-ultimate .certificate-title {
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+  @keyframes gradient-shift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
+  }
+  .certificate-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  
+  /* Mobile Certificate Responsive */
+  @media (max-width: 1024px) {
+    .certificate-container {
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+    }
+    
+    .certificate-content {
+      padding: 40px 60px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .certificate-container {
+      border: 12px solid transparent;
+      border");

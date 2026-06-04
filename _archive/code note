@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard និង ថ្នាក់រៀន</title>
+        <link rel="icon" type="image/png" href="assets/css/fonts/images/logo2.png">
+
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+  
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/css/fonts/images/logo2.png" alt="Rotana Nob Logo">
+      <h2>⛔សូមកុំចែកចាយ​ Website និង ថ្នាក់រៀនដោយគ្មានការអនុញ្ញាតពីម្ចាស់កម្មសិទ្ធិ⚠️វេបសាយនេះប្រើប្រាស់សម្រាប់តែអ្នកដែលអនុញ្ញាតដោយ Link ផ្ទាល់ប៉ុណ្ណោះ📝។
+        <br>សុំទោសនិងអរគុណទុកមុនដែលសហការ។🙏</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li data-category="all" class="active">🏠 <span>ទាំងអស់</span></li>
+        <li data-category="favorites">⭐មេរៀនរក្សាទុក</li>
+
+      <li data-category="frontend">👨‍💻 <span>Web frontend </span></li>
+            <li data-category="Backend">👨‍💻 <span>Web backend </span></li>
+      <li data-category="Dev">👨‍💻 <span>Web DevOps </span></li>
+      <li data-category="GD">🖼️ <span>Graphic designs</span></li>
+      <li data-category="Network">🛜<span>Network</span></li>
+      <li data-category="Cyber">🧑‍💻🔐<span>Cyber Security</span></li>
+      
+      <li data-category="Mobile">📲<span>Mobile Development</span></li>
+
+      <li data-category="Desktop">💻 <span> Desktop Development</span></li>
+      <li data-category="Game">🎮🕹️ <span>Game Development</span></li>
+      <li data-category="Ai">🤖<span>AI & Machine Learning Development</span></li>
+     <li data-category="Design">✨👍<span>UX/UI </span></li>
+       <li data-category="Music">🎶🎹<span>ធ្វើបទ និង ធ្វើភ្លេង </span></li>
+      <li data-category="Wp">💻🛠️<span>WordPress Development </span></li>
+      <li data-category="VD">📸📽️<span>Video Editing</span></li>
+       <li data-category="Freelance">💼<span>Freelancer📸</span></li>
+
+
+
+<br><br>
+
+      <li id="logoutBtn" class="logout">🚪 <span>ចាកចេញ</span></li>
+    </ul>
+
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard">
+    <header class="main-header">
+      <button id="toggleSidebar" class="btn-toggle">ពង្រីក☰</button>
+
+      
+      
+        
+         <!-- Avatar Section -->
+<div class="avatar-section">
+  <img id="avatarPreview" src="assets/img/default-avatar.png" alt="User Avatar" width="120" height="120" style="border-radius: 50%; object-fit: cover;">
+  
+  <input type="file" id="avatarUpload" accept="image/*">
+        
+
+</div>
+      <div class="user-actions">
+         <div class="dark-mode-toggle">
+      <button id="darkModeBtn">🌙 Dark Mode</button>
+    </div>
+        <!-- 🔔 Notification -->
+        <div class="notification">
+            
+          <button id="notifBtn">🔔</button>
+          <span id="notifCount" class="notif-count">0</span>
+          <div id="notifDropdown" class="notif-dropdown">
+            <h4>📢 ការជូនដំណឹង</h4>
+            <ul id="notifList"></ul>
+            <button id="clearNotif" class="btn-clear">សម្អាត</button>
+          </div>
+        </div>
+        
+        <div class="user-info">
+      
+          <a href="profile-sittingDashboard.html" class="btn-small">⚙️ កែប្រវត្តិរូប</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="content">
+        <div class="notee">
+                        <h4>( *Note: ទាំងអស់គ្នាអាចចុចខាងឆ្វេងដៃជារបាដែលកំណត់ប្រភេទមេរៀននីមួយៗងាយស្រួយក្នុងការចុចមើលវិឌីអូពេលកំពុងរៀនវាមិនធ្វើឲច្រឡំមេរៀន ឬ វិឌីអូ * )</h4>
+                  <br> </div>
+      <h1 class="welcome-text">
+        📚 អាចចុចរើសមេរៀនដែលអ្នកចង់រៀនបាន​ ខាងក្រោមនេះ​ :
+      </h1>
+      
+                  
+
+      <div id="defaultCourses" class="course-list"></div>
+      <br>      <br>
+      <br>
+
+<br>
+  <footer>
+  
+    <p>© 2024 រៀបរាងដោយ Rotana NOB</p>
+  </footer>
+
+    </section>
+          <div class="join-us">
+
+      <h1>📢<b>Give me your feedback💬  and Follow me :</b></h1>
+  <ul>
+    <li><a href="https://t.me/rotananobSETEC" target="_blank">📲 Telegram</a></li>
+    <li><a href="https://www.youtube.com/@X-FlowSharing" target="_blank">▶️ YouTube</a></li>
+    <li><a href="https://web.facebook.com/TheRotanaNob" target="_blank">📘 Facebook Account</a></li>
+    <li><a href="https://www.tiktok.com/@xflow.sharing?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a></li>
+        <li><a><h2>🖇️Other Website⬇👇:</h2></a></li>
+        <h3> <a href="https://x-flow-e-learning.web.app/">1.Website រៀន Online គ្រប់ជំនាញ (Supportជាមួយទំហំអេក្រង់ Laptop និង IOS បើAndroid អាចពិបាកមើល) </a></h3> 
+                <h3> <a href="https://mysocialmediaapp-8d8b9.web.app">2.Website Social media សម្រាប់ Test</a></h3> 
+
+
+//ចប់
+              
+
+
+  </ul>
+  </main>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.firebasestorage.app",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const userDisplay = document.getElementById("userDisplay");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // ពិនិត្យអ្នកប្រើពេលចូល
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        userDisplay.textContent = user.displayName || user.email;
+      } else {
+                alert("ដើម្បីធានាថាសុវត្ថិភាពសូម Login");
+
+        // redirect back if not logged in
+        window.location.href = "login.html";
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+
+    // Dark Mode
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      darkModeBtn.textContent =
+        document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+
+    // Avatar Upload Preview (local only)
+    const avatarUpload = document.getElementById("avatarUpload");
+    const avatarPreview = document.getElementById("avatarPreview");
+    avatarUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => { avatarPreview.src = ev.target.result; };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard និង ថ្នាក់រៀន</title>
+  <link rel="icon" type="image/png" href="assets/css/fonts/images/logo2.png">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <style>
+    /* 💬 Chat/Post UI */
+    :root{
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      --accent: #06b6d4;
+      --muted: #9aa4ad;
+      --text: #ffffff;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    body{ background: #0f1724; color:var(--text); font-family: "Segoe UI", Roboto, "Noto Sans Khmer", sans-serif; padding:0; margin:0; }
+
+    .chat-box {
+      margin: 20px auto;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      box-shadow: var(--card-shadow);
+      max-width: 900px;
+    }
+    .chat-messages {
+      max-height: 450px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      padding-right: 6px;
+      scroll-behavior: smooth;
+    }
+    /* Post card */
+    .chat-message {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .chat-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+      background: #111827;
+    }
+    .chat-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .chat-user-left { display:flex; gap:8px; align-items:center; min-width:0; }
+    .chat-username {
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 380px;
+      display: inline-block;
+    }
+    .timestamp {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 6px;
+      white-space: nowrap;
+    }
+    .chat-text {
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.4;
+      white-space: pre-wrap; /* preserve newlines */
+    }
+
+    .card-actions {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:10px;
+    }
+    .action-btn {
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .action-btn:hover { transform: translateY(-2px); transition: .12s; }
+
+    .action-btn .count { color: var(--muted); font-weight:600; }
+
+    .like-btn.liked { background: linear-gradient(90deg,#ff5f6d,#ffc371); color:#111; border: none; }
+
+    .edit-btn {
+      background: transparent;
+      border: none;
+      color: #ffd166;
+      cursor: pointer;
+      font-size: 13px;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .comment-box {
+      margin-top: 10px;
+      padding-left: 12px;
+      border-left: 2px solid rgba(255,255,255,0.03);
+    }
+    .comment {
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      padding: 6px 10px;
+      margin: 8px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items:flex-start;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .comment-body { flex:1; min-width:0; }
+    .comment-username { font-weight:700; color:var(--accent); font-size:13px; display:inline-block; margin-right:6px; }
+    .comment-text { color:var(--text); margin-top:4px; white-space:pre-wrap; }
+
+    .comment .edit-btn { position: absolute; right:8px; top:8px; }
+
+    /* inputs */
+    .chat-input, .comment-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+      align-items: center;
+    }
+    .chat-input textarea, .comment-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      resize: vertical;
+      min-height: 44px;
+      max-height: 160px;
+    }
+    .chat-input button, .comment-input button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg,#7c3aed,#06b6d4);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .muted-note { font-size:12px; color:var(--muted); margin-top:6px; }
+
+    /* small responsive */
+    @media (max-width:720px){
+      .chat-username{ max-width:160px; }
+      .chat-box{padding:12px;}
+      .chat-avatar{width:44px;height:44px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar (ដដែល) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/css/fonts/images/logo2.png" alt="Rotana Nob Logo">
+      <h2>⛔សូមកុំចែកចាយ​ Website និង ថ្នាក់រៀនដោយគ្មានការអនុញ្ញាត...</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li data-category="all" class="active">🏠 <span>ទាំងអស់</span></li>
+      <li data-category="favorites">⭐ មេរៀនរក្សាទុក</li>
+      <li data-category="frontend">👨‍💻 <span>Web frontend</span></li>
+      <li data-category="Backend">👨‍💻 <span>Web backend</span></li>
+      <li data-category="Dev">👨‍💻 <span>Web DevOps</span></li>
+      <li data-category="GD">🖼️ <span>Graphic designs</span></li>
+      <li data-category="Network">🛜 <span>Network</span></li>
+      <li data-category="Cyber">🧑‍💻🔐 <span>Cyber Security</span></li>
+      <li data-category="Mobile">📲 <span>Mobile Development</span></li>
+      <li data-category="Desktop">💻 <span>Desktop Development</span></li>
+      <li data-category="Game">🎮🕹️ <span>Game Development</span></li>
+      <li data-category="Ai">🤖 <span>AI & Machine Learning</span></li>
+      <li data-category="Design">✨👍 <span>UX/UI</span></li>
+      <li data-category="Music">🎶🎹 <span>ធ្វើបទ និង ធ្វើភ្លេង</span></li>
+      <li data-category="Wp">💻🛠️ <span>WordPress Development</span></li>
+      <li data-category="VD">📸📽️ <span>Video Editing</span></li>
+      <li data-category="Freelance">💼 <span>Freelancer</span></li>
+      <br><br>
+      <li id="logoutBtn" class="logout">🚪 <span>ចាកចេញ</span></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard" style="padding:18px;">
+    <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <button id="toggleSidebar" class="btn-toggle">ពង្រីក☰</button>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="avatar-section">
+          <img id="avatarPreview" src="assets/img/default-avatar.png" width="72" height="72" style="border-radius:50%;object-fit:cover;border:2px solid var(--accent);">
+          <input type="file" id="avatarUpload" accept="image/*" style="display:block;margin-top:6px;">
+        </div>
+        <div class="user-actions">
+          <div class="dark-mode-toggle"><button id="darkModeBtn">🌙 Dark Mode</button></div>
+          <div class="notification">
+            <button id="notifBtn">🔔</button>
+            <span id="notifCount" class="notif-count">0</span>
+            <div id="notifDropdown" class="notif-dropdown" style="display:none;">
+              <h4>📢 ការជូនដំណឹង</h4>
+              <ul id="notifList"></ul>
+              <button id="clearNotif" class="btn-clear">សម្អាត</button>
+            </div>
+          </div>
+          <div class="user-info"><a href="profile-sittingDashboard.html" class="btn-small">⚙️ កែប្រវត្តិរូប</a></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="content">
+      <h1 class="welcome-text">📚 អាចចុចរើសមេរៀនដែលអ្នកចង់រៀនបាន​ ខាងក្រោមនេះ :</h1>
+      <div id="defaultCourses" class="course-list"></div>
+
+      <!-- 💬 Chat/Post Section -->
+      <div class="chat-box" aria-live="polite">
+        <h3>💬 សួរឬចែករំលែកអ្វីថ្មីៗ</h3>
+
+        <!-- Messages -->
+        <div id="chatMessages" class="chat-messages" role="list"></div>
+
+        <!-- Input: textarea support shift+enter newline, enter to send -->
+        <div class="chat-input">
+          <textarea id="chatInput" placeholder="សរសេរប្រកាសឬសំណួរ... (Shift+Enter = newline, Enter = send)"></textarea>
+          <button id="sendBtn">ផ្ញើ</button>
+        </div>
+        <div class="muted-note">Tip: Shift+Enter សម្រាប់បន្ថែមជួរថ្មី, Enter ដើម្បីផ្ញើ។</div>
+      </div>
+
+      <footer style="margin-top:18px;"><p>© 2024 រៀបរាងដោយ Rotana NOB</p></footer>
+    </section>
+  </main>
+
+  <!-- Firebase + Logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import {
+      getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp,
+      updateDoc, doc, arrayUnion, arrayRemove
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    // ---------- config ----------
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.appspot.com",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // ---------- UI refs ----------
+    const logoutBtn = document.getElementById("logoutBtn");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const chatMessages = document.getElementById("chatMessages");
+    const avatarUpload = document.getElementById("avatarUpload");
+    const avatarPreview = document.getElementById("avatarPreview");
+
+    // ---------- Auth check & ensure displayName ----------
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        alert("សូម Login ម្តងទៀត!");
+        window.location.href = "login.html";
+      } else {
+        // if displayName not set, use email prefix
+        if (!user.displayName) {
+          const username = (user.email || "").split("@")[0] || "unknown";
+          try { await updateProfile(user, { displayName: username }); } catch(e){ console.warn(e); }
+        }
+        // show user's avatar preview if exists
+        avatarPreview.src = user.photoURL || "assets/img/default-avatar.png";
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+
+    // Avatar preview local (optionally you can upload to storage later)
+    avatarUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => { avatarPreview.src = ev.target.result; };
+      reader.readAsDataURL(file);
+      // NOTE: To persist avatar to other users' view, upload to Firebase Storage & update user.photoURL.
+    });
+
+    // Helper format time (safe)
+    function formatTimestamp(ts) {
+      if (!ts) return "";
+      try {
+        const d = ts.toDate ? ts.toDate() : new Date(ts);
+        return d.toLocaleString();
+      } catch (e) { return ""; }
+    }
+
+    // ---------- Send post (Enter sends, Shift+Enter newline) ----------
+    sendBtn.addEventListener("click", sendPost);
+    chatInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        await sendPost();
+      }
+    });
+
+    async function sendPost(){
+      const text = chatInput.value.trim();
+      const user = auth.currentUser;
+      if (!user) { alert("សូម login មុនផ្ញើ"); return; }
+      if (!text) return;
+      // character limit rule (e.g., 1000)
+      if (text.length > 1000) { alert("សូមកាត់អក្សរឲ្យក្រោម 1000 តួអក្សរ"); return; }
+
+      await addDoc(collection(db, "posts"), {
+        text,
+        user: user.displayName || (user.email || "").split("@")[0],
+        avatar: user.photoURL || "assets/img/default-avatar.png",
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+        likes: [] // initialize empty array of userIds who liked
+      });
+      chatInput.value = "";
+    }
+
+    // ✅ Notification system
+    const notifBtn = document.getElementById("notifBtn");
+    const notifCount = document.getElementById("notifCount");
+    const notifDropdown = document.getElementById("notifDropdown");
+    let notifications = [];
+
+    function addNotification(msg) {
+      notifications.push(msg);
+      notifCount.textContent = notifications.length;
+      renderNotifications();
+    }
+
+    function renderNotifications() {
+      notifDropdown.innerHTML = notifications.map(n => `<div class="notif-item">${n}</div>`).join("");
+    }
+
+    notifBtn.addEventListener("click", () => {
+      notifDropdown.classList.toggle("active");
+    });
+
+    // 🔑 Auth check
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        alert("សូម Login ម្តងទៀត!");
+        window.location.href = "login.html";
+      } else {
+        // 🚀 Add default notifications only first login
+        if (!localStorage.getItem("welcomeNotifsShown")) {
+          addNotification("សូមស្វាគមន៍មកកាន់ RotanaNob Private E-Learning 🏫🧑‍🎓");
+          addNotification("នេះគ្រាន់តែជា Website LocalStorage ដូច្នេះទិន្នន័យទាំងអស់នឹងរក្សាទុកតែក្នុង Browser ប៉ុណ្ណោះ 📝");
+          addNotification("💡 កុំភ្លេច១ថ្ងៃចំណាយពេលរៀនឲបានម្ដង");
+          addNotification("Website នេះគ្មានពាណិជ្ជកម្មទាំងអស់ចឹងខ្ញុំសូមតែ១ទេជួយឲជា Feedback មកខ្ញុំផងដើម្បីជា portfolio និង កែប្រែចំណុចខ្វះខាតបន្លែម💌");
+          addNotification("Website នេះគឺសម្រាប់វគ្គសិក្សា IT សុទ្ធប៉ុណ្ណោះ។ ថ្ងៃអនាគតអាចមានជំនាញផ្សេងៗថែម➕📚​");
+          localStorage.setItem("welcomeNotifsShown", "true");
+        }
+      }
+    });
+
+    // ---------- Real-time load posts ----------
+    const postsQuery = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+    onSnapshot(postsQuery, (snapshot) => {
+      chatMessages.innerHTML = "";
+      snapshot.forEach((docSnap) => {
+        const post = docSnap.data();
+        const postId = docSnap.id;
+
+        // create card
+        const postDiv = document.createElement("div");
+        postDiv.className = "chat-message";
+        postDiv.setAttribute("data-post-id", postId);
+
+        // fallback avatar
+        const avatar = post.avatar || "assets/img/default-avatar.png";
+        const username = post.user || (post.userId ? post.userId : "user");
+        const timeStr = formatTimestamp(post.createdAt);
+
+        // left avatar
+        const avatarImg = document.createElement("img");
+        avatarImg.src = avatar;
+        avatarImg.className = "chat-avatar";
+        avatarImg.alt = username + " avatar";
+
+        // content container
+        const content = document.createElement("div");
+        content.className = "chat-content";
+
+        // header area
+        const header = document.createElement("div");
+        header.className = "chat-header";
+
+        const leftHeader = document.createElement("div");
+        leftHeader.className = "chat-user-left";
+
+        const userSpan = document.createElement("span");
+        userSpan.className = "chat-username";
+        userSpan.textContent = username;
+
+        const timeSpan = document.createElement("span");
+        timeSpan.className = "timestamp";
+        timeSpan.textContent = timeStr;
+
+        leftHeader.appendChild(userSpan);
+        leftHeader.appendChild(timeSpan);
+
+        header.appendChild(leftHeader);
+
+        content.appendChild(header);
+
+        // text
+        const textDiv = document.createElement("div");
+        textDiv.className = "chat-text";
+        textDiv.textContent = post.text || "";
+
+        content.appendChild(textDiv);
+
+        // actions: like, share, edit (if owner)
+        const actions = document.createElement("div");
+        actions.className = "card-actions";
+
+        // Like (react love)
+        const likeBtn = document.createElement("button");
+        likeBtn.className = "action-btn like-btn";
+        likeBtn.title = "Love";
+
+        const heart = document.createElement("span");
+        heart.innerHTML = "💖";
+        const cnt = document.createElement("span");
+        cnt.className = "count";
+        const likesArray = Array.isArray(post.likes) ? post.likes : [];
+        cnt.textContent = likesArray.length;
+
+        likeBtn.appendChild(heart);
+        likeBtn.appendChild(cnt);
+
+        // Share
+        const shareBtn = document.createElement("button");
+        shareBtn.className = "action-btn share-btn";
+        shareBtn.innerHTML = "🔗 <span>Share</span>";
+
+        // Edit if owner
+        let editBtn = null;
+        const currentUser = auth.currentUser;
+        // We cannot reliably read auth.currentUser synchronously for onSnapshot - so decide like state and edit availability after auth resolves.
+        // We'll set listeners below.
+
+        actions.appendChild(likeBtn);
+        actions.appendChild(shareBtn);
+
+        // append actions
+        content.appendChild(actions);
+
+        // comments container
+        const commentBox = document.createElement("div");
+        commentBox.className = "comment-box";
+
+        const commentList = document.createElement("div");
+        commentList.className = "comment-list";
+        commentBox.appendChild(commentList);
+
+        // comment input
+        const commentInputDiv = document.createElement("div");
+        commentInputDiv.className = "comment-input";
+        const commentInput = document.createElement("input");
+        commentInput.placeholder = "សរសេរ comment...";
+        const commentBtn = document.createElement("button");
+        commentBtn.textContent = "💬 ផ្ញើ";
+        commentInputDiv.appendChild(commentInput);
+        commentInputDiv.appendChild(commentBtn);
+        commentBox.appendChild(commentInputDiv);
+
+        // assemble card
+        postDiv.appendChild(avatarImg);
+        postDiv.appendChild(content);
+        postDiv.appendChild(commentBox);
+
+        // append to UI
+        chatMessages.appendChild(postDiv);
+
+        // ---------- like logic ----------
+        // update like UI based on current user
+        function updateLikeUI(forUid){
+          const liked = Array.isArray(post.likes) && post.likes.includes(forUid);
+          if (liked) likeBtn.classList.add("liked");
+          else likeBtn.classList.remove("liked");
+          cnt.textContent = (Array.isArray(post.likes) ? post.likes.length : 0);
+        }
+
+        // ensure current auth state available
+        const unsubAuth = onAuthStateChanged(auth, (u) => {
+          const uid = u ? u.uid : null;
+          // set edit btn if owner and not yet added
+          if (u && post.userId === u.uid && !editBtn) {
+            editBtn = document.createElement("button");
+            editBtn.className = "edit-btn";
+            editBtn.textContent = "✏️ Edit";
+            editBtn.title = "Edit your post";
+            editBtn.onclick = async () => {
+              const newText = prompt("កែ Post:", post.text);
+              if (newText !== null && newText !== undefined) {
+                // client guard length
+                if (newText.length > 1000) { alert("ពត៌មានយូរ​ (max 1000 chars)"); return; }
+                await updateDoc(doc(db, "posts", postId), { text: newText });
+              }
+            };
+            // add the edit button into actions
+            actions.appendChild(editBtn);
+          }
+          // like toggling
+          likeBtn.onclick = async () => {
+            if (!u) { alert("សូម Login មុន"); return; }
+            const uid = u.uid;
+            const liked = Array.isArray(post.likes) && post.likes.includes(uid);
+            if (liked) {
+              await updateDoc(doc(db, "posts", postId), { likes: arrayRemove(uid) });
+            } else {
+              await updateDoc(doc(db, "posts", postId), { likes: arrayUnion(uid) });
+            }
+          };
+          // set initial like UI
+          updateLikeUI(uid);
+        });
+
+        // ---------- share logic ----------
+        shareBtn.onclick = async () => {
+          const shareUrl = `${window.location.origin}${window.location.pathname}?post=${postId}`;
+          const title = `${username} នៅលើ Rotana NOB`;
+          const text = post.text ? (post.text.length > 120 ? post.text.slice(0,120) + "..." : post.text) : title;
+          if (navigator.share) {
+            try {
+              await navigator.share({ title, text, url: shareUrl });
+            } catch (e) { /* user cancelled */ }
+          } else {
+            // fallback copy to clipboard
+            try {
+              await navigator.clipboard.writeText(shareUrl);
+              alert("URL បានចម្លងទៅ clipboard ✅");
+            } catch (e) {
+              prompt("ចម្លង link ទ manually:", shareUrl);
+            }
+          }
+        };
+
+        // ---------- comments realtime ----------
+        // subscribe to comments for this post
+        const commentsQuery = query(collection(db, `posts/${postId}/comments`), orderBy("createdAt", "asc"));
+        const unsubComments = onSnapshot(commentsQuery, (commentSnap) => {
+          commentList.innerHTML = "";
+          commentSnap.forEach((c) => {
+            const cData = c.data();
+            const cId = c.id;
+            const cDiv = document.createElement("div");
+            cDiv.className = "comment";
+            const cAvatar = document.createElement("img");
+            cAvatar.className = "comment-avatar";
+            cAvatar.src = cData.avatar || "assets/img/default-avatar.png";
+            cAvatar.alt = (cData.user || "user") + " avatar";
+
+            const cBody = document.createElement("div");
+            cBody.className = "comment-body";
+            const cHeader = document.createElement("div");
+            const cUser = document.createElement("span");
+            cUser.className = "comment-username";
+            cUser.textContent = cData.user || "user";
+            const cTime = document.createElement("span");
+            cTime.className = "timestamp";
+            cTime.textContent = formatTimestamp(cData.createdAt);
+
+            cHeader.appendChild(cUser);
+            cHeader.appendChild(cTime);
+
+            const cText = document.createElement("div");
+            cText.className = "comment-text";
+            cText.textContent = cData.text || "";
+
+            cBody.appendChild(cHeader);
+            cBody.appendChild(cText);
+
+            cDiv.appendChild(cAvatar);
+            cDiv.appendChild(cBody);
+
+            // edit own comment
+            const unsubAuthForComment = onAuthStateChanged(auth, (u) => {
+              if (u && cData.userId === u.uid) {
+                const cEditBtn = document.createElement("button");
+                cEditBtn.textContent = "✏️";
+                cEditBtn.className = "edit-btn";
+                cEditBtn.onclick = async () => {
+                  const newComment = prompt("កែ Comment:", cData.text);
+                  if (newComment !== null && newComment !== undefined) {
+                    if (newComment.length > 1000) { alert("ពត៌មានយូរ"); return; }
+                    await updateDoc(doc(db, `posts/${postId}/comments`, cId), { text: newComment });
+                  }
+                };
+                cDiv.appendChild(cEditBtn);
+              }
+            });
+
+            commentList.appendChild(cDiv);
+          });
+        });
+
+        // ---------- add comment ----------
+        commentBtn.addEventListener("click", async () => {
+          const text = commentInput.value.trim();
+          const user = auth.currentUser;
+          if (!user) { alert("សូម Login មុន"); return; }
+          if (!text) return;
+          if (text.length > 1000) { alert("Comment too long"); return; }
+          await addDoc(collection(db, `posts/${postId}/comments`), {
+            text,
+            user: user.displayName || (user.email || "").split("@")[0],
+            avatar: user.photoURL || "assets/img/default-avatar.png",
+            userId: user.uid,
+            createdAt: serverTimestamp()
+          });
+          commentInput.value = "";
+        });
+
+        // small cleanup if desired when removing element (not strictly needed here)
+        // (no unsubscribes stored globally in this snippet)
+      }); // end snapshot.forEach
+      // auto-scroll newest at top? we keep newest first; do not auto-scroll to bottom to avoid jumping user.
+    });
+
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+ 
+
+
+
+
+ *******ចង់ឲUSER REACTបានតែមួយ*************
+ 
+const postsQuery = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+onSnapshot(postsQuery, (snapshot) => {
+  chatMessages.innerHTML = "";
+
+  snapshot.forEach((docSnap) => {
+    const post = docSnap.data();
+    const postId = docSnap.id;
+
+    const postDiv = document.createElement("div");
+    postDiv.className = "chat-message";
+    postDiv.setAttribute("data-post-id", postId);
+
+    const avatar = DEFAULT_AVATAR;
+    const username = post.user || (post.userId ? post.userId : "user");
+    const timeStr = formatTimestamp(post.createdAt);
+
+    // Avatar
+    const avatarImg = document.createElement("img");
+    avatarImg.src = avatar;
+    avatarImg.className = "chat-avatar";
+    avatarImg.alt = username + " avatar";
+
+    // Content
+    const content = document.createElement("div");
+    content.className = "chat-content";
+
+    const header = document.createElement("div");
+    header.className = "chat-header";
+
+    const leftHeader = document.createElement("div");
+    leftHeader.className = "chat-user-left";
+
+    const userSpan = document.createElement("span");
+    userSpan.className = "chat-username";
+    userSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "timestamp";
+    timeSpan.textContent = timeStr;
+
+    leftHeader.appendChild(userSpan);
+    leftHeader.appendChild(timeSpan);
+    header.appendChild(leftHeader);
+    content.appendChild(header);
+
+    // Post text
+    const textDiv = document.createElement("div");
+    textDiv.className = "chat-text";
+    textDiv.textContent = post.text || "";
+    content.appendChild(textDiv);
+
+    // Actions
+    const actions = document.createElement("div");
+    actions.className = "card-actions";
+
+    // ❤️ Love
+    const loveBtn = document.createElement("button");
+    loveBtn.className = "action-btn love-btn";
+    loveBtn.title = "Love";
+    const heart = document.createElement("i");
+    heart.className = "fa fa-heart";
+    heart.style.color = "red";
+    const loveCnt = document.createElement("span");
+    loveCnt.className = "count";
+    loveCnt.textContent = Array.isArray(post.loves) ? post.loves.length : 0;
+    loveBtn.appendChild(heart);
+    loveBtn.appendChild(loveCnt);
+
+    // 😮 Wow
+    const wowBtn = document.createElement("button");
+    wowBtn.className = "action-btn wow-btn";
+    wowBtn.title = "Wow";
+    const wowIcon = document.createElement("i");
+    wowIcon.className = "fa-solid fa-face-surprise";
+    const wowCnt = document.createElement("span");
+    wowCnt.className = "count";
+    wowCnt.textContent = Array.isArray(post.wows) ? post.wows.length : 0;
+    wowBtn.appendChild(wowIcon);
+    wowBtn.appendChild(wowCnt);
+
+    // 😆 Haha
+    const hahaBtn = document.createElement("button");
+    hahaBtn.className = "action-btn haha-btn";
+    hahaBtn.title = "Haha";
+    const hahaIcon = document.createElement("i");
+    hahaIcon.className = "fa-solid fa-face-laugh";
+    const hahaCnt = document.createElement("span");
+    hahaCnt.className = "count";
+    hahaCnt.textContent = Array.isArray(post.hahas) ? post.hahas.length : 0;
+    hahaBtn.appendChild(hahaIcon);
+    hahaBtn.appendChild(hahaCnt);
+
+    // Share
+    const shareBtn = document.createElement("button");
+    shareBtn.className = "action-btn share-btn";
+    shareBtn.innerHTML = "🔗 <span>Share</span>";
+
+    // Pin
+    const pinBtn = document.createElement("button");
+    pinBtn.className = "action-btn pin-btn";
+    pinBtn.textContent = post.pinned ? "📌 Pinned" : "📌 Pin";
+
+    // Edit Post
+    const editBtn = document.createElement("button");
+    editBtn.className = "action-btn edit-btn";
+    editBtn.innerHTML = '<i class="fa fa-edit"></i> Edit';
+    editBtn.style.display = "none";
+
+    actions.appendChild(loveBtn);
+    actions.appendChild(wowBtn);
+    actions.appendChild(hahaBtn);
+    actions.appendChild(shareBtn);
+    actions.appendChild(pinBtn);
+    actions.appendChild(editBtn);
+    content.appendChild(actions);
+
+    // Comment Section
+    const commentBox = document.createElement("div");
+    commentBox.className = "comment-box";
+    const commentList = document.createElement("div");
+    commentList.className = "comment-list";
+    commentBox.appendChild(commentList);
+
+    const commentInputDiv = document.createElement("div");
+    commentInputDiv.className = "comment-input";
+    const commentInput = document.createElement("input");
+    commentInput.placeholder = "សរសេរ comment...";
+    const commentBtn = document.createElement("button");
+    commentBtn.textContent = "💬 Cmt";
+    commentInputDiv.appendChild(commentInput);
+    commentInputDiv.appendChild(commentBtn);
+    commentBox.appendChild(commentInputDiv);
+
+    postDiv.appendChild(avatarImg);
+    postDiv.appendChild(content);
+    postDiv.appendChild(commentBox);
+    chatMessages.appendChild(postDiv);
+
+    // Function setReaction (Single only)
+    async function setReaction(type) {
+      const postRef = doc(db, "posts", postId);
+      await updateDoc(postRef, {
+        loves: arrayRemove(auth.currentUser.uid),
+        wows: arrayRemove(auth.currentUser.uid),
+        hahas: arrayRemove(auth.currentUser.uid),
+      });
+      if (type === "love") await updateDoc(postRef, { loves: arrayUnion(auth.currentUser.uid) });
+      if (type === "wow") await updateDoc(postRef, { wows: arrayUnion(auth.currentUser.uid) });
+      if (type === "haha") await updateDoc(postRef, { hahas: arrayUnion(auth.currentUser.uid) });
+    }
+
+    // 🔑 Auth controls
+    onAuthStateChanged(auth, (u) => {
+      if (!u) return;
+
+      // Show edit button only for owner
+      if (post.userId === u.uid) editBtn.style.display = "inline-flex";
+
+      // Reaction click
+      loveBtn.onclick = () => setReaction("love");
+      wowBtn.onclick = () => setReaction("wow");
+      hahaBtn.onclick = () => {
+        hahaBtn.classList.add("animate-haha");
+        setTimeout(() => hahaBtn.classList.remove("animate-haha"), 600);
+        setReaction("haha");
+      };
+
+      // Pin
+      pinBtn.onclick = async () => {
+        const currentPinned = post.pinned || false;
+        await updateDoc(doc(db, "posts", postId), { pinned: !currentPinned });
+      };
+
+      // Edit
+      editBtn.onclick = async () => {
+        const newText = prompt("កែប្រែ Post:", post.text);
+        if (newText && newText.trim()) {
+          await updateDoc(doc(db, "posts", postId), { text: newText.trim() });
+        }
+      };
+    });
+
+    // Share
+    shareBtn.onclick = async () => {
+      const shareUrl = `${window.location.origin}${window.location.pathname}?post=${postId}`;
+      const title = `${username} នៅលើ Rotana NOB`;
+      const text = post.text ? (post.text.length > 120 ? post.text.slice(0, 120) + "..." : post.text) : title;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url: shareUrl });
+        } catch (e) {}
+      } else {
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          alert("URL បានចម្លងទៅ clipboard ✅");
+        } catch (e) {
+          prompt("ចម្លង link:", shareUrl);
+        }
+      }
+    };
+
+  // ⭐ Comments listener (Fixed like Facebook but without last comment)
+const commentsQuery = query(collection(db, `posts/${postId}/comments`), orderBy("createdAt", "asc"));
+onSnapshot(commentsQuery, (commentSnap) => {
+  commentList.innerHTML = "";
+
+  const commentsArr = [];
+  commentSnap.forEach((c) => commentsArr.push({ id: c.id, ...c.data() }));
+
+  // ✅ Logic បង្ហាញតែ comment ទី១ និងទី២
+  let displayComments = [];
+  if (commentsArr.length <= 2) {
+    displayComments = commentsArr;
+  } else {
+    displayComments = [commentsArr[0], commentsArr[1]];
+  }
+
+  // Render function
+  const renderComment = (cData) => {
+    const cDiv = document.createElement("div");
+    cDiv.className = "comment";
+
+    const cAvatar = document.createElement("img");
+    cAvatar.className = "comment-avatar";
+    cAvatar.src = cData.avatar || DEFAULT_AVATAR;
+
+    const cBody = document.createElement("div");
+    cBody.className = "comment-body";
+
+    const cHeader = document.createElement("div");
+    const cUser = document.createElement("span");
+    cUser.className = "comment-username";
+    cUser.textContent = cData.user || "user";
+
+    const cTime = document.createElement("span");
+    cTime.className = "timestamp";
+    cTime.textContent = formatTimestamp(cData.createdAt);
+
+    const cText = document.createElement("div");
+    cText.className = "comment-text";
+    cText.textContent = cData.text || "";
+
+    // 👉 Reply button
+    const replyBtn = document.createElement("button");
+    replyBtn.className = "reply-btn";
+    replyBtn.textContent = "↩️ Reply";
+
+    // 👉 Reply list
+    const replyList = document.createElement("div");
+    replyList.className = "reply-list";
+
+    // 👉 Reply input (hidden by default)
+    const replyInputDiv = document.createElement("div");
+    replyInputDiv.className = "reply-input";
+    replyInputDiv.style.display = "none";
+    const replyInput = document.createElement("input");
+    replyInput.placeholder = "សរសេរ reply...";
+    const replySend = document.createElement("button");
+    replySend.textContent = "Reply";
+    replyInputDiv.appendChild(replyInput);
+    replyInputDiv.appendChild(replySend);
+
+    // toggle reply input
+    replyBtn.onclick = () => {
+      replyInputDiv.style.display = replyInputDiv.style.display === "none" ? "flex" : "none";
+    };
+
+    // 🔥 Save reply (FIXED)
+replySend.onclick = async () => {
+  const text = replyInput.value.trim();
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      alert("សូម Login មុន");
+      return;
+    }
+    if (!text) return;
+
+    try {
+      await addDoc(collection(db, `posts/${postId}/comments/${cData.id}/replies`), {
+        text,
+        user: user.displayName || (user.email || "").split("@")[0],
+        avatar: DEFAULT_AVATAR,
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+      });
+      replyInput.value = "";
+    } catch (err) {
+      console.error("Reply error:", err);
+      alert("❌ មានបញ្ហាក្នុងការ Reply cmt");
+    }
+  });
+};
+
+
+    // 📡 Listen replies
+    const repliesQuery = query(
+      collection(db, `posts/${postId}/comments/${cData.id}/replies`),
+      orderBy("createdAt", "asc")
+    );
+    onSnapshot(repliesQuery, (replySnap) => {
+      replyList.innerHTML = "";
+      replySnap.forEach((r) => {
+        const rData = r.data();
+        const rDiv = document.createElement("div");
+        rDiv.className = "reply";
+
+        const rUser = document.createElement("span");
+        rUser.className = "reply-username";
+        rUser.textContent = rData.user || "user";
+
+        const rText = document.createElement("span");
+        rText.className = "reply-text";
+        rText.textContent = rData.text || "";
+
+        rDiv.appendChild(rUser);
+        rDiv.appendChild(rText);
+        replyList.appendChild(rDiv);
+      });
+    });
+
+    cHeader.appendChild(cUser);
+    cHeader.appendChild(cTime);
+    cBody.appendChild(cHeader);
+    cBody.appendChild(cText);
+    cBody.appendChild(replyBtn);
+    cBody.appendChild(replyList);
+    cBody.appendChild(replyInputDiv);
+
+    cDiv.appendChild(cAvatar);
+    cDiv.appendChild(cBody);
+    commentList.appendChild(cDiv);
+  };
+
+  displayComments.forEach(renderComment);
+
+  // See all button
+  if (commentsArr.length > 2) {
+    const seeMoreBtn = document.createElement("button");
+    seeMoreBtn.className = "action-btn";
+    seeMoreBtn.textContent = `See all ${commentsArr.length} comments`;
+    seeMoreBtn.onclick = () => {
+      commentList.innerHTML = "";
+      commentsArr.forEach(renderComment);
+    };
+    commentList.appendChild(seeMoreBtn);
+  }
+});
+
+
+    // Add Comment
+    commentBtn.addEventListener("click", async () => {
+      const text = commentInput.value.trim();
+      const user = auth.currentUser;
+      if (!user) return alert("សូម Login មុន");
+      if (!text) return;
+      await addDoc(collection(db, `posts/${postId}/comments`), {
+        text,
+        user: user.displayName || (user.email || "").split("@")[0],
+        avatar: DEFAULT_AVATAR,
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+      });
+      commentInput.value = "";
+    });
+  });
+});
+
+
+avatar: DEFAULT_AVATAR,
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+      });
+      commentInput.value = "";
+    });
+  });
+});

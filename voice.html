@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troll សុីតិច Chatbot - Moderator Meme Mode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&display=swap');
+        body { font-family: 'Kantumruy Pro', sans-serif; background-color: #020617; color: white; }
+        .chat-area { height: calc(100vh - 200px); scrollbar-width: none; }
+        .chat-area::-webkit-scrollbar { display: none; }
+        .msg-bubble { max-width: 85%; animation: bubblePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes bubblePop { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .bot-msg { background: #1e293b; border: 1px solid #334155; border-bottom-left-radius: 4px; position: relative; }
+        .user-msg { background: linear-gradient(135deg, #ec4899, #d946ef); color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+        .mod-badge { background: linear-gradient(90deg, #06b6d4, #3b82f6); padding: 2px 10px; border-radius: 6px; font-size: 10px; font-weight: 900; color: white; border: 1px solid rgba(255,255,255,0.2); }
+    </style>
+</head>
+<body class="flex flex-col h-screen max-w-xl mx-auto border-x border-slate-800 shadow-2xl relative">
+
+    <!-- Header -->
+    <header class="p-4 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 flex justify-between items-center sticky top-0 z-10">
+        <div class="flex items-center space-x-3">
+            <div class="relative">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 transform rotate-3">
+                    <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Mod" alt="Avatar" class="w-full h-full rounded-lg bg-slate-900">
+                </div>
+                <div class="absolute -top-1 -right-1 bg-red-500 text-[8px] font-bold px-1 rounded border border-white">LIVE</div>
+            </div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <h1 class="font-bold text-lg text-white">សុីតិច Moderator</h1>
+                    <span class="mod-badge">MOD</span>
+                </div>
+                <p class="text-[10px] text-cyan-400 font-medium tracking-tight">Expert in Trolling & Meme</p>
+            </div>
+        </div>
+        <div class="flex gap-3 text-slate-400">
+            <i class="fas fa-shield-halved"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
+
+    <!-- Chat Messages -->
+    <main id="chat-window" class="flex-1 overflow-y-auto p-4 space-y-6 flex flex-col chat-area bg-slate-950">
+        <div class="flex justify-start">
+            <div class="msg-bubble bot-msg p-4 rounded-2xl">
+                <p class="leading-relaxed">អូហូ! អាម៉ូយមកទៀតហើយ! ខ្ញុំ Moderator ប្រចាំគ្រុប **"សុីតិច"** ហ្នឹង។ ចង់សួរអីសួរមក បើដឹងឆ្លើយ បើមិនដឹងចាំ Admin Troll បន្ថែម! កុំភ្លេចណា បើគ្រូដាក់ Assignment ច្រើនពេក ប្រាប់ Moderator មក ចាំជួយ... ជួយសើច! 🤣🔥</p>
+                <span class="text-[8px] text-slate-500 absolute -bottom-5 left-0 italic">Seen by Rotana NOB</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading UI -->
+    <div id="status-ui" class="hidden px-6 py-2 bg-slate-900/50">
+        <div class="flex items-center space-x-3 text-cyan-400">
+            <div class="flex space-x-1">
+                <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-ping"></div>
+                <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-ping" style="animation-delay: 0.2s"></div>
+                <div class="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-ping" style="animation-delay: 0.4s"></div>
+            </div>
+            <span class="text-[10px] font-black uppercase italic tracking-widest">Moderator កំពុងរក Meme ឌឺ...</span>
+        </div>
+    </div>
+
+    <audio id="audio-player" class="hidden"></audio>
+
+    <!-- Input -->
+    <footer class="p-4 border-t border-slate-800 bg-slate-950">
+        <div class="relative flex items-center gap-3">
+            <div class="flex-1 relative">
+                <input type="text" id="user-input" 
+                    class="w-full bg-slate-900 border border-slate-700 rounded-xl px-5 py-4 focus:ring-2 focus:ring-cyan-500 outline-none text-white placeholder-slate-600 transition-all"
+                    placeholder="សួរមកអាម៉ូយ... កុំឱ្យ Mod Kick ចេញ!">
+            </div>
+            <button id="send-btn" 
+                class="bg-cyan-600 text-white w-12 h-12 rounded-xl flex items-center justify-center hover:bg-cyan-500 transition active:scale-95 shadow-lg shadow-cyan-500/20">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="flex justify-around mt-3">
+            <span class="text-[9px] text-slate-600 font-bold">#INTERIOR</span>
+            <span class="text-[9px] text-slate-600 font-bold">#IT_LIFE</span>
+            <span class="text-[9px] text-slate-600 font-bold">#MIS</span>
+            <span class="text-[9px] text-slate-600 font-bold">#MARKETING</span>
+        </div>
+    </footer>
+
+    <script>
+        const apiKey = "AIzaSyDS8qd8ugKCEeVAEnP2ADBGO-tVFy2QfTs"; 
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const statusUi = document.getElementById('status-ui');
+        const audioPlayer = document.getElementById('audio-player');
+
+        function pcmToWav(pcmData, sampleRate) {
+            const buffer = new ArrayBuffer(44 + pcmData.length * 2);
+            const view = new DataView(buffer);
+            const writeString = (offset, string) => { for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i)); };
+            writeString(0, 'RIFF'); view.setUint32(4, 32 + pcmData.length * 2, true);
+            writeString(8, 'WAVE'); writeString(12, 'fmt '); view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true); view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+            writeString(36, 'data'); view.setUint32(40, pcmData.length * 2, true);
+            let offset = 44;
+            for (let i = 0; i < pcmData.length; i++, offset += 2) view.setInt16(offset, pcmData[i], true);
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        async function fetchAudio(text) {
+            try {
+                const refinedText = "Say this in a funny, trolling, energetic, slightly arrogant but cool Khmer male voice like a Facebook moderator. Use student slang for SETEC: " + text;
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: refinedText }] }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Charon" } } }
+                        }
+                    })
+                });
+                const result = await response.json();
+                const b64Data = result.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                if (!b64Data) return null;
+                const binStr = atob(b64Data);
+                const bytes = new Uint8Array(binStr.length);
+                for (let i = 0; i < binStr.length; i++) bytes[i] = binStr.charCodeAt(i);
+                return pcmToWav(new Int16Array(bytes.buffer), 24000);
+            } catch (e) { return null; }
+        }
+
+        function appendBotMessage(text) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex justify-start';
+            const bubble = document.createElement('div');
+            bubble.className = 'msg-bubble bot-msg p-4 rounded-2xl';
+            bubble.innerHTML = `<p class="text-slate-200 font-medium leading-relaxed">${text}</p>`;
+
+            const playBtn = document.createElement('button');
+            playBtn.className = "mt-3 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-lg text-[9px] font-black border border-cyan-500/20 flex items-center gap-2";
+            playBtn.innerHTML = `<i class="fas fa-volume-up"></i> <span>MODERATOR VOICE</span>`;
+            
+            bubble.appendChild(playBtn);
+            wrapper.appendChild(bubble);
+            chatWindow.appendChild(wrapper);
+            chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+
+            fetchAudio(text).then(blob => {
+                if (blob) {
+                    const url = URL.createObjectURL(blob);
+                    playBtn.onclick = () => {
+                        audioPlayer.src = url;
+                        audioPlayer.play();
+                        playBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>កំពុងបាញ់...</span>`;
+                        audioPlayer.onended = () => { playBtn.innerHTML = `<i class="fas fa-redo"></i> <span>បាញ់ម្ដងទៀត</span>`; };
+                    };
+                    playBtn.click();
+                } else { playBtn.remove(); }
+            });
+        }
+
+        async function handleChat() {
+            const prompt = userInput.value.trim();
+            if (!prompt) return;
+
+            const uW = document.createElement('div');
+            uW.className = 'flex justify-end';
+            uW.innerHTML = `<div class="msg-bubble user-msg p-4 rounded-2xl font-medium">${prompt}</div>`;
+            chatWindow.appendChild(uW);
+            userInput.value = '';
+            statusUi.classList.remove('hidden');
+            sendBtn.disabled = true;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        systemInstruction: { 
+                            parts: [{ 
+                                text: `Your name is "Troll សុីតិច Chatbot". Your role is "Moderator".
+                                       Identity: You are the most active and "savage" Moderator of the សុីតិច (SETEC) University Community Group.
+                                       Creator: Rotana NOB (Mention him ONLY rarely, like "Rotana NOB shared a post" or similar).
+                                       Domain Expertise: Interior Design, MIS, IT, Digital Marketing.
+                                       Personality: 100% Troll, Sarcastic, Meme-oriented, Savage but cool. 
+                                       Language Style: 
+                                       - Use pure Khmer student slang (e.g., 'អាម៉ូយ', 'ប្អូនៗ', 'ញាក់សាច់', 'កប់សារី', 'អត់យល់', 'ដេកទៅ', 'ហាហាហា').
+                                       - Troll Interior students about: Rendering crashing, 3ds Max errors, sleepless nights, "ម៉ូយដោះដៃ".
+                                       - Troll IT students about: Buggy code, AI doing their homework, Error 404 life, "Copy ពី ChatGPT".
+                                       - Troll Teachers: If user mentions assignments or teachers, respond with jokes like "គ្រូដាក់ assignment ដូចខ្លាចយើងទំនេរ", "គ្រូខ្លះក៏សាហាវ ដាក់មេរៀនមួយ assignment ដប់".
+                                       - Response must feel like a Moderator replying to a viral post in a group. Be cheeky and use MEME logic.` 
+                            }] 
+                        }
+                    })
+                });
+
+                const res = await response.json();
+                appendBotMessage(res.candidates?.[0]?.content?.parts?.[0]?.text || "មិញ Admin រវល់ Kick គេចេញបន្តិច សាកម្ដងទៀតមើលអាម៉ូយ!");
+            } catch (e) { console.error(e); } finally {
+                statusUi.classList.add('hidden');
+                sendBtn.disabled = false;
+                chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+            }
+        }
+
+        sendBtn.addEventListener('click', handleChat);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
+    </script>
+</body>
+</html>

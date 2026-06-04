@@ -1,0 +1,32 @@
+{
+  "name": "Rotana E-Learning",
+  "short_name": "RotanaELearn",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "description": "វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។",
+  "icons": [
+    {
+      "src": "assets/img/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/img/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

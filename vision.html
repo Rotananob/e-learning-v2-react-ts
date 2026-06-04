@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vision</title>
+    <link rel="stylesheet" href="assets/css/welcome.css">
+    <link rel="icon" href="assets/img/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header" style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg,#2563eb,#38bdf8);color:#fff;">
+        <img src="assets/img/images/logo.png" alt="logo" style="width:40px;height:40px;border-radius:8px;">
+        <strong>RotanaNOB</strong>
+        <nav style="margin-left:auto;display:flex;gap:10px;">
+            <a href="about-us" style="color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.06);">About</a>
+            <a href="team" style="color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.06);">Team</a>
+            <a href="vision" style="color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.06);">Vision</a>
+            <a href="test-courses" style="color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.06);">Courses</a>
+        </nav>
+    </header>
+
+    <div class="about-hero">
+        <img src="assets/img/images/logo.png" alt="RotanaNOB Logo" class="about-logo">
+        <h1>Our <span style="color:#2563eb">Vision</span> for the Future</h1>
+        <p class="about-lead">We are committed to growing, innovating, and building a strong IT community for Cambodia and beyond.</p>
+    </div>
+    <div class="container">
+        <h2 class="section-title">Our Future</h2>
+        <div class="future-section">
+            <div class="future-card">
+                <i class="fa fa-rocket"></i>
+                <div class="future-title">Expanding Courses</div>
+                <div class="future-desc">We aim to offer more advanced and diverse IT courses for all levels.</div>
+            </div>
+            <div class="future-card">
+                <i class="fa fa-globe-asia"></i>
+                <div class="future-title">Community Growth</div>
+                <div class="future-desc">Building a strong, supportive tech community in Cambodia and beyond.</div>
+            </div>
+            <div class="future-card">
+                <i class="fa fa-lightbulb"></i>
+                <div class="future-title">Innovation</div>
+                <div class="future-desc">Continuously improving our platform with new features and technologies.</div>
+            </div>
+        </div>
+        <h2 class="section-title">Contact</h2>
+        <p>For more information or support, please reach out to us via our <a href="contact" style="color:#2563eb;text-decoration:underline;">contact page</a>.</p>
+    </div>
+    <style>
+    /* ...existing about-hero, future-section, etc. styles from about-us.html... */
+    .about-hero { display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(120deg,#2563eb 60%,#38bdf8 100%); color: #fff; padding: 48px 12px 32px 12px; border-radius: 0 0 32px 32px; box-shadow: 0 4px 24px #2563eb22; margin-bottom: 32px; }
+    .about-logo { width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 2px 12px #2563eb44; margin-bottom: 18px; background: #fff; object-fit: cover; }
+    .about-lead { font-size: 1.18em; margin-top: 8px; color: #e0e7ef; max-width: 500px; text-align: center; }
+    .section-title { color: #2563eb; margin-top: 36px; margin-bottom: 12px; font-size: 1.35em; letter-spacing: 1px; }
+    .future-section { display: flex; gap: 22px; justify-content: center; margin: 18px 0 32px 0; flex-wrap: wrap; }
+    .future-card { background: #fffbe6; border-radius: 16px; box-shadow: 0 2px 8px #facc1533; padding: 18px 22px 14px 22px; min-width: 140px; max-width: 180px; margin-bottom: 12px; display: flex; flex-direction: column; align-items: center; }
+    .future-card i { color: #facc15; font-size: 2em; margin-bottom: 8px; }
+    .future-title { font-weight: bold; color: #2563eb; font-size: 1.08em; margin-bottom: 2px; text-align: center; }
+    .future-desc { color: #444; font-size: 0.98em; text-align: center; }
+    @media (max-width: 600px) { .about-hero { padding: 32px 4vw 18px 4vw; border-radius: 0 0 18px 18px; } .about-logo { width: 60px; height: 60px; } .container { padding: 16px 4vw; } .future-section { gap: 10px; } .future-card { min-width: 110px; max-width: 98vw; padding: 12px 8px; } }
+    </style>
+    
+    <footer style="text-align:center;color:#475569;padding:18px 8px;">© RotanaNOB — <a href="contact">Contact</a> · <a href="privacy-policy">Privacy</a></footer>
+    <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+
+</html>
+<script src="assets/js/router.js"></script>

@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>  
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://rotana-elearningg.web.app/welcome" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <title>Welcome - ស្វាគមន៍</title>
+  <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Angkor&family=Noto+Sans+Khmer:wght@400;700&family=Dongrek&display=swap" rel="stylesheet">
+  <style>
+    * { transition: background-color 0.5s ease, color 0.5s ease; }
+    body {
+      margin: 0;
+      font-family: 'Dongrek', 'Noto Sans Khmer', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      color: #2c3e50;
+      min-height: 100vh;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: linear-gradient(90deg, #1a472a 0%, #1f5c3d 100%);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+    .topbar h2 {
+      font-size: 26px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+    }
+    .topbar h2 .fa-graduation-cap { color: #fbbf24; font-size: 1.3em; }
+    .topbar h2 .fa-book { color: #ffffff; font-size: 1.1em; }
+    #darkModeBtn {
+      padding: 10px 22px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #1a472a, #1f5c3d);
+      color: white;
+      box-shadow: 0 4px 12px rgba(26, 71, 42, 0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    #darkModeBtn:hover {
+      transform: scale(1.08);
+      background: linear-gradient(135deg, #1f5c3d, #2d7c4e);
+    }
+    .welcome-section {
+      padding: 70px 20px 40px 20px;
+      background: linear-gradient(135deg, #f0f9f4 0%, #e8f5f0 100%);
+      min-height: 70vh;
+    }
+    .welcome-box {
+      background: rgba(255,255,255,0.98);
+      padding: 48px 32px 36px 32px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(26, 71, 42, 0.1);
+      max-width: 540px;
+      margin: 40px auto 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(26, 71, 42, 0.05);
+    }
+    .welcome-box::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #1a472a 0%, transparent 80%);
+      opacity: 0.04;
+      z-index: 0;
+    }
+    .welcome-box h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #1f5c3d;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+    .welcome-box h4 { font-size: 16px; margin-bottom: 20px; color: #4b6b5a; position: relative; z-index: 1; }
+    .avatar-section { margin-bottom: 20px; position: relative; z-index: 1; }
+    .btn-group .btn {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.08rem;
+      box-shadow: 0 3px 10px rgba(26, 71, 42, 0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn {
+      background: linear-gradient(135deg, #1a472a, #1f5c3d);
+      color: white;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #1f5c3d, #2d7c4e);
+    }
+    .btn.danger { background: #dc2626; color: white; }
+    footer { margin-top: 20px; font-size: 13px; color: #7f8c8d; position: relative; z-index: 1; }
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 10px 10px 10px;
+      text-align: center;
+    }
+    .features h2 {
+      font-size: 28px; margin-bottom: 25px;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .features .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+    .features .card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+      font-size: 17px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      color: #2c3e50;
+      border: 2px solid #ecf0f1;
+    }
+    .features .card i { font-size: 1.8em; margin-right: 8px; color: #3498db; }
+    .features .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      border-color: #3498db;
+      box-shadow: 0 8px 20px rgba(52,149,211,0.2);
+    }
+    @media (max-width: 700px) {
+      .welcome-box { padding: 24px 6vw 18px 6vw; }
+      .features .grid { grid-template-columns: 1fr; }
+      .topbar { padding: 12px 8px; }
+    }
+    /* Dark mode */
+    body.dark { background: #1a252f; color: #ecf0f1; }
+    body.dark .topbar { background: linear-gradient(90deg, #2c3e50, #34495e); }
+    body.dark .welcome-box { background: rgba(40,50,60,0.98); color: #ecf0f1; }
+    body.dark .welcome-box h4 { color: #bdc3c7; }
+    body.dark footer { color: #95a5a6; }
+    body.dark .features .card { background: #2c3e50; color: #ecf0f1; border-color: #34495e; }
+    body.dark .features .card:hover { background: linear-gradient(135deg, #2980b9, #8e44ad); color: white; }
+  </style>
+</head>
+<body>
+  <!-- kbal header--> 
+  <header class="topbar">
+    <div class="topbar-left">
+      <h2><i class="fa fa-graduation-cap"></i> Rotana <br> E-learning <i class="fa fa-book"></i></h2>
+    </div>
+    <div class="topbar-right">
+      <button id="darkModeBtn"><i class="fa fa-moon"></i> Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- MainContent -->
+  <section class="welcome-section">
+    <div class="welcome-box">
+      <img src="assets/img/images/logo.png" alt="Rotana E-learning Logo" style="height:80px;width:80px;border-radius:18px;box-shadow:0 2px 12px #38bdf833;margin-bottom:18px;background:#fff;object-fit:cover;">
+      <h1><i class="fa fa-hand-peace"></i> សូមស្វាគមន៍ <span id="userDisplay"></span> <i class="fa fa-champagne-glasses"></i></h1>
+      <h4><b><i class="fa fa-image"></i> ដាក់រូបអ្នកនៅកន្លែង Choose file</b></h4>
+
+      <div class="avatar-section">
+        <img id="avatarPreview" src="assets/img/default-avatar.png"
+             alt="User Avatar" width="120" height="120"
+             style="border-radius: 50%; object-fit: cover;">
+        <input type="file" id="avatarUpload" accept="image/*">
+      </div>
+
+      <div class="btn-group">
+        <a href="/dashboard" class="btn"><i class="fa fa-book-open"></i> ចាប់ផ្តើមចូលរៀន</a>
+        <a href="/profile-sitting" class="btn"><i class="fa fa-user-gear"></i> ធ្វើប្រវត្តិរូបឲហើយដែរឬទេ?</a>
+        <button id="logoutBtn" class="btn danger"><i class="fa fa-sign-out-alt"></i> ចាកចេញ</button>
+      </div>
+
+      <footer>
+                <br>
+
+        <p> last updates page 13/08/2025<br>© Rotana NOB<br></p>
+
+      </footer>
+    </div>
+
+    <section class="features">
+      <h2><i class="fa fa-sparkles"></i> អ្វីដែលអ្នកនឹងទទួលបានពេលរៀន <i class="fa fa-thumbs-up"></i></h2>
+      <div class="grid">
+        <div class="card"><i class="fa fa-chalkboard-teacher"></i> អ្នកបង្រៀនមានបទពិសោធន៍</div>
+        <div class="card"><i class="fa fa-video"></i> វីដេអូរាប់ពាន់សម្រាប់រៀន</div>
+        <div class="card"><i class="fa fa-laptop-code"></i> ចេះបង្កើត Website និង App</div>
+        <div class="card"><i class="fa fa-pen-nib"></i> មេរៀនខ្មែរ + អង់គ្លេស</div>
+        <div class="card"><i class="fa fa-globe-asia"></i> រៀនបានគ្រប់ទីកន្លែង</div>
+        <div class="card"><i class="fa fa-school"></i><i class="fa fa-cogs"></i> ដោះស្រាយបញ្ហាក្នុងសាលា</div>
+        <div class="card"><i class="fa fa-chart-line"></i> បង្កើនចំណេះដឹង</div>
+        <div class="card"><i class="fa fa-toolbox"></i> ចាប់ផ្ដើម Freelancer</div>
+        <div class="card"><i class="fa fa-book"></i> មេរៀនចែងជាកញ្ជប់ៗ</div>
+      </div>
+    </section>
+  </section>
+
+  <!-- pjoub muy firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.firebasestorage.app",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const userDisplay = document.getElementById("userDisplay");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // check mer user pel jol 
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        userDisplay.textContent = user.displayName || user.email;
+      } else {
+        //ត្រលប់auto tv kleng login vinh ber ot ton login 
+        window.location.href = "/login";
+      }
+    });
+
+    // kleng Logout
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      alert('🚪អ្នកបានចាកចេញហើយ សុំ Login សារថ្មីមុនប្រើប្រាស់!🔳')
+      window.location.href="login";
+    });
+
+    // Dark Mode
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      darkModeBtn.textContent =
+        document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+
+    // AvatarUploadPreview(local only)
+    const avatarUpload = document.getElementById("avatarUpload");
+    const avatarPreview = document.getElementById("avatarPreview");
+    avatarUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => { avatarPreview.src = ev.target.result; };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        
+        //  បង្កើតផ្នែកតូចៗនៃកូដ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36); // យកម៉ោងមកដាក់
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+
+        //  បំប្លែងទៅជាកូដសម្ងាត់វែង (Base64) ឱ្យមើលទៅកាច
+        // btoa គឺជា function បំប្លែងអក្សរធម្មតាទៅជាកូដ Base64
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        // ប្តូរ URL លើ Browser ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+
+    <script src="assets/js/cookie.js"></script>
+    <script>
+    // --- Cookie Consent Alert ---
+    function showCookieConsent() {
+      if (getCookie('rotana_cookie_consent')) return;
+      const alertDiv = document.createElement('div');
+      alertDiv.id = 'cookieConsentAlert';
+      alertDiv.style.position = 'fixed';
+      alertDiv.style.bottom = '24px';
+      alertDiv.style.left = '50%';
+      alertDiv.style.transform = 'translateX(-50%)';
+      alertDiv.style.background = 'linear-gradient(90deg,#06b6d4,#9333ea)';
+      alertDiv.style.color = '#fff';
+      alertDiv.style.padding = '18px 16px';
+      alertDiv.style.borderRadius = '16px';
+      alertDiv.style.boxShadow = '0 4px 24px #0002';
+      alertDiv.style.zIndex = '9999';
+      alertDiv.style.display = 'flex';
+      alertDiv.style.alignItems = 'center';
+      alertDiv.style.gap = '12px';
+      alertDiv.style.maxWidth = '95vw';
+      alertDiv.style.fontSize = '1em';
+      alertDiv.style.flexWrap = 'wrap';
+      alertDiv.style.wordBreak = 'break-word';
+      // Responsive for mobile
+      if (window.innerWidth < 600) {
+        alertDiv.style.flexDirection = 'column';
+        alertDiv.style.alignItems = 'stretch';
+        alertDiv.style.fontSize = '0.98em';
+        alertDiv.style.padding = '12px 6px';
+        alertDiv.style.gap = '8px';
+      }
+      alertDiv.innerHTML = `
+        <span style="font-size:1.1em"><i class='fa fa-cookie-bite'></i> វេបសាយនេះប្រើ Cookies ដើម្បីធានាបាននូវបទពិសោធន៍ប្រើប្រាស់ល្អបំផុត និងរក្សាទុកព័ត៌មានមួយចំនួនដើម្បីធ្វើឲ្យសេវាកម្មរបស់យើងប្រសើរឡើង និង បម្រើអ្នកឲ្យបានត្រឹមត្រូវ។ សូមអាន <a href="/privacy" style="color:#ffe066;text-decoration:underline;" target="_blank">គោលការណ៍ឯកជនភាព</a> របស់យើងសម្រាប់ព័ត៌មានបន្ថែម។</span>
+        <button id="cookieAccept" style="background:#22c55e;color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:1em;">យល់ព្រម</button>
+        <button id="cookieReject" style="background:#ef4444;color:#fff;border:none;padding:7px 14px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:1em;">បដិសេធ</button>
+      `;
+      document.body.appendChild(alertDiv);
+      document.getElementById('cookieAccept').onclick = function() {
+        setCookie('rotana_cookie_consent', 'accepted', 365);
+        alertDiv.remove();
+      };
+      document.getElementById('cookieReject').onclick = function() {
+        setCookie('rotana_cookie_consent', 'rejected', 365);
+        alertDiv.remove();
+      };
+    }
+    window.addEventListener('DOMContentLoaded', showCookieConsent);
+    </script>
+    <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

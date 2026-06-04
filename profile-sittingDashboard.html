@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://rotana-elearningg.web.app/profile-sittingDashboard" />
+  <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>កែប្រវត្តិរូប • Rotana</title>
+  <link rel="icon" type="image/png" href="assets/img/images/setting profile.png">
+
+  <link rel="stylesheet" href="assets/css/profile.css">
+  <!-- Khmer beautiful fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Angkor&family=Battambang:wght@400;700&family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body, input, button, textarea, select, .profile-page, .profile-username, .muted, h1, h2, h3, h4, h5, h6, label, .badge, .btn, .card, .form-section, .profile-main, .preview-info, .quick-actions {
+      font-family: 'Battambang', 'Noto Sans Khmer', 'Angkor', 'Khmer OS', sans-serif !important;
+      letter-spacing: 0.01em;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Angkor', 'Battambang', 'Noto Sans Khmer', 'Khmer OS', sans-serif !important;
+      font-weight: 700;
+    }
+    .profile-username, .muted, .badge {
+      font-family: 'Battambang', 'Noto Sans Khmer', 'Khmer OS', sans-serif !important;
+    }
+    .profile-username span, .profile-username {
+      font-size: 1.18em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .muted {
+      font-size: 1em;
+      color: #6b7280;
+    }
+    .badge {
+      font-size: 0.95em;
+      padding: 2px 10px;
+      border-radius: 8px;
+      background: #f3f4f6;
+      color: #2563eb;
+      margin-right: 4px;
+      font-family: 'Battambang', 'Noto Sans Khmer', 'Khmer OS', sans-serif !important;
+    }
+  </style>
+</head>
+<style>
+  .version-badge-v1 {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px #0002;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .version-badge-v1 i {
+    font-size: 1.3em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 7px 14px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 12px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+  <main class="profile-page">
+    <header class="page-header">
+      <h1>កែប្រវត្តិរូប</h1>
+      <p class="muted">ធ្វើឲ្យប្រវត្តិរូបរបស់អ្នកមានទម្រង់ជាប់ professional និងងាយស្រួលចែករំលែក</p>
+    </header>
+
+    <section class="profile-grid">
+      <!-- Left: preview / quick actions -->
+      <aside class="profile-side">
+        <div class="card preview-card">
+                <div class="avatar-wrap" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:220px;margin:0 auto 18px auto;">
+                  <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:0;">
+                    <img id="avatarPreview" src="assets/images/default-avatar.png" alt="Avatar" style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid var(--accent);box-shadow:0 8px 25px rgba(6,182,212,0.3);margin-bottom:4px;">
+                    <div class="profile-username" style="display:flex;align-items:center;gap:6px;font-size:1.18em;font-weight:600;color:var(--text-primary);word-break:break-word;text-align:center;margin:0;">
+                      <span id="previewName">ឈ្មោះ របស់​អ្នក</span>
+                      <span id="blueTick" style="display:none;color:#2563eb;font-size:1.1em;vertical-align:middle;"><i class="fa fa-check-circle"></i></span>
+                    </div>
+                    <label for="avatarUpload" class="avatar-change" style="position:absolute;bottom:5px;left:5px;">ផ្លាស់ប្ដូរ</label>
+                    <input type="file" id="avatarUpload" accept="image/*" hidden>
+                  </div>
+                  <button id="deleteAvatarBtn" type="button" style="margin-top:10px;background:#ef4444;color:#fff;border:none;padding:6px 16px;border-radius:8px;cursor:pointer;font-size:14px;">លុបរូបភាព</button>
+                <!-- Delete avatar logic is handled in the main script below -->
+          <script type="module">
+          // Avatar delete logic (Firebase v9+ modular)
+          import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+          import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+          import { getStorage, ref, deleteObject } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+
+          const deleteAvatarBtn = document.getElementById('deleteAvatarBtn');
+          const avatarPreview = document.getElementById('avatarPreview');
+          let currentUser = null;
+
+          onAuthStateChanged(getAuth(), (user) => {
+            currentUser = user;
+          });
+
+          if (deleteAvatarBtn) {
+            deleteAvatarBtn.addEventListener('click', async function() {
+              if (!currentUser) return;
+              // Remove from Firebase Storage
+              try {
+                const storage = getStorage();
+                const fileRef = ref(storage, 'avatars/' + currentUser.uid + '.jpg');
+                await deleteObject(fileRef);
+              } catch (e) {
+                // ignore if not found
+              }
+              // Reset avatar to default
+              avatarPreview.src = 'assets/images/default-avatar.png';
+              // Update Firestore profile
+              try {
+                const db = getFirestore();
+                await setDoc(doc(db, "users", currentUser.uid), { avatarUrl: '' }, { merge: true });
+                // Optionally show toast if you have showToast
+                if (typeof showToast === 'function') showToast('លុបរូបភាពរួចរាល់', 'success');
+              } catch (e) {
+                if (typeof showToast === 'function') showToast('បរាជ័យក្នុងការលុបរូបភាព', 'error');
+              }
+            });
+          }
+          </script>
+          </div>
+          <div class="preview-info">
+            <h2 id="previewName">ឈ្មោះ របស់​អ្នក <span id="blueTick" style="display:none;color:#2563eb;vertical-align:middle;"><i class="fa fa-check-circle"></i></span></h2>
+            <p id="previewTitle" class="muted">Student • Rotana eLearning</p>
+            <p id="previewBio">ដាក់ bio ឲ្យខ្លី សង្ខេប និងមានចក្ខុវិស័យ។</p>
+            <div id="previewBadges" class="badges">
+              <span class="badge">Verified</span>
+              <span class="badge">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card quick-actions">
+          <h3>Quick Actions</h3>
+          <button id="downloadVCard" class="btn small">⬇️ ទាញ vCard</button>
+          <button id="shareProfile" class="btn small">🔗 ចែករំលែក</button>
+          <button id="previewPublic" class="btn small ghost">👀 មើលសាធារណៈ</button>
+        </div>
+      </aside>
+
+      <!-- Right: form -->
+      <main class="profile-main">
+        <form id="profileForm" class="card form-card">
+          <section class="form-section">
+            <h3>ព័ត៌មានមូលដ្ឋាន</h3>
+            <label for="profileName">ឈ្មោះ</label>
+            <input type="text" id="profileName" placeholder="ឈ្មោះពិត" required>
+
+            <label for="profileTitle">ចំណងជើង/តំណែង</label>
+            <input type="text" id="profileTitle" placeholder="ឧ. Student, Developer, IT Instructor">
+
+            <label for="profileEmail">អ៊ីម៉ែល</label>
+            <input type="email" id="profileEmail" placeholder="example@gmail.com">
+
+            <label for="profileBio">អំពីខ្លួនឯង (Bio)</label>
+            <textarea id="profileBio" rows="4" placeholder="ចុចដើម្បីបញ្ចូល Bio"></textarea>
+          </section>
+
+          <section class="form-section two-col">
+            <div>
+              <h3>ទំនាក់ទំនង</h3>
+              <label for="profilePhone">ទូរស័ព្ទ</label>
+              <input type="tel" id="profilePhone" placeholder="010 123 456">
+
+              <label for="profileWebsite">គេហទំព័រ</label>
+              <input type="url" id="profileWebsite" placeholder="https://">
+            </div>
+
+            <div>
+              <h3>សង្គម</h3>
+              <label for="profileLinkedin">LinkedIn</label>
+              <input type="url" id="profileLinkedin" placeholder="https://linkedin.com/in/yourname">
+
+              <label for="profileGithub">GitHub</label>
+              <input type="url" id="profileGithub" placeholder="https://github.com/yourname">
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h3>ជំនាញ និង ការសិក្សា</h3>
+            <label for="profileEducation">ការសិក្សា</label>
+            <input type="text" id="profileEducation" placeholder="ឧ. BIT at SETEC">
+
+            <label for="profileSkills">Skills (comma separated)</label>
+            <input type="text" id="profileSkills" placeholder="HTML, CSS, JavaScript">
+          </section>
+
+          <section class="form-section">
+            <h3>ការ​រក្សាភាពឯកជន</h3>
+            <label class="toggle-row"><input type="checkbox" id="profilePublic"> បើកប្រវត្តិរូបសាធារណៈ</label>
+            <label class="toggle-row"><input type="checkbox" id="emailNotify"> ទទួលការជូនដំណឹងតាមអ៊ីម៉ែល</label>
+          </section>
+
+          <section class="form-section">
+            <h3>ផ្លាស់ប្តូរ​ពាក្យសម្ងាត់</h3>
+            <label for="currentPass">ពាក្យសម្ងាត់​បច្ចុប្បន្ន</label>
+            <input type="password" id="currentPass" placeholder="ដាក់ពាក្យសម្ងាត់បច្ចុប្បន្ន">
+
+            <label for="newPass">ពាក្យសម្ងាត់​ថ្មី</label>
+            <input type="password" id="newPass" placeholder="ដាក់ពាក្យសម្ងាត់ថ្មី">
+
+            <label for="confirmPass">បញ្ចាក់ពាក្យសម្ងាត់ថ្មី</label>
+            <input type="password" id="confirmPass" placeholder="បញ្ចាក់ពាក្យសម្ងាត់">
+          </section>
+
+          <div class="form-actions">
+            <button type="submit" class="save-btn">💾 រក្សាទុក</button>
+            <button type="button" id="cancelBtn" class="btn ghost">បោះបង់</button>
+          </div>
+        </form>
+      </main>
+    </section>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </main>
+
+  <!-- Back Navigation -->
+  <a href="/dashboard" class="profile-nav-back">⬅️ ត្រឡប់ទៅ Dashboard</a>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.appspot.com",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // DOM Elements
+    const profileForm = document.getElementById("profileForm");
+    const avatarPreview = document.getElementById("avatarPreview");
+    const avatarUpload = document.getElementById("avatarUpload");
+    const previewName = document.getElementById("previewName");
+    const previewTitle = document.getElementById("previewTitle");
+    const previewBio = document.getElementById("previewBio");
+    const toast = document.getElementById("toast");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    let currentUser;
+
+    // Toast notification
+    function showToast(message, type = 'success') {
+      toast.textContent = message;
+      toast.style.background = type === 'success' 
+        ? 'linear-gradient(135deg, #10b981, #059669)' 
+        : 'linear-gradient(135deg, #ef4444, #dc2626)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // Update live preview
+    function updatePreview() {
+      const name = document.getElementById("profileName").value || "ឈ្មោះ របស់​អ្នក";
+      const title = document.getElementById("profileTitle").value || "Student";
+      const bio = document.getElementById("profileBio").value || "ដាក់ bio ឲ្យខ្លី សង្ខេប និងមានចក្ខុវិស័យ។";
+      
+      if (previewName) {
+        previewName.innerHTML = name + ' <span id="blueTick" style="display:none;color:#2563eb;vertical-align:middle;"><i class="fa fa-check-circle"></i></span>';
+        // Show blue tick if verified
+        const blueTick = document.getElementById('blueTick');
+        if (window.isVerifiedUser) {
+          blueTick.style.display = 'inline-block';
+        } else {
+          blueTick.style.display = 'none';
+        }
+      }
+      if (previewTitle) previewTitle.textContent = `${title} • Rotana eLearning`;
+      if (previewBio) previewBio.textContent = bio;
+    }
+
+    // Load user data on auth state change
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        document.getElementById("profileEmail").value = user.email || "";
+
+        try {
+          const docRef = doc(db, "users", user.uid);
+          const snap = await getDoc(docRef);
+          
+          if (snap.exists()) {
+            const data = snap.data();
+            document.getElementById("profileName").value = data.name || "";
+            document.getElementById("profileTitle").value = data.title || "";
+            document.getElementById("profileBio").value = data.bio || "";
+            document.getElementById("profilePhone").value = data.phone || "";
+            document.getElementById("profileWebsite").value = data.website || "";
+            document.getElementById("profileLinkedin").value = data.linkedin || "";
+            document.getElementById("profileGithub").value = data.github || "";
+            document.getElementById("profileEducation").value = data.education || "";
+            document.getElementById("profileSkills").value = data.skills || "";
+            document.getElementById("profilePublic").checked = data.isPublic || false;
+            document.getElementById("emailNotify").checked = data.emailNotify !== false;
+            
+            // Avatar: use only localStorage
+            const localAvatar = localStorage.getItem('userAvatar');
+            if (localAvatar) {
+              avatarPreview.src = localAvatar;
+            } else {
+              avatarPreview.src = 'assets/images/default-avatar.png';
+            }
+            // Blue tick: check if user is in Top 10 (leaderboardCache)
+            let isTop10 = false;
+            try {
+              const leaderboard = JSON.parse(localStorage.getItem('leaderboardCache') || '[]');
+              if (Array.isArray(leaderboard) && leaderboard.length) {
+                isTop10 = leaderboard.some(u => u && u.userId === user.uid);
+              }
+            } catch(e) {}
+            window.isVerifiedUser = isTop10;
+            updatePreview();
+          }
+        } catch (err) {
+          console.error("Error loading profile:", err);
+        }
+      } else {
+        // Not logged in
+        window.location.href="login";
+      }
+    });
+
+    // Avatar Upload Preview
+    avatarUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        if (file.size > 5 * 1024 * 1024) {
+          showToast("រូបភាពធំពេក! សូមជ្រើសរើសរូបតូចជាង 5MB", "error");
+          return;
+        }
+        avatarPreview.src = URL.createObjectURL(file);
+      }
+    });
+
+    // Live preview update on input
+    ["profileName", "profileTitle", "profileBio"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("input", updatePreview);
+    });
+
+    // Save Profile
+    profileForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+
+      try {
+        // Save avatar only in localStorage
+        if (avatarUpload.files[0]) {
+          avatarPreview.src = URL.createObjectURL(avatarUpload.files[0]);
+          localStorage.setItem("userAvatar", avatarPreview.src);
+        }
+        // Save other profile data to Firestore (no avatarUrl)
+        await setDoc(doc(db, "users", currentUser.uid), {
+          name: document.getElementById("profileName").value || "",
+          email: currentUser.email,
+          title: document.getElementById("profileTitle").value || "",
+          bio: document.getElementById("profileBio").value || "",
+          phone: document.getElementById("profilePhone").value || "",
+          website: document.getElementById("profileWebsite").value || "",
+          linkedin: document.getElementById("profileLinkedin").value || "",
+          github: document.getElementById("profileGithub").value || "",
+          education: document.getElementById("profileEducation").value || "",
+          skills: document.getElementById("profileSkills").value || "",
+          isPublic: document.getElementById("profilePublic").checked,
+          emailNotify: document.getElementById("emailNotify").checked,
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+        showToast("✅ រក្សាទុកប្រវត្តិរូបជោគជ័យ!");
+
+        // Handle password change if requested
+        const currentPass = document.getElementById("currentPass").value;
+        const newPass = document.getElementById("newPass").value;
+        const confirmPass = document.getElementById("confirmPass").value;
+
+        if (newPass && currentPass) {
+          if (newPass !== confirmPass) {
+            showToast("ពាក្យសម្ងាត់ថ្មីមិនត្រូវគ្នា!", "error");
+            return;
+          }
+          if (newPass.length < 6) {
+            showToast("ពាក្យសម្ងាត់ថ្មីត្រូវមានយ៉ាងតិច 6 តួអក្សរ", "error");
+            return;
+          }
+
+          try {
+            const credential = EmailAuthProvider.credential(currentUser.email, currentPass);
+            await reauthenticateWithCredential(currentUser, credential);
+            await updatePassword(currentUser, newPass);
+            showToast("✅ ពាក្យសម្ងាត់បានផ្លាស់ប្តូរជោគជ័យ!");
+            
+            // Clear password fields
+            document.getElementById("currentPass").value = "";
+            document.getElementById("newPass").value = "";
+            document.getElementById("confirmPass").value = "";
+          } catch (passErr) {
+            console.error("Password update error:", passErr);
+            showToast("❌ ពាក្យសម្ងាត់បច្ចុប្បន្នមិនត្រឹមត្រូវ", "error");
+          }
+        }
+
+      } catch (err) {
+        console.error("Error saving profile:", err);
+        showToast("❌ មានបញ្ហាក្នុងការរក្សាទុក", "error");
+      }
+    });
+
+    // Cancel button
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", () => {
+          if (confirm("តើអ្នកចង់បោះបង់ការផ្លាស់ប្តូរមែនទេ?")) {
+          window.location.href = "/dashboard";
+        }
+      });
+    }
+
+    // Quick Actions
+    document.getElementById("downloadVCard")?.addEventListener("click", () => {
+      const name = document.getElementById("profileName").value || "User";
+      const email = document.getElementById("profileEmail").value || "";
+      const phone = document.getElementById("profilePhone").value || "";
+      
+      const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+EMAIL:${email}
+TEL:${phone}
+ORG:Rotana eLearning
+END:VCARD`;
+
+      const blob = new Blob([vCard], { type: "text/vcard" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${name.replace(/\s+/g, '_')}.vcf`;
+      link.click();
+      showToast("✅ vCard ទាញយកជោគជ័យ!");
+    });
+
+    document.getElementById("shareProfile")?.addEventListener("click", async () => {
+      const name = document.getElementById("profileName").value || "User";
+      const shareData = {
+        title: `${name} - Rotana eLearning`,
+        text: `សូមពិនិត្យមើលប្រវត្តិរូបរបស់ ${name} នៅ Rotana eLearning!`,
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("📋 Link ត្រូវបាន Copy!");
+      }
+    });
+
+    document.getElementById("previewPublic")?.addEventListener("click", () => {
+      showToast("🔍 មុខងារនេះនឹងមកដល់ឆាប់ៗ!");
+    });
+  </script>
+
+  <script>
+  // URL tracking param behavior (optional)
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+      const part1 = Math.random().toString(36).substring(2);
+      const part2 = Math.random().toString(36).substring(2);
+      const part3 = Date.now().toString(36);
+      const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+      const longHash = btoa(rawString + rawString);
+      const newUrl = window.location.pathname + '?srsltid=' + longHash + '&ref_src=' + part1 + '&camp_id=' + Date.now();
+      window.history.replaceState(null, '', newUrl);
+    }
+  });
+  </script>
+  <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>

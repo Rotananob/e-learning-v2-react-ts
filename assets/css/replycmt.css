@@ -1,0 +1,104 @@
+﻿/* 📝 Comment Style */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.comment-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-body {
+  flex: 1;
+}
+
+.comment-username {
+  font-weight: bold;
+  color: #333;
+  margin-right: 8px;
+}
+
+.comment .timestamp {
+  font-size: 12px;
+  color: gray;
+}
+
+.comment-text {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* 📝 Reply Style */
+.reply {
+  margin-left: 45px;  /* indent under parent comment */
+  padding: 5px 8px;
+  border-left: 2px solid #e0e0e0;
+  margin-top: 4px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.reply-username {
+  font-weight: bold;
+  margin-right: 6px;
+  font-size: 13px;
+  color: #2a5885;
+}
+
+.reply-text {
+  font-size: 13px;
+  color: #333;
+}
+
+/* 📝 Reply Button */
+.reply-btn {
+  font-size: 12px;
+  color: #2a5885;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin-top: 3px;
+  padding: 0;
+}
+
+.reply-btn:hover {
+  text-decoration: underline;
+}
+
+/* 📝 Reply Input */
+.reply-input {
+  margin-left: 45px;
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+}
+
+.reply-input input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.reply-input button {
+  padding: 6px 10px;
+  border: none;
+  background: #1877f2;
+  color: white;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.reply-input button:hover {
+  background: #0f5dc0;
+}

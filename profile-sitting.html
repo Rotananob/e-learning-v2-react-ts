@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://rotana-elearningg.web.app/profile-sitting" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚙️ កែប្រវត្តិរូប</title>
+  <link rel="icon" type="image/png" href="assets/img/images/setting profile.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins','Noto Sans Khmer', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #06b6d4, #9333ea);
+      min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      padding: 20px;
+      color: #1f2937;
+    }
+
+    .profile-settings {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg,#06b6d4,#9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .profile-avatar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .profile-avatar img {
+      width: 120px; height: 120px;
+      border-radius: 50%; object-fit: cover;
+      border: 4px solid #06b6d4;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform .3s;
+    }
+    .profile-avatar img:hover { transform: scale(1.05); }
+
+    .upload-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: linear-gradient(90deg,#06b6d4,#3b82f6);
+      color: white; border-radius: 8px;
+      cursor: pointer; font-size: 14px; font-weight: bold;
+    }
+    .upload-btn:hover { background: linear-gradient(90deg,#9333ea,#06b6d4); }
+
+    label { display: block; margin: 10px 0 5px; font-weight: 600; }
+    input, textarea, select {
+      width: 100%; padding: 12px;
+      border-radius: 8px; border: 1px solid #ddd;
+      margin-bottom: 10px; font-size: 15px;
+      transition: border .3s, box-shadow .3s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #06b6d4; outline: none;
+      box-shadow: 0 0 0 3px rgba(6,182,212,0.2);
+    }
+
+    .save-btn {
+      width: 100%; padding: 14px;
+      border: none; border-radius: 8px;
+      font-size: 16px; font-weight: bold;
+      background: linear-gradient(90deg,#06b6d4,#9333ea);
+      color: white; cursor: pointer;
+      margin-top: 10px;
+      transition: transform .2s;
+    }
+    .save-btn:hover { transform: scale(1.03); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 20px; text-align: center;
+      font-size: 13px; color: #6b7280;
+    }
+
+    @media(max-width:600px){
+      .profile-settings { padding: 20px; }
+    }
+  </style>
+</head>
+<style>
+  .version-badge-v1 {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px #0002;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .version-badge-v1 i {
+    font-size: 1.3em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 7px 14px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 12px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+  <div class="profile-settings">
+    <h2>⚙️ កែប្រវត្តិរូប</h2>
+    <form id="profileForm">
+      <!-- Avatar -->
+      <div class="profile-avatar">
+        <img id="avatarPreview" src="assets/images/default-avatar.png" alt="Avatar">
+        <label for="avatarUpload" class="upload-btn">📷 ផ្លាស់ប្តូររូប</label>
+<p>(បើប្ដូរឈ្មោះហើយត្រូវតែចងចាំឈ្មោះនេះសម្រាប់ទាញយកគណនីវិញការពារពេលភ្លេចលេខសង្ងាត់)</p> 
+<br>    
+
+<input type="file" id="avatarUpload" accept="image/*" hidden>
+      </div>
+<label for="profileName">ឈ្មោះ</label>
+<input type="text" id="profileName" placeholder="Ex: Rotana NOB" required>
+
+      <label for="profileEmail">អ៊ីម៉ែល</label>
+<input type="email" id="profileEmail" placeholder="Ex:​rotana@gmail.com" disabled>
+
+<label for="profileBio">Bio</label>
+<textarea id="profileBio" rows="3" placeholder="Example: Srolanh ke m'neak eng😍 "></textarea>
+
+<h3>📌 ព័ត៌មានបន្ថែម</h3>
+
+<label for="profileEducation">ការសិក្សា</label>
+<input type="text" id="profileEducation" placeholder="Ex: MIS&BIT or Desgin at Setec Institue">
+
+<label for="profileHometown">ទីកន្លែងកំណើត</label>
+<input type="text" id="profileHometown" placeholder="Ex: Kampong Cham, Cambodia">
+
+<label for="profileCurrentCity">ទីកន្លែងបច្ចុប្បន្ន</label>
+<input type="text" id="profileCurrentCity" placeholder="Ex: ToulKouk,Phnom Penh, Cambodia">
+
+      <label for="profileRelationship">ស្ថានភាពទំនាក់ទំនង</label>
+      <select id="profileRelationship">
+        <option value="">ជ្រើសរើស...</option>
+        <option value="single">នៅលីវ</option>
+        <option value="in-relationship">កំពុងមានទំនាក់ទំនង</option>
+        <option value="married">រៀបការ</option>
+        <option value="complicated">ស្មុគស្មាញ</option>
+      </select>
+
+      <button type="submit" class="save-btn">💾 រក្សាទុក</button>
+      <button type="button" onclick="window.location.href='/welcome'" class="save-btn">⬅️ ត្រឡប់</button>
+    </form>
+    <footer>© ២០២៥ ផ្ដល់ជួនដោយ Rotana NOB</footer>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.appspot.com",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    const profileForm = document.getElementById("profileForm");
+    const avatarPreview = document.getElementById("avatarPreview");
+    const avatarUpload = document.getElementById("avatarUpload");
+
+    let currentUser;
+
+    // Load user data
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        document.getElementById("profileEmail").value = user.email;
+
+        const docRef = doc(db, "users", user.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) {
+          const data = snap.data();
+          document.getElementById("profileName").value = data.name || "";
+          document.getElementById("profileBio").value = data.bio || "";
+          document.getElementById("profileEducation").value = data.education || "";
+          document.getElementById("profileHometown").value = data.hometown || "";
+          document.getElementById("profileCurrentCity").value = data.currentCity || "";
+          document.getElementById("profileRelationship").value = data.relationship || "";
+          if (data.avatarUrl) avatarPreview.src = data.avatarUrl;
+        }
+      } else {
+        window.location.href="login";
+      }
+    });
+
+    // Avatar Upload Preview
+    avatarUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        avatarPreview.src = URL.createObjectURL(file);
+      }
+    });
+
+    // Save Profile
+    profileForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+
+      let avatarUrl = avatarPreview.src;
+
+      // Upload avatar if new file selected
+      if (avatarUpload.files[0]) {
+        const fileRef = ref(storage, "avatars/" + currentUser.uid + ".jpg");
+        await uploadBytes(fileRef, avatarUpload.files[0]);
+        avatarUrl = await getDownloadURL(fileRef);
+      }
+
+      await setDoc(doc(db, "users", currentUser.uid), {
+        name: document.getElementById("profileName").value,
+        email: currentUser.email,
+        bio: document.getElementById("profileBio").value,
+        education: document.getElementById("profileEducation").value,
+        hometown: document.getElementById("profileHometown").value,
+        currentCity: document.getElementById("profileCurrentCity").value,
+        relationship: document.getElementById("profileRelationship").value,
+        avatarUrl
+      });
+
+      alert("✅ រក្សាទុកប្រវត្តិរូបជោគជ័យ!");
+      
+    });
+  </script>
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        
+        //  បង្កើតផ្នែកតូចៗនៃកូដ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36); // យកម៉ោងមកដាក់
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+
+        //  បំប្លែងទៅជាកូដសម្ងាត់វែង (Base64) ឱ្យមើលទៅកាច
+        // btoa គឺជា function បំប្លែងអក្សរធម្មតាទៅជាកូដ Base64
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        // ប្តូរ URL លើ Browser ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

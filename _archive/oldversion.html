@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+      <link rel="canonical" href="https://rotana-elearningg.web.app/index1.html" />
+    <meta name="description" content="Rotana E-learning  វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Rotana E-Learning - រៀនគ្មានដែនកំណត់ </title>
+  <link rel="icon" href="assets/css/fonts/images/logo.png" type="image/png">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SX8TKZM2ZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SX8TKZM2ZF');
+</script>
+
+  <!-- Google Fonts Khmer: Dongrek + Noto Sans Khmer -->
+  <link href="https://fonts.googleapis.com/css2?family=Dongrek&family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Dongrek','Noto Sans Khmer',sans-serif;}
+    body{background:#ffffff;color:#1f2937;line-height:1.7;overflow-x:hidden;}
+
+    body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;
+      background:linear-gradient(135deg,rgba(37,99,235,0.05),rgba(139,92,246,0.05),rgba(6,182,212,0.05));
+      pointer-events:none;z-index:-1;}
+
+    /* Header */
+    header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;
+      align-items:center;padding:16px 8%;background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(20px);border-bottom:2px solid rgba(37,99,235,0.1);z-index:1000;
+      box-shadow:0 2px 15px rgba(0,0,0,0.08);}
+    header .logo{display:flex;align-items:center;gap:12px;}
+    header .logo img{height:48px;border-radius:8px;transition:0.3s;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+    header .logo img:hover{transform:scale(1.05);}
+    header h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;color:#1f2937;}
+    nav{display:flex;align-items:center;gap:8px;}
+    nav a{text-decoration:none;padding:10px 20px;border-radius:10px;font-weight:600;transition:all 0.3s ease;font-size:15px;letter-spacing:0.3px;color:#1f2937;}
+    .btn{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;box-shadow:0 4px 12px rgba(37,99,235,0.3);border:none;cursor:pointer;}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4);background:linear-gradient(135deg,#1d4ed8,#1e40af);}
+    .btn-outline{border:2px solid #2563eb;color:#2563eb;background:rgba(37,99,235,0.05);}
+    .btn-outline:hover{background:#2563eb;color:#ffffff;}
+
+    /* Hamburger Menu */
+    .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;padding:8px;}
+    .hamburger span{width:26px;height:3px;background:linear-gradient(90deg,#2563eb,#06b6d4);
+      border-radius:2px;transition:0.3s ease;}
+
+    /* Mobile Navigation */
+    .mobile-nav{position:fixed;top:0;right:-100%;width:75%;height:100vh;
+      background:linear-gradient(180deg,rgba(255,255,255,0.98) 0%,rgba(248,250,252,0.95) 100%);
+      backdrop-filter:blur(20px);display:flex;flex-direction:column;padding:80px 25px;
+      transition:0.4s ease;z-index:2000;border-left:2px solid rgba(37,99,235,0.1);
+      overflow-y:auto;box-shadow:-4px 0 20px rgba(0,0,0,0.1);}
+    .mobile-nav.active{right:0;}
+    .mobile-nav a{margin:12px 0;padding:14px 16px;font-size:17px;color:#2563eb;
+      border-bottom:1px solid rgba(37,99,235,0.1);text-decoration:none;
+      border-radius:8px;transition:0.3s ease;font-weight:500;}
+    .mobile-nav a:hover{background:rgba(37,99,235,0.1);color:#1d4ed8;border-radius:10px;}
+
+    /* Social Links */
+    .social-links{margin-top:40px;display:flex;flex-direction:column;gap:12px;}
+    .social-links a{color:#2563eb;font-size:16px;text-decoration:none;transition:0.3s;
+      padding:12px;border-radius:8px;display:flex;align-items:center;gap:10px;}
+    .social-links a:hover{color:#1d4ed8;transform:translateX(4px);background:rgba(37,99,235,0.1);}
+
+    /* Hero */
+    .hero{padding:180px 8% 120px;text-align:center;color:#1f2937;}
+    .hero h2{font-size:48px;font-weight:800;margin-bottom:20px;line-height:1.2;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;letter-spacing:-1px;font-family:'Segoe UI','Poppins',sans-serif;}
+    .hero p{font-size:18px;margin-bottom:35px;color:#4b5563;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.8;font-weight:400;}
+    .btn-group{margin-top:30px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
+
+    /* Features */
+    .features{padding:100px 8%;text-align:center;background:rgba(255,255,255,0.5);}
+    .features h2{font-size:42px;margin-bottom:15px;font-weight:800;color:#1f2937;font-family:'Segoe UI','Poppins',sans-serif;letter-spacing:-1px;}
+    .features > p{font-size:16px;color:#6b7280;margin-bottom:50px;max-width:600px;margin-left:auto;margin-right:auto;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:30px;}
+    .card{background:#ffffff;padding:28px;border-radius:16px;border:2px solid #f0f0f0;transition:all 0.4s ease;opacity:0;transform:translateY(40px);position:relative;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(37,99,235,0.05),rgba(139,92,246,0.05));opacity:0;transition:0.3s;}
+    .card:hover::before{opacity:1;}
+    .card.show{opacity:1;transform:translateY(0);transition:0.5s ease;}
+    .card:hover{transform:translateY(-8px);border-color:#2563eb;box-shadow:0 12px 30px rgba(37,99,235,0.15);}
+    .card h3{margin-bottom:12px;font-size:19px;font-weight:700;color:#2563eb;position:relative;z-index:1;}
+    .card i{font-size:28px;color:#7c3aed;margin-right:8px;}
+    .card p{font-size:15px;color:#4b5563;position:relative;z-index:1;line-height:1.6;}
+
+    .footer{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,250,252,0.95));color:#6b7280;text-align:center;
+      padding:50px 8%;margin-top:60px;border-top:2px solid #e5e7eb;font-size:15px;}
+    .footer h3{color:#1f2937;margin-bottom:15px;font-size:18px;font-weight:700;}
+    .footer a{color:#2563eb;text-decoration:none;transition:0.3s;font-weight:500;}
+    .footer a:hover{color:#1d4ed8;text-decoration:underline;}
+    .footer p{margin:10px 0;line-height:1.7;}
+
+    /* Responsive */
+    @media(max-width:900px){
+      nav{display:none;}.hamburger{display:flex;}.hero{padding:140px 6% 80px;}.hero h2{font-size:38px;}
+      .features{padding:70px 6%;}.features h2{font-size:32px;}.grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+    }
+    @media(max-width:600px){
+      header{padding:12px 5%;}.hamburger span{width:22px;height:2.5px;}
+      .hero{padding:120px 5% 60px;}.hero h2{font-size:28px;margin-bottom:15px;}.hero p{font-size:16px;}
+      .btn-group{flex-direction:column;gap:10px;}.features{padding:50px 5%;}.features h2{font-size:24px;}
+      .grid{grid-template-columns:1fr;gap:15px;}.card{padding:20px;}.card h3{font-size:17px;}.card p{font-size:14px;}
+      .footer{padding:35px 5%;font-size:13px;}
+    }
+  
+  </style>
+</head>
+<meta name="keywords" content="Rotana, វគ្គអាយធី, រៀនអនឡាញ, កូដ, កម្មវិធី, វេទិកា, ភាសាខ្មែរ, e-learning, IT, វីដេអូសិក្សា, សិក្សាអាយធី, រៀនកូដ, រៀនកម្មវិធី, សិក្សាអនឡាញ">
+<meta property="og:title" content="Rotana E-learning វេទិការៀនអាយធី និង កូដភាសាខ្មែរ">
+<meta property="og:description" content="វេទិការៀនអាយធី(IT)​ឥត​គិតថ្លៃ រៀនសរសេរកូដ បង្កើតកម្មវិធី និងវេបសាយជាភាសាខ្មែរ។">
+<meta property="og:image" content="https://rotana-elearningg.web.app/assets/img/icon.png">
+<meta property="og:url" content="https://rotana-elearningg.web.app/index1.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rotana E-learning វេទិការៀនអាយធី និង កូដភាសាខ្មែរ">
+<meta name="twitter:description" content="វេទិការៀនអាយធី(IT)​ឥត​គិតថ្លៃ រៀនសរសេរកូដ បង្កើតកម្មវិធី និងវេបសាយជាភាសាខ្មែរ។">
+<meta name="twitter:image" content="https://rotana-elearningg.web.app/assets/img/icon.png">
+<!-- SEO Helper: window.pageSEO for script.js auto meta -->
+<script>
+  window.pageSEO = window.pageSEO || {
+    title: "Rotana E-learning វេទិការៀនអាយធី និង កូដភាសាខ្មែរ",
+    description: "វេទិការៀនអាយធី(IT)​ឥត​គិតថ្លៃ រៀនសរសេរកូដ បង្កើតកម្មវិធី និងវេបសាយជាភាសាខ្មែរ។",
+    keywords: "Rotana, វគ្គអាយធី, រៀនអនឡាញ, កូដ, កម្មវិធី, វេទិកា, ភាសាខ្មែរ, e-learning, IT, វីដេអូសិក្សា, សិក្សាអាយធី, រៀនកូដ, រៀនកម្មវិធី, សិក្សាអនឡាញ",
+    image: "https://rotana-elearningg.web.app/assets/img/icon.png",
+    canonical: "https://rotana-elearningg.web.app/index.html",
+    type: "website",
+    siteName: "Rotana E-learning",
+    breadcrumbs: [
+      { name: "Home", url: "https://rotana-elearningg.web.app/" },
+      { name: "Old Version", url: "https://rotana-elearningg.web.app/index.html" }
+    ]
+  };
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rotana-elearningg.web.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Old Version",
+        "item": "https://rotana-elearningg.web.app/index1.html"
+      }
+    ]
+  }
+</script>
+<style>
+  .version-badge-v1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.08rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 7px 18px;
+    border-radius: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    box-shadow: 0 4px 18px #0002;
+    margin-right: 16px;
+  }
+  .version-badge-v1 i {
+    font-size: 1.1em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 900px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 6px 10px;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      z-index: 1100;
+      margin-right: 0;
+    }
+  }
+</style>
+<body>
+
+  <!-- kbal khang ler  -->
+  <header>
+    <div class="logo">
+      <img src="assets/css/fonts/images/logo.png" alt="Logo">
+      <h1>Rotana<br> E-Learning</h1>
+    </div>
+   <nav>
+  <a href="/login" class="btn">ចូលរៀន</a>
+
+  <a href="/register" class="btn-outline">ចុះឈ្មោះ</a> 
+</nav>
+    <div class="hamburger" id="hamburger"><h3><b></b></h3>
+      <span></span><h3></h3><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Mobile -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/login">ចូលរៀន</a>
+    <a href="/register">ចុះឈ្មោះ</a>
+    <a href="#features">ជំនាញ</a>
+    <a href="#footer">របៀបចុះឈ្មោះ និង ប្រើប្រាស់:</a>
+    <!-- ig fb tele Links -->
+    <div class="social-links">
+      <a href="https://web.facebook.com/TheRotanaNob" target="_blank" title="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://t.me/rotananobSETEC" target="_blank" title="Telegram"><i class="fab fa-telegram"></i> Telegram</a>
+      <a href="https://www.instagram.com/nob_rotana" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+  </div>
+
+   
+  <section class="hero">
+    <h2>យើងជា​ Gen Z ត្រូវតែខ្លាំងខាងបច្ចេកវិទ្យា </h2>
+    <p>គេហទំព័រនេះមានបង្រៀនជាច្រើនដូចជា Web Development, App Development, WordPress, AI, Cybersecurity, Video Editing, Graphic Design, Network Programming និងផ្សេងៗទៀតទាក់ទងនឹងIT ។</p>
+    <div class="btn-group">
+      <a href="/register" class="btn">ចាប់ផ្តើមឥឡូវនេះ</a>
+      <a href="/login" class="btn-outline">ចូលទៅរៀន</a>
+    </div>
+  </section>
+
+  <!-- kleng Features -->
+ 
+  <!-- kleng Features -->
+  <section class="features" id="features">
+    <h2> <i class="fa fa-graduation-cap"></i> ជំនាញដែលអ្នកអាចជ្រើសរើសរៀនបាន <i class="fa fa-star"></i></h2>
+    <div class="grid">
+      <div class="card"><h3><i class="fa fa-laptop-code"></i> Web Development</h3><p>HTML, CSS, JavaScript និង Frameworks</p></div>
+      <div class="card"><h3><i class="fa fa-mobile-alt"></i> App Development</h3><p>React Native, Flutter, Kotlin, Swift</p></div>
+      <div class="card"><h3><i class="fa fa-wordpress"></i> WordPress</h3><p>CMS WordPress, WooCommerce</p></div>
+      <div class="card"><h3><i class="fa fa-robot"></i> Artificial Intelligence</h3><p>Machine Learning, Generative AI, Chatbot</p></div>
+      <div class="card"><h3><i class="fa fa-shield-alt"></i> Cybersecurity</h3><p>ការពារទិន្នន័យ, Ethical Hacking, PenTesting</p></div>
+      <div class="card"><h3><i class="fa fa-video"></i> Video Editing</h3><p>Premiere Pro, DaVinci Resolve, Capcut, Inshot</p></div>
+      <div class="card"><h3><i class="fa fa-paint-brush"></i> Graphic Design</h3><p>Canva, Photoshop, Illustrator, Figma</p></div>
+      <div class="card"><h3><i class="fa fa-network-wired"></i> Network Programming</h3><p>Network Tools, Coding, IoT</p></div>
+      <div class="card"><h3><i class="fa fa-database"></i> Database & SQL</h3><p>MySQL, MongoDB, Firebase, PostgreSQL</p></div>
+      <div class="card"><h3><i class="fa fa-cloud"></i> Cloud Computing</h3><p>AWS, Google Cloud, Azure, Serverless</p></div>
+      <div class="card"><h3><i class="fa fa-cogs"></i> DevOps & Automation</h3><p>CI/CD, Docker, GitHub Actions</p></div>
+      <div class="card"><h3><i class="fa fa-language"></i> Programming Languages</h3><p>Python, Java, C#, PHP, Go, Rust</p></div>
+      <div class="card"><h3><i class="fa fa-chart-line"></i> Data Science & Analytics</h3><p>Pandas, Excel, Power BI, Data Visualization</p></div>
+      <div class="card"><h3><i class="fa fa-bullhorn"></i> Digital Marketing</h3><p>SEO, Facebook Ads, Google Ads</p></div>
+      <div class="card"><h3><i class="fa fa-briefcase"></i> Freelancing & Career</h3><p>Upwork, Fiverr, Resume, Interview Skills</p></div>
+      <div class="card"><h3><i class="fa fa-microchip"></i> IoT & Robotics</h3><p>Arduino, Raspberry Pi, Sensor Coding</p></div>
+      <div class="card"><h3><i class="fa fa-gamepad"></i> Game Development</h3><p>Unity, Godot, Phaser, Game Design</p></div>
+      <div class="card"><h3><i class="fa fa-file-alt"></i> Microsoft Office</h3><p>Word, Excel, PowerPoint, Outlook</p></div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer">
+      <a href="Q&A"><h3>របៀប ចុះឈ្មោះ និង ប្រើប្រាស់ Website នេះឲងាយស្រួលក្នុងការរៀន</h3> </a>
+      
+
+    <p>© 2024 Rotana E-learning | Last update: 14/08/2025<br>ផ្ដល់ជូនដោយ : Rotana NOB </p>
+         <!----> <a href="https://យើងសុំបិទសិន"   style="color: #38bdf8;">អំពីក្រុមពួកយើង​ X-Flow Group & Collective</a>
+
+  </footer>
+  <script>
+    const cards=document.querySelectorAll('.card');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('show');}
+      });
+    },{threshold:0.2});
+    cards.forEach(card=>observer.observe(card));
+
+    // ah nis Hamburger Menu
+    const hamburger=document.getElementById('hamburger');
+    const mobileNav=document.getElementById('mobileNav');
+    hamburger.addEventListener('click',()=>{mobileNav.classList.toggle('active');});
+
+    // bit Menu vinh pel jcoh links
+    document.querySelectorAll('.mobile-nav a').forEach(link=>{
+      link.addEventListener('click',()=>{mobileNav.classList.remove('active');});
+    });
+  </script>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69244d0ecd70fb195fa0649a/1jaqsq0r0';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<script>
+  // Rotana Freelancer Code: បន្ថែម Noise ទៅ URL (ថេរ per session)
+  window.addEventListener('load', function() {
+    // ១. បង្កើតកូដចៃដន្យតែម្ដងក្នុង sessionStorage
+    let randomId = sessionStorage.getItem('sid');
+    if (!randomId) {
+      randomId = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+      sessionStorage.setItem('sid', randomId);
+    }
+    // ២. បន្ថែមទៅ URL បើមិនមាន sid/ref ឬក៏ ref/sid តាមលំដាប់ណាក៏ដោយ
+    const url = new URL(window.location.href);
+    let changed = false;
+    if (!url.searchParams.has('sid')) {
+      url.searchParams.append('sid', randomId);
+      changed = true;
+    }
+    if (!url.searchParams.has('ref')) {
+      url.searchParams.append('ref', 'rotana_elearning');
+      changed = true;
+    }
+    // បើមាន sid/ref រួចហើយក៏កុំប្ដូរតម្លៃទេ (ថេររហូត)
+    if (changed) {
+      window.history.replaceState(null, '', url.pathname + url.search);
+    }
+  });
+</script>
+
+<!--End of Tawk.to Script-->
+
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+
+</body>
+</html>

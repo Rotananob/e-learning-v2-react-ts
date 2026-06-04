@@ -1,0 +1,157 @@
+﻿/* ========== Base Reset ========== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g1:#6a11cb; --g2:#2575fc;        /* main gradient */
+  --g3:#ff6a00; --g4:#ee0979;        /* accent gradient */
+  --glass:rgba(255,255,255,.12);
+  --white: #fff;
+}
+html,body{height:100%}
+body{
+  display:flex;justify-content:center;align-items:center;overflow:hidden;
+  font-family:"Poppins","Battambang",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:#f8f9ff; 
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,.06), transparent 60%) no-repeat,
+              radial-gradient(1000px 700px at 90% 80%, rgba(255,255,255,.06), transparent 60%) no-repeat,
+              linear-gradient(120deg,var(--g1),var(--g2),var(--g3),var(--g4));
+  background-size: 100% 100%, 100% 100%, 300% 300%;
+  animation: bg-pan 18s ease-in-out infinite;
+  perspective: 1200px;
+}
+
+/* 🎨 Animated colorful fog/blobs behind (no HTML change needed) */
+body::before, body::after{
+  content:""; position:fixed; inset:-20vmax; z-index:-2; filter: blur(60px);
+  background:
+    radial-gradient(35vmax 35vmax at 15% 25%, rgba(102,126,234,.35), transparent 60%),
+    radial-gradient(30vmax 30vmax at 85% 20%, rgba(255,105,180,.28), transparent 60%),
+    radial-gradient(28vmax 28vmax at 30% 85%, rgba(67,206,162,.28), transparent 60%),
+    radial-gradient(22vmax 22vmax at 80% 80%, rgba(255,170,0,.25), transparent 60%);
+  animation: blobs 24s ease-in-out infinite alternate;
+}
+body::after{ animation-direction: alternate-reverse; mix-blend-mode: screen; opacity:.9 }
+
+@keyframes bg-pan{
+  0%{ background-position: 0% 0%, 0% 0%, 0% 50% }
+  50%{ background-position: 0% 0%, 0% 0%, 100% 50% }
+  100%{ background-position: 0% 0%, 0% 0%, 0% 50% }
+}
+@keyframes blobs{
+  0%{ transform: translate3d(0,0,0) scale(1) rotate(0deg) }
+  50%{ transform: translate3d(-3vmax,2vmax,0) scale(1.05) rotate(10deg) }
+  100%{ transform: translate3d(3vmax,-2vmax,0) scale(1.08) rotate(-8deg) }
+}
+
+/* 💫 Floating sparkle particles (pure CSS) */
+.login::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.7) 0 1px, transparent 1px) 0 0/7vmax 7vmax,
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,.6) 0 1px, transparent 1px) 0 0/9vmax 9vmax,
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.6) 0 1px, transparent 1px) 0 0/8vmax 8vmax,
+    radial-gradient(circle at 90% 60%, rgba(255,255,255,.55) 0 1px, transparent 1px) 0 0/10vmax 10vmax;
+  animation: stars 12s linear infinite;
+  opacity:.75;
+}
+@keyframes stars{
+  from{ background-position: 0 0, 0 0, 0 0, 0 0 }
+  to  { background-position: 0 200%, 0 250%, 0 220%, 0 240% }
+}
+
+/* ========== Card ========== */
+.login{ width:100%; max-width:420px; padding:24px }
+.login-box{
+  position:relative;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 42px 34px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.15);
+  transform: translateZ(0) rotateX(0) rotateY(0);
+  animation: floaty 6s ease-in-out infinite;
+  outline: 1px solid rgba(255,255,255,.12);
+}
+.login-box::before{
+  content:""; position:absolute; inset:-2px; border-radius:24px; z-index:-1;
+  background: conic-gradient(from 0deg, var(--g1), var(--g2), var(--g3), var(--g4), var(--g1));
+  filter: blur(18px); opacity:.35;
+  animation: ring 8s linear infinite;
+}
+
+@keyframes floaty{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(-8px) }
+}
+@keyframes ring{
+  to{ transform: rotate(360deg) }
+}
+
+/* Title with gentle glow pulse */
+.login-box h2{
+  font-size:28px; letter-spacing:.6px; margin-bottom:22px; color:var(--white);
+  text-shadow: 0 0 16px rgba(255,255,255,.18);
+  animation: glow 3.8s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{ text-shadow: 0 0 10px rgba(255,255,255,.18), 0 0 30px rgba(102,126,234,.15) }
+  50%{ text-shadow: 0 0 16px rgba(255,255,255,.28), 0 0 42px rgba(238,9,121,.22) }
+}
+
+/* Inputs */
+.login-box input{
+  width:100%; padding:13px 16px; margin: 12px 0;
+  border:none; border-radius:14px; font-size:15.5px; color:#1a1a1a;
+  background: rgba(255,255,255,.92);
+  transition: box-shadow .3s ease, transform .2s ease;
+}
+.login-box input::placeholder{ color:#7a7a7a }
+.login-box input:focus{
+  background:#fff;
+  box-shadow: 0 0 0 3px rgba(102,126,234,.35), 0 8px 22px rgba(0,0,0,.18);
+  transform: translateY(-1px);
+}
+
+/* Button with moving gradient + ripple on hover */
+.btn{
+  width:100%; padding:13px 16px; margin-top:16px;
+  border:none; border-radius:14px; color:#fff; font-size:17px; font-weight:600;
+  background: linear-gradient(100deg, var(--g3), var(--g4), var(--g1));
+  background-size: 220% 220%;
+  cursor:pointer;
+  box-shadow: 0 10px 24px rgba(238,9,121,.35);
+  transition: transform .15s ease, box-shadow .2s ease;
+  animation: grad-move 6s ease-in-out infinite;
+  position:relative; overflow:hidden;
+}
+@keyframes grad-move{
+  0%{ background-position: 0% 50% }
+  50%{ background-position: 100% 50% }
+  100%{ background-position: 0% 50% }
+}
+.btn:hover{ transform: translateY(-2px); box-shadow:0 16px 30px rgba(238,9,121,.45) }
+.btn:active{ transform: translateY(0) scale(.99) }
+
+/* Ripple */
+.btn::after{
+  content:""; position:absolute; inset:auto; left:50%; top:50%;
+  width:0; height:0; border-radius:50%;
+  background: rgba(255,255,255,.28); transform: translate(-50%,-50%);
+  transition: width .45s ease, height .45s ease, opacity .6s ease;
+  pointer-events:none;
+}
+.btn:hover::after{ width: 180%; height: 700%; opacity:0 }
+
+/* Link text */
+.login-box p{ margin-top:20px; font-size:14px; color:#eef1ff }
+.login-box a{ color:#ffd369; font-weight:600; text-decoration:none }
+.login-box a:hover{ text-decoration:underline }
+
+/* Disabled state if JS toggles it */
+.btn:disabled{ opacity:.7; cursor:not-allowed; animation: none }
+
+/* 🧘 Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition:none !important }
+}

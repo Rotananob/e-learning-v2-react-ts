@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control | Rotana E-Learning</title>
+  <link rel="icon" href="assets/img/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --sidebar-bg: #181e2a;
+      --sidebar-accent: #2563eb;
+      --sidebar-width: 220px;
+      --header-height: 64px;
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      --accent: #2563eb;
+      --muted: #9aa4ad;
+      --text: #fff;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #0f1724;
+      color: var(--text);
+      font-family: 'Segoe UI', Roboto, 'Noto Sans Khmer', Arial, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 24px;
+      box-shadow: 2px 0 12px #0003;
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      z-index: 10;
+    }
+    .sidebar .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px #2563eb44;
+    }
+    .sidebar h2 {
+      font-family: 'Angkor', cursive;
+      font-size: 1.2rem;
+      margin: 0 0 32px 0;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .sidebar nav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sidebar nav button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.05em;
+      padding: 12px 24px;
+      text-align: left;
+      width: 100%;
+      border-radius: 8px 0 0 8px;
+      cursor: pointer;
+      transition: background 0.18s;
+      font-family: 'Noto Sans Khmer', 'Angkor', sans-serif;
+    }
+    .sidebar nav button.active, .sidebar nav button:hover {
+      background: linear-gradient(90deg, #2563eb 60%, #38bdf8 100%);
+      color: #fff;
+    }
+    .main {
+      margin-left: var(--sidebar-width);
+      width: 100%;
+      min-height: 100vh;
+      background: #0f1724;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-header {
+      height: var(--header-height);
+      background: linear-gradient(90deg,#2563eb,#9333ea);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      box-shadow: 0 2px 12px #0002;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .admin-header h1 {
+      font-size: 1.5rem;
+      font-family: 'Angkor', cursive;
+      margin: 0 0 0 12px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #0003;
+    }
+    .content {
+      max-width: 900px;
+      margin: 36px auto;
+      background: rgba(31,41,55,0.98);
+      border-radius: 18px;
+      box-shadow: 0 2px 18px #0005;
+      padding: 32px 24px;
+      border: 1.5px solid #2563eb33;
+      min-height: 70vh;
+    }
+    .section { margin-bottom: 36px; }
+    h2 {
+      color: #38bdf8;
+      font-family: 'Angkor', cursive;
+      margin-top: 0;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 4px #0002;
+    }
+    label { font-family: 'Noto Sans Khmer', 'Angkor', sans-serif; font-weight: bold; color: #fff; }
+    input, textarea, select {
+      font-family: 'Noto Sans Khmer', 'Angkor', sans-serif;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1.5px solid #2563eb44;
+      margin-bottom: 14px;
+      width: 100%;
+      background: #181e2a;
+      color: #fff;
+      box-shadow: 0 1px 4px #0001;
+      transition: border 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border: 1.5px solid #38bdf8;
+      outline: none;
+    }
+    button, .copy-btn {
+      font-family: 'Angkor', cursive;
+      background: linear-gradient(90deg,#2563eb,#38bdf8);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 28px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #2563eb33;
+    }
+    button:hover, .copy-btn:hover {
+      background: linear-gradient(90deg,#38bdf8,#2563eb);
+      box-shadow: 0 4px 16px #38bdf855;
+    }
+    .card-list { margin-top: 18px; }
+    .card-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px #0002;
+      border: 1.5px solid #2563eb22;
+    }
+    .actions button {
+      margin-left: 8px;
+      background: #facc15;
+      color: #0f172a;
+      border-radius: 6px;
+      font-size: 1em;
+      padding: 7px 16px;
+      box-shadow: 0 1px 4px #0001;
+    }
+    .actions button.delete {
+      background: #ef4444;
+      color: #fff;
+    }
+    .snackbar {
+      visibility: hidden;
+      min-width: 220px;
+      background: #2563eb;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 14px 24px;
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      bottom: 40px;
+      font-size: 1.1em;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 12px #0005;
+      opacity: 0;
+      transition: opacity 0.3s, bottom 0.3s;
+    }
+    .snackbar.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: 60px;
+    }
+    @media (max-width: 800px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .content { padding: 12px 2vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="assets/img/images/logo.png" class="logo" alt="Rotana Logo">
+    <h2>Admin Control</h2>
+    <nav>
+      <button id="nav-courses" class="active"><i class="fa fa-book"></i> វគ្គសិក្សា</button>
+      <button id="nav-notifications"><i class="fa fa-bell"></i> សារជូនអ្នកប្រើ</button>
+    </nav>
+  </div>
+  <div class="main">
+    <div class="admin-header">
+      <h1><i class="fa fa-gears"></i> Rotana E-Learning Admin Panel</h1>
+    </div>
+    <div class="content">
+      <div id="section-courses" class="section">
+        <h2><i class="fa fa-book"></i> គ្រប់គ្រងវគ្គសិក្សា</h2>
+        <form id="course-form">
+          <label>ឈ្មោះវគ្គសិក្សា</label>
+          <input type="text" id="courseName" required>
+          <label>ពិពណ៌នា</label>
+          <textarea id="courseDesc" rows="2" required></textarea>
+          <button type="submit" id="courseSubmit"><i class="fa fa-plus"></i> <span id="courseBtnText">បន្ថែមវគ្គសិក្សា</span></button>
+          <button type="button" id="courseCancel" style="display:none;margin-left:10px;background:#ef4444;">បោះបង់</button>
+        </form>
+        <div class="card-list" id="courseList"></div>
+      </div>
+      <div id="section-notifications" class="section" style="display:none;">
+        <h2><i class="fa fa-bell"></i> ផ្ញើសារជូនអ្នកប្រើប្រាស់</h2>
+        <form id="notif-form">
+          <label>ចំណងជើង</label>
+          <input type="text" id="notifTitle" required>
+          <label>ខ្លឹមសារ</label>
+          <textarea id="notifMsg" rows="2" required></textarea>
+          <label>ទៅកាន់</label>
+          <select id="notifTarget">
+            <option value="all">អ្នកប្រើទាំងអស់</option>
+            <option value="dashboard">Dashboard Only</option>
+          </select>
+          <button type="submit"><i class="fa fa-paper-plane"></i> ផ្ញើសារ</button>
+        </form>
+        <div class="card-list" id="notificationList"></div>
+      </div>
+    </div>
+  </div>
+  <div id="snackbar" class="snackbar"></div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import {
+      getFirestore, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    // Firebase config (from dashboard.html)
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.appspot.com",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    // Snackbar
+    function showSnackbar(msg, color='#2563eb') {
+      const sb = document.getElementById('snackbar');
+      sb.textContent = msg;
+      sb.style.background = color;
+      sb.className = 'snackbar show';
+      setTimeout(()=>{ sb.className = 'snackbar'; }, 2200);
+    }
+    // Sidebar nav
+    const navCourses = document.getElementById('nav-courses');
+    const navNotifs = document.getElementById('nav-notifications');
+    const sectionCourses = document.getElementById('section-courses');
+    const sectionNotifs = document.getElementById('section-notifications');
+    navCourses.onclick = ()=>{
+      navCourses.classList.add('active'); navNotifs.classList.remove('active');
+      sectionCourses.style.display='block'; sectionNotifs.style.display='none';
+    };
+    navNotifs.onclick = ()=>{
+      navNotifs.classList.add('active'); navCourses.classList.remove('active');
+      sectionNotifs.style.display='block'; sectionCourses.style.display='none';
+    };
+    // Courses CRUD
+    const courseList = document.getElementById('courseList');
+    const courseForm = document.getElementById('course-form');
+    const courseName = document.getElementById('courseName');
+    const courseDesc = document.getElementById('courseDesc');
+    const courseSubmit = document.getElementById('courseSubmit');
+    const courseBtnText = document.getElementById('courseBtnText');
+    const courseCancel = document.getElementById('courseCancel');
+    let editingCourseId = null;
+    async function renderCourses() {
+      courseList.innerHTML = '<div style="color:#9aa4ad;">កំពុងផ្ទុក...</div>';
+      const q = collection(db, 'courses');
+      const snapshot = await getDocs(q);
+      courseList.innerHTML = '';
+      snapshot.forEach(docSnap => {
+        const c = docSnap.data();
+        const id = docSnap.id;
+        const div = document.createElement('div');
+        div.className = 'card-item';
+        div.innerHTML = `<div><b>${c.name}</b><br><small>${c.desc}</small></div>
+          <div class="actions">
+            <button onclick="window.editCourse('${id}','${c.name.replace(/'/g,"&#39;")}','${c.desc.replace(/'/g,"&#39;")}")"><i class='fa fa-edit'></i></button>
+            <button class='delete' onclick="window.deleteCourse('${id}')"><i class='fa fa-trash'></i></button>
+          </div>`;
+        courseList.appendChild(div);
+      });
+    }
+    renderCourses();
+    courseForm.onsubmit = async function(e) {
+      e.preventDefault();
+      const name = courseName.value.trim();
+      const desc = courseDesc.value.trim();
+      if (!name || !desc) return showSnackbar('បំពេញព័ត៌មានអោយគ្រប់', '#ef4444');
+      courseSubmit.disabled = true;
+      if (editingCourseId) {
+        await updateDoc(doc(db, 'courses', editingCourseId), { name, desc });
+        showSnackbar('កែវគ្គសិក្សាសម្រេច!','#38bdf8');
+        editingCourseId = null;
+        courseBtnText.textContent = 'បន្ថែមវគ្គសិក្សា';
+        courseCancel.style.display = 'none';
+      } else {
+        await addDoc(collection(db, 'courses'), { name, desc, created: serverTimestamp() });
+        showSnackbar('បន្ថែមវគ្គសិក្សាសម្រេច!','#38bdf8');
+      }
+      courseForm.reset();
+      courseSubmit.disabled = false;
+      renderCourses();
+    };
+    window.editCourse = function(id, name, desc) {
+      courseName.value = name;
+      courseDesc.value = desc;
+      editingCourseId = id;
+      courseBtnText.textContent = 'កែវគ្គសិក្សា';
+      courseCancel.style.display = 'inline-block';
+    };
+    window.deleteCourse = async function(id) {
+      if (confirm('លុបវគ្គសិក្សានេះ?')) {
+        await deleteDoc(doc(db, 'courses', id));
+        showSnackbar('លុបវគ្គសិក្សាសម្រេច!','#ef4444');
+        renderCourses();
+      }
+    };
+    courseCancel.onclick = function() {
+      editingCourseId = null;
+      courseForm.reset();
+      courseBtnText.textContent = 'បន្ថែមវគ្គសិក្សា';
+      courseCancel.style.display = 'none';
+    };
+    // Notifications CRUD
+    const notificationList = document.getElementById('notificationList');
+    const notifForm = document.getElementById('notif-form');
+    const notifTitle = document.getElementById('notifTitle');
+    const notifMsg = document.getElementById('notifMsg');
+    const notifTarget = document.getElementById('notifTarget');
+    async function renderNotifications() {
+      notificationList.innerHTML = '<div style="color:#9aa4ad;">កំពុងផ្ទុក...</div>';
+      const q = collection(db, 'notifications');
+      const snapshot = await getDocs(q);
+      notificationList.innerHTML = '';
+      snapshot.forEach(docSnap => {
+        const n = docSnap.data();
+        const id = docSnap.id;
+        const div = document.createElement('div');
+        div.className = 'card-item';
+        div.innerHTML = `<div><b>${n.title}</b> <span style='color:#38bdf8;font-size:0.9em;'>[${n.target}]</span><br><small>${n.msg}</small><br><small style='color:#888;'>${n.time ? new Date(n.time.seconds*1000).toLocaleString() : ''}</small></div>
+          <div class="actions">
+            <button class='delete' onclick="window.deleteNotification('${id}')"><i class='fa fa-trash'></i></button>
+          </div>`;
+        notificationList.appendChild(div);
+      });
+    }
+    renderNotifications();
+    notifForm.onsubmit = async function(e) {
+      e.preventDefault();
+      const title = notifTitle.value.trim();
+      const msg = notifMsg.value.trim();
+      const target = notifTarget.value;
+      if (!title || !msg) return showSnackbar('បំពេញព័ត៌មានអោយគ្រប់', '#ef4444');
+      await addDoc(collection(db, 'notifications'), {
+        title, msg, target, time: serverTimestamp()
+      });
+      showSnackbar('ផ្ញើសារសម្រេច!','#38bdf8');
+      notifForm.reset();
+      renderNotifications();
+    };
+    window.deleteNotification = async function(id) {
+      if (confirm('លុបសារនេះ?')) {
+        await deleteDoc(doc(db, 'notifications', id));
+        showSnackbar('លុបសារសម្រេច!','#ef4444');
+        renderNotifications();
+      }
+    };
+  </script>
+</body>
+</html>

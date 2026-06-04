@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #1a1a2e; color: white; }
+    .log { background: #16213e; padding: 10px; margin: 5px 0; border-radius: 5px; }
+    .error { background: #ff4444; }
+    .success { background: #00c851; }
+    #output { margin-top: 20px; }
+  </style>
+</head>
+<style>
+  .version-badge-v1 {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px #0002;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .version-badge-v1 i {
+    font-size: 1.3em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 7px 14px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 12px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+  <h1>🔍 Debug Test for Dashboard</h1>
+  <div id="output"></div>
+  
+  <script>
+    const output = document.getElementById('output');
+    
+    function log(msg, type = 'info') {
+      const div = document.createElement('div');
+      div.className = 'log ' + type;
+      div.textContent = msg;
+      output.appendChild(div);
+      console.log(msg);
+    }
+    
+    // Test 1: Check if script.js loads
+    log('📌 Loading script.js...');
+    
+    const script = document.createElement('script');
+    script.src = 'script.js';
+    script.onload = () => log('✅ script.js loaded successfully', 'success');
+    script.onerror = (e) => log('❌ script.js failed to load: ' + e.message, 'error');
+    
+    // Capture errors
+    window.onerror = function(msg, url, line, col, error) {
+      log('❌ JS Error: ' + msg + ' at line ' + line, 'error');
+      return false;
+    };
+    
+    document.head.appendChild(script);
+    
+    // Test 2: Check DOM after load
+    window.addEventListener('DOMContentLoaded', () => {
+      log('📌 DOMContentLoaded fired');
+    });
+    
+    // Test 3: Check after everything loads
+    window.addEventListener('load', () => {
+      log('📌 Window load complete');
+      
+      // Check for required elements
+      const checks = [
+        { id: 'defaultCourses', name: 'Courses Container' },
+        { id: 'videoModal', name: 'Video Modal' },
+        { id: 'videoContainer', name: 'Video Container' }
+      ];
+      
+      checks.forEach(check => {
+        const el = document.getElementById(check.id);
+        if (el) {
+          log('✅ ' + check.name + ' (#' + check.id + ') exists', 'success');
+        } else {
+          log('❌ ' + check.name + ' (#' + check.id + ') NOT FOUND', 'error');
+        }
+      });
+      
+      // Check if defaultCourses is defined
+      setTimeout(() => {
+        if (typeof defaultCourses !== 'undefined') {
+          log('✅ defaultCourses array exists with ' + defaultCourses.length + ' courses', 'success');
+        } else {
+          log('❌ defaultCourses is NOT defined (it is inside DOMContentLoaded scope)', 'error');
+        }
+      }, 1000);
+    });
+  </script>
+  
+  <!-- Simulate dashboard structure -->
+  <div id="defaultCourses" class="course-list"></div>
+  <div id="videoModal"></div>
+  <div id="videoContainer"></div>
+</body>
+</html>

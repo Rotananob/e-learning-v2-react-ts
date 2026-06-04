@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+     <link rel="canonical" href="https://rotana-elearningg.web.app/X-FlowGroup.html" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Flow Group & Collective - ក្រុមឯកទេសដែលផ្តល់ដំណោះស្រាយពេញលេញ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #283593;
+            --accent: #3949ab;
+            --highlight: #5c6bc0;
+            --light: #e8eaf6;
+            --dark: #0d1440;
+            --text: #1a1a1a;
+            --text-light: #f5f5f5;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Battambang', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: #fff;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: -5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 12rem 2rem 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23f8f9fa"/></svg>');
+            background-size: 100% 100px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .element-1 {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .element-2 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        .element-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 30%;
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Teams Section */
+        .teams {
+            background-color: #f8f9fa;
+        }
+        
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .team-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-count {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .team-members {
+            padding: 2rem;
+        }
+        
+        .member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .member:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-info h4 {
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        
+        .member-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Specialists Section */
+        .specialists {
+            background: white;
+        }
+        
+        .specialty-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .specialty-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .specialty-card:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-10px);
+        }
+        
+        .specialty-card:hover .specialty-icon {
+            color: white;
+        }
+        
+        .specialty-card:hover .specialty-desc {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .specialty-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .specialty-name {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .specialty-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(57, 73, 171, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 10rem 1.5rem 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .specialty-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div>
+                    <div class="logo-text">X-FLOW</div>
+                    <div class="logo-tagline">Group & Collective</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">ទំព័រដើម</a></li>
+                    <li><a href="#about">អំពីយើង</a></li>
+                    <li><a href="#teams">ក្រុមរបស់យើង</a></li>
+                    <li><a href="#specialists">អ្នកជំនាញ</a></li>
+                    <li><a href="#contact">ទំនាក់ទំនង</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>X-Flow Group & Collective</h1>
+            <p>ក្រុមឯកទេសដែលផ្តុំនូវជំនាញចម្រុះ ដើម្បីផ្តល់ដំណោះស្រាយពេញលេញសម្រាប់អតិថិជនរបស់យើង</p>
+            <a href="#contact" class="cta-button">ចាប់ផ្តើមគម្រោងជាមួយយើង</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>អំពី X-Flow Group & Collective</h2>
+                <p>យើងគឺជាក្រុមដែលប្រមូលផ្តុំអ្នកជំនាញពីផ្នែកផ្សេងៗគ្នា ដើម្បីបង្កើតជំនាញរួមដ៏អស្ចារ្យ</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>ក្រុមឯកទេសដែលធ្វើការជាមួយគ្នា</h3>
+                    <p>X-Flow Group & Collective បង្កើតឡើងដើម្បីផ្តល់នូវដំណោះស្រាយពេញលេញសម្រាប់អតិថិជនដោយការប្រមូលផ្តុំអ្នកជំនាញពីផ្នែកផ្សេងៗគ្នាមកធ្វើការជាមួយគ្នា។</p>
+                    <p>យើងមានក្រុមឯកទេសជាច្រើនដែលផ្តោតលើផ្នែកផ្សេងៗគ្នា តែទាំងអស់ធ្វើការជាមួយគ្នាដើម្បីសម្រេចបាននូវគោលដៅរួម និងធានាថាគម្រោងរបស់អតិថិជនទទួលបានភាពជោគជ័យ។</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">ក្រុមឯកទេស</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">13+</span>
+                            <span class="stat-label">សមាជិក</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">គម្រោងជោគជ័យ</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="floating-element element-1">UI/UX</div>
+                    <div class="floating-element element-2">Development</div>
+                    <div class="floating-element element-3">Marketing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams" class="teams">
+        <div class="container">
+            <div class="section-title">
+                <h2>ក្រុមរបស់យើង</h2>
+                <p>ស្វែងយល់ពីក្រុមឯកទេសនីមួយៗដែលបង្កើតបានជា X-Flow Group & Collective</p>
+            </div>
+            
+            <div class="teams-grid">
+                <!-- X-Flow Studio -->
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="team-name">X-Flow Studio</h3>
+                        <div class="team-count">សមាជិក ៥ នាក់</div>
+                    </div>
+                    <div class="team-members">
+                        <div class="member">
+                            <div class="member-avatar">ស</div>
+                            <div class="member-info">
+                                <h4>សុខា</h4>
+                                <p>អ្នករចនា UI/UX</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">វ</div>
+                            <div class="member-info">
+                                <h4>វណ្ណា</h4>
+                                <p>អ្នកអភិវឌ្ឍ Frontend</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">រ</div>
+                            <div class="member-info">
+                                <h4>រិទ្ធ</h4>
+                                <p>អ្នកអភិវឌ្ឍ Backend</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ម</div>
+                            <div class="member-info">
+                                <h4>ម៉ាលីស</h4>
+                                <p>អ្នកសាកល្បង</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ផ</div>
+                            <div class="member-info">
+                                <h4>ផល្លី</h4>
+                                <p>អ្នកគ្រប់គ្រងគម្រោង</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- X-Flow Sharing -->
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 class="team-name">X-Flow Sharing</h3>
+                        <div class="team-count">អ្នកគ្រប់គ្រង ១ នាក់</div>
+                    </div>
+                    <div class="team-members">
+                        <div class="member">
+                            <div class="member-avatar">រ</div>
+                            <div class="member-info">
+                                <h4>Rotana NOB</h4>
+                                <p>អ្នកគ្រប់គ្រង</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- X-Flow ធម្មតា -->
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="team-name">X-Flow ធម្មតា</h3>
+                        <div class="team-count">សមាជិក ៤ នាក់</div>
+                    </div>
+                    <div class="team-members">
+                        <div class="member">
+                            <div class="member-avatar">ក</div>
+                            <div class="member-info">
+                                <h4>កញ្ញា</h4>
+                                <p>អ្នកគ្រប់គ្រងប្រតិបត្តិការ</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ណ</div>
+                            <div class="member-info">
+                                <h4>ណារិន</h4>
+                                <p>អ្នកគាំទ្របច្ចេកទេស</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ស</div>
+                            <div class="member-info">
+                                <h4>សំណាង</h4>
+                                <p>អ្នកវិភាគទិន្នន័យ</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">អ</div>
+                            <div class="member-info">
+                                <h4>អាឡុក</h4>
+                                <p>អ្នកសិក្សាស្រាវជ្រាវ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- X-Flow Seller -->
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="team-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="team-name">X-Flow Seller</h3>
+                        <div class="team-count">សមាជិក ៣ នាក់</div>
+                    </div>
+                    <div class="team-members">
+                        <div class="member">
+                            <div class="member-avatar">វ</div>
+                            <div class="member-info">
+                                <h4>វិច្ឆិកា</h4>
+                                <p>អ្នកលក់ដេញថ្លៃ</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ភ</div>
+                            <div class="member-info">
+                                <h4>ភរិយា</h4>
+                                <p>អ្នកទំនាក់ទំនងអតិថិជន</p>
+                            </div>
+                        </div>
+                        <div class="member">
+                            <div class="member-avatar">ណ</div>
+                            <div class="member-info">
+                                <h4>ណុប</h4>
+                                <p>អ្នកផ្សព្វផ្សាយ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialists Section -->
+    <section id="specialists" class="specialists">
+        <div class="container">
+            <div class="section-title">
+                <h2>អ្នកជំនាញប្រមូលផ្តុំ</h2>
+                <p>យើងមានអ្នកជំនាញពីផ្នែកផ្សេងៗដែលអាចផ្តល់នូវដំណោះស្រាយពេញលេញសម្រាប់តម្រូវការរបស់អ្នក</p>
+            </div>
+            
+            <div class="specialty-container">
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="specialty-name">ការរចនា UI/UX</h3>
+                    <p class="specialty-desc">រចនាបទដែលទាក់ទាញ និងងាយស្រួលប្រើប្រាស់សម្រាប់អ្នកប្រើប្រាស់</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="specialty-name">ការអភិវឌ្ឍ Web</h3>
+                    <p class="specialty-desc">បង្កើត website ទំនើប លឿន និងមានប្រសិទ្ធភាពខ្ពស់</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="specialty-name">ការអភិវឌ្ឍ Mobile</h3>
+                    <p class="specialty-desc">បង្កើតកម្មវិធីសម្រាប់ទូរសព្ទដៃដែលមានប្រសិទ្ធភាព</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="specialty-name">ការគ្រប់គ្រងគម្រោង</h3>
+                    <p class="specialty-desc">គ្រប់គ្រងគម្រោងពីដំបូងដល់ចប់ដោយជោគជ័យ</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="specialty-name">ការវិភាគទិន្នន័យ</h3>
+                    <p class="specialty-desc">វិភាគទិន្នន័យដើម្បីជួយសម្រេចចិត្តដែលត្រឹមត្រូវ</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="specialty-name">ការលក់ និងទីផ្សារ</h3>
+                    <p class="specialty-desc">ជំនាញក្នុងការលក់ និងទីផ្សារផលិតផល និងសេវាកម្ម</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">ទំនាក់ទំនង</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">ទាក់ទងមកយើងខ្ញុំដើម្បីពិភាក្សាអំពីគម្រោងរបស់អ្នក</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>សម្រាប់ព័ត៌មានបន្ថែម</h3>
+                    <p>មកជាមួយយើងដើម្បីពិភាក្សាអំពីរបៀបដែលក្រុមរបស់យើងអាចជួយអ្នកសម្រេចបាននូវគោលដៅរបស់អ្នក។</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>ទីតាំង</h4>
+                                <p>ភ្នំពេញ, កម្ពុជា</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>ទូរសព្ទ</h4>
+                                <p>+855 12 345 678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>អ៊ីមែល</h4>
+                                <p>info@xflow-group.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">ឈ្មោះ</label>
+                            <input type="text" id="name" class="form-control" placeholder="បញ្ចូលឈ្មោះរបស់អ្នក" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">អ៊ីមែល</label>
+                            <input type="email" id="email" class="form-control" placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">ប្រធានបទ</label>
+                            <input type="text" id="subject" class="form-control" placeholder="ប្រធានបទនៃសារ" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">សារ</label>
+                            <textarea id="message" class="form-control" placeholder="បញ្ចូលសាររបស់អ្នក" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">ផ្ញើសារ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>X-Flow Group</h4>
+                    <p>ក្រុមឯកទេសដែលផ្តុំនូវជំនាញចម្រុះ ដើម្បីផ្តល់ដំណោះស្រាយពេញលេញសម្រាប់អតិថិជន។</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ក្រុមរបស់យើង</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">X-Flow Studio</a></li>
+                        <li><a href="#">X-Flow Sharing</a></li>
+                        <li><a href="#">X-Flow ធម្មតា</a></li>
+                        <li><a href="#">X-Flow Seller</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>សេវាកម្ម</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ការរចនា UI/UX</a></li>
+                        <li><a href="#">ការអភិវឌ្ឍ Web</a></li>
+                        <li><a href="#">ការអភិវឌ្ឍ Mobile</a></li>
+                        <li><a href="#">ការវិភាគទិន្នន័យ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>ទំនាក់ទំនង</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">អំពីយើង</a></li>
+                        <li><a href="#">ក្រុមរបស់យើង</a></li>
+                        <li><a href="#">អ្នកជំនាញ</a></li>
+                        <li><a href="#">ទំនាក់ទំនង</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 X-Flow Group & Collective. រក្សាសិទ្ធិគ្រប់យ៉ាង។
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Active Navigation Link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            alert('សូមអរគុណ! សាររបស់អ្នកត្រូវបានផ្ញើដោយជោគជ័យ។ យើងនឹងទាក់ទងទៅអ្នកឆាប់ៗនេះ។');
+            contactForm.reset();
+        });
+        
+        // Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.team-card, .specialty-card, .stat, .about-text, .about-visual').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Add staggered animation for specialty cards
+        document.querySelectorAll('.specialty-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        // Add staggered animation for team cards
+        document.querySelectorAll('.team-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+    </script>
+</body>
+</html>

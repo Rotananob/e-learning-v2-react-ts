@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Our Team — RotanaNOB</title>
+        <link rel="stylesheet" href="assets/css/welcome.css">
+        <link rel="icon" href="assets/img/images/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            :root{ --brand:#2563eb; --muted:#6b7280; }
+            body{ font-family: 'Segoe UI', Roboto, 'Noto Sans Khmer', Arial, sans-serif; margin:0; color:#0f1724; background:#f7fafc; }
+            .site-header{ display:flex; align-items:center; gap:12px; padding:12px 16px; background:linear-gradient(90deg,var(--brand),#38bdf8); color:#fff; }
+            .site-header img{ width:42px; height:42px; border-radius:8px; }
+            .site-nav{ margin-left:auto; display:flex; gap:10px; }
+            .site-nav a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; background:rgba(255,255,255,0.06); }
+            .about-hero{ text-align:center; padding:28px 18px; background:linear-gradient(120deg,#2563eb 60%,#38bdf8 100%); color:#fff; }
+            .about-hero .back-link{ position:absolute; left:12px; top:12px; color:#fff; text-decoration:none; background:rgba(255,255,255,0.08); padding:6px 10px; border-radius:8px; }
+            .container{ max-width:1100px; margin:18px auto; padding:18px; }
+            .team-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+            .member{ background:#fff; padding:14px; border-radius:12px; text-align:center; box-shadow:0 8px 24px rgba(2,6,23,0.06); }
+            .member img{ width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:8px; }
+            .member h4{ margin:6px 0 4px; color:var(--brand); }
+            .member p{ margin:0; color:var(--muted); font-size:0.95rem; }
+            .member .links{ margin-top:8px; display:flex; gap:8px; justify-content:center; }
+            footer.site-footer{ margin-top:20px; text-align:center; color:#475569; }
+            @media (max-width:600px){ .about-hero{ padding:20px 8px; } .member img{ width:80px; height:80px; } }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <img src="assets/img/images/logo.png" alt="logo">
+            <strong>RotanaNOB</strong>
+            <nav class="site-nav">
+                <a href="about-us">About</a>
+                <a href="team">Team</a>
+                <a href="vision">Vision</a>
+                <a href="test-courses">Courses</a>
+            </nav>
+        </header>
+
+        <section class="about-hero">
+            <a class="back-link" href="about-us">← Back</a>
+            <h1>Meet the RotanaNOB Team</h1>
+            <p style="max-width:720px;margin:8px auto 0;color:#e6f6ff;">Profiles of the people building lessons, content and the platform.</p>
+        </section>
+
+        <main class="container">
+            <div class="team-grid">
+                <div class="member">
+                    <img src="assets/img/images/logo.png" alt="Rotana Nob">
+                    <h4>Rotana Nob</h4>
+                    <p>Founder & Lead Developer — Curriculum and platform.</p>
+                    <div class="links"><a href="mailto:rotana@example.com"><i class="fa fa-envelope"></i></a></div>
+                </div>
+                <div class="member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Sokha Kim">
+                    <h4>Sokha Kim</h4>
+                    <p>Frontend Engineer — Responsive UI & accessibility.</p>
+                    <div class="links"><a href="mailto:sokha@example.com"><i class="fa fa-envelope"></i></a></div>
+                </div>
+                <div class="member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dara Chan">
+                    <h4>Dara Chan</h4>
+                    <p>Content Specialist — Khmer lessons & community.</p>
+                    <div class="links"><a href="mailto:dara@example.com"><i class="fa fa-envelope"></i></a></div>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:16px;"><a class="btn ghost" href="about-us">Learn more about the project</a></div>
+
+            <footer class="site-footer">© RotanaNOB — <a href="contact">Contact</a> · <a href="privacy-policy">Privacy</a></footer>
+        </main>
+        <script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+    </body>
+</html>
+<script src="assets/js/router.js"></script>

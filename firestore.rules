@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper: validate certificate
+    function isCertificateData(data, expectedUserId) {
+      return data.userId == expectedUserId
+        && data.issuedAt is timestamp
+        && data.courseId is string
+        && data.certId is string
+        && (data.completed == true || (data.progress is number && data.progress >= 100));
+    }
+
+    // USERS: Only owner can read/write their own user doc
+    match /users/{userId} {
+      allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      // Subcollections (certificates, favorites)
+      match /certificates/{certId} {
+        allow read: if request.auth != null && request.auth.uid == userId;
+        allow create: if request.auth != null && request.auth.uid == userId && isCertificateData(request.resource.data, userId);
+        allow update, delete: if false;
+      }
+      match /favorites/{favId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId && request.resource.data.items is list;
+      }
+    }
+
+    // POSTS: Anyone can read, only authenticated can write, only owner can update
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      allow update: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow delete: if false;
+      // Comments
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+        allow update: if request.auth != null && request.auth.uid == resource.data.userId;
+        allow delete: if false;
+      }
+      // Reactions
+      match /reactions/{reactionId} {
+        allow read: if true;
+        allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+        allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+      }
+      // Shares
+      match /shares/{shareId} {
+        allow read: if true;
+        allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+        allow delete: if false;
+      }
+    }
+
+    // NOTIFICATIONS: Only owner can read/update/delete
+    match /notifications/{userId} {
+      allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      allow create: if false;
+    }
+
+    // PUBLIC CERTIFICATES: Anyone can read, only owner can create
+    match /publicCertificates/{certId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid && isCertificateData(request.resource.data, request.auth.uid);
+      allow update, delete: if false;
+    }
+
+
+    // TOP 10 STUDENTS LEADERBOARD: Everyone can view, only owner can write their own record
+    match /leaderboard/{userId} {
+      allow read: if true; // Anyone can view top 10 students
+      allow create, update: if request.auth != null && request.auth.uid == userId && request.resource.data.userId == userId && request.resource.data.score is number;
+      allow delete: if false;
+    }
+
+    // WEEKLY STUDY TIME: Only owner can write, public can read
+    match /weeklyStudyTime/{userId} {
+      allow read: if true;
+      allow create, update: if request.auth != null && request.auth.uid == userId && request.resource.data.userId == userId && request.resource.data.minutes is number;
+      allow delete: if false;
+    }
+
+    // PRESENCE: Only owner can write, anyone can read online status
+    match /presence/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Deny all other access by default
+  }
+}

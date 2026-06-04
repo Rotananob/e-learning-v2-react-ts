@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://rotana-elearningg.web.app/MoreOption" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ភ្លេចពាក្យសម្ងាត់ - RNE</title>
+  <link rel="icon" type="image/png" href="assets/img/images/logo1.png">
+
+  <!-- ✅ Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg1:#0f172a;
+      --bg2:#1e293b;
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+      --muted:#94a3b8;
+      --radius:14px;
+      --shadow:0 12px 32px rgba(0,0,0,0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      font-family: "Poppins", system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color:#f1f5f9;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .auth-container { width:100%; max-width:420px; }
+
+    .auth-box {
+      background:rgba(255,255,255,0.02);
+      backdrop-filter:blur(10px);
+      border-radius:var(--radius);
+      padding:32px 26px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.05);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(20px);}
+      to { opacity:1; transform: translateY(0);}
+    }
+
+    h2 {
+      font-size:18px;
+      margin-bottom:20px;
+      text-align:center;
+      line-height:1.4;
+    }
+
+    form { display:grid; gap:14px; }
+
+    input {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      color:#f1f5f9;
+      font-size:15px;
+      outline:none;
+      transition:border .2s;
+    }
+    input::placeholder { color:var(--muted); }
+    input:focus { border-color:var(--accent2); }
+
+    .btn {
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      border:none;
+      padding:12px;
+      border-radius:10px;
+      font-weight:600;
+      color:white;
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow:0 8px 22px rgba(124,58,237,0.3);
+    }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(6,182,212,0.25); }
+    .btn:active { transform:translateY(1px); }
+
+    p { text-align:center; margin-top:16px; font-size:14px; }
+    p a { color:var(--accent2); text-decoration:none; font-weight:600; }
+    p a:hover { text-decoration:underline; }
+
+    /* Social media section */
+    .social-links {
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:22px;
+    }
+    .social-links a {
+      width:42px; height:42px;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:50%;
+      background:rgba(255,255,255,0.05);
+      color:white;
+      font-size:18px;
+      transition: all .2s ease;
+    }
+    .social-links a:hover { transform:translateY(-3px); background:linear-gradient(135deg,var(--accent1),var(--accent2)); }
+  </style>
+</head>
+<style>
+  .version-badge-v1 {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px #0002;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .version-badge-v1 i {
+    font-size: 1.3em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 7px 14px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 12px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+
+<body>
+  <style>
+    /* Disable text selection for all elements */
+    * {
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
+      -moz-user-select: none !important;
+    }
+  </style>
+  <script>
+  // Block F12, Ctrl+Shift+I, Ctrl+U, right-click, and copy/paste
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+U
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  document.addEventListener('paste', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  </script>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2> សូមបញ្ចូលព័ត៌មានខាងក្រោមនេះ<br>ដើម្បីប្ដូរពាក្យសម្ងាត់ថ្មី</h2>
+
+      <form id="forgotForm">
+        <input type="text" id="username" placeholder="ឈ្មោះពិតរបស់អ្នក" required>
+        <input type="email" id="email" placeholder="អ៊ីមែល" required>
+        <button type="submit" class="btn">បន្ត</button>
+      </form>
+
+      <p><a href="/forget">⬅ ត្រឡប់ក្រោយ</a></p>
+    </div>
+
+    <p style="text-align:center;margin-top:10px;">
+      <b>បើនៅតែភ្លេចអាចទាក់ទងមកខ្ញុំបានខាងក្រោមនេះ </b>
+    </p>
+
+    <!-- 🔗 Social Media -->
+    <div class="social-links">
+      
+      <a href="https://web.facebook.com/TheRotanaNob" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://t.me/rotananobSETEC" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.tiktok.com/@xflow.sharing?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://x-flow-studio.web.app/" target="_blank"><i class="fas fa-globe"></i></a>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.appspot.com",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById("forgotForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      try {
+        // Query Firestore users collection
+        const q = query(
+          collection(db, "Identifier"),
+          where("username", "==", username),
+          where("email", "==", email)
+        );
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          // ✅ save email temporarily for reset.html
+          sessionStorage.setItem("resetUser", email);
+          alert("✅ ព័ត៌មានត្រឹមត្រូវហើយ, សូមកំណត់ពាក្យសម្ងាត់ថ្មី។");
+          window.location.href="reset";
+        } else {
+          alert("⚠️ ឈ្មោះអ្នកប្រើ ឬ អ៊ីមែល មិនត្រឹមត្រូវ!");
+        }
+      } catch (error) {
+        console.error("Error checking user: ", error);
+        alert("❌ការបំពេញមិនត្រឹមត្រូវ សូមព្យាយាមម្តងទៀត។");
+      }
+    });
+  </script>
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        
+        //  បង្កើតផ្នែកតូចៗនៃកូដ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36); // យកម៉ោងមកដាក់
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+
+        //  បំប្លែងទៅជាកូដសម្ងាត់វែង (Base64) ឱ្យមើលទៅកាច
+        // btoa គឺជា function បំប្លែងអក្សរធម្មតាទៅជាកូដ Base64
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        // ប្តូរ URL លើ Browser ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1055 @@
+﻿<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://rotana-elearningg.web.app/reason1" />
+    <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។ រៀន​សរសេរ​កូដ បង្កើតហ្គេមក្នុងវេបសាយ បង្កើតហ្គេមក្នុងទូរស័ព្ទ ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+
+    <title>ការពន្យល់ពីការដកចេញនៃមុខងារ Register</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+            --border-radius: 16px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                --chatbot-bg: #fff;
+                --chatbot-header: #4361ee;
+                --chatbot-bubble: #f1f5fa;
+                --chatbot-user: #e0e7ef;
+                --chatbot-shadow: 0 8px 32px rgba(67,97,238,0.13);
+                --chatbot-avatar-size: 38px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Khmer OS Battambang', 'Noto Sans Khmer', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            }
+
+            /* --- Chatbot Styles --- */
+            .chatbot-float-btn {
+                position: fixed;
+                bottom: 32px;
+                right: 32px;
+                z-index: 9999;
+                background: var(--primary);
+                color: #fff;
+                border: none;
+                border-radius: 50%;
+                width: 56px;
+                height: 56px;
+                box-shadow: var(--chatbot-shadow);
+                font-size: 2rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s;
+            }
+                .chatbot-suggest {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin: 10px 0 0 0;
+                    animation: fadeInUp 0.7s cubic-bezier(.4,2,.6,1);
+                }
+                .chatbot-suggest-btn {
+                    background: var(--chatbot-user);
+                    color: #222;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 6px 14px;
+                    font-size: 0.98rem;
+                    cursor: pointer;
+                    box-shadow: 0 2px 8px #4361ee0a;
+                    transition: background 0.2s, color 0.2s;
+                }
+                .chatbot-suggest-btn:hover {
+                    background: var(--primary);
+                    color: #fff;
+                }
+                @keyframes fadeInUp {
+                    0% { opacity: 0; transform: translateY(30px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+            .chatbot-float-btn:hover {
+                background: var(--secondary);
+            }
+            .chatbot-window {
+                position: fixed;
+                bottom: 100px;
+                right: 32px;
+                width: 340px;
+                max-width: 95vw;
+                background: var(--chatbot-bg);
+                border-radius: 18px;
+                box-shadow: var(--chatbot-shadow);
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(30px) scale(0.98);
+                transition: opacity 0.2s, transform 0.2s;
+            }
+            .chatbot-window.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0) scale(1);
+            }
+            .chatbot-header {
+                background: var(--chatbot-header);
+                color: #fff;
+                padding: 16px 18px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .chatbot-header img {
+                width: var(--chatbot-avatar-size);
+                height: var(--chatbot-avatar-size);
+                border-radius: 50%;
+                background: #fff;
+                object-fit: cover;
+                box-shadow: 0 2px 8px #4361ee22;
+            }
+            .chatbot-close {
+                margin-left: auto;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 1.3rem;
+                cursor: pointer;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+            }
+            .chatbot-close:hover { opacity: 1; }
+            .chatbot-messages {
+                flex: 1;
+                padding: 18px 14px 10px 14px;
+                background: var(--chatbot-bubble);
+                overflow-y: auto;
+                max-height: 350px;
+            }
+            .chatbot-bubble {
+                display: flex;
+                align-items: flex-end;
+                margin-bottom: 10px;
+            }
+            .chatbot-bubble.bot {
+                flex-direction: row;
+            }
+            .chatbot-bubble.user {
+                flex-direction: row-reverse;
+            }
+            .chatbot-avatar {
+                width: var(--chatbot-avatar-size);
+                height: var(--chatbot-avatar-size);
+                border-radius: 50%;
+                margin: 0 8px;
+                object-fit: cover;
+                background: #fff;
+                box-shadow: 0 2px 8px #4361ee22;
+            }
+            .chatbot-text {
+                background: #fff;
+                color: #222;
+                padding: 10px 14px;
+                border-radius: 14px;
+                max-width: 70%;
+                font-size: 1.01rem;
+                box-shadow: 0 2px 8px #4361ee0a;
+                word-break: break-word;
+            }
+            .chatbot-bubble.user .chatbot-text {
+                background: var(--chatbot-user);
+                color: #222;
+            }
+            .chatbot-typing {
+                display: flex;
+                align-items: center;
+                margin-left: 8px;
+                height: 24px;
+            }
+            .chatbot-typing-dot {
+                width: 7px;
+                height: 7px;
+                background: #4361ee;
+                border-radius: 50%;
+                margin: 0 2px;
+                animation: typingBlink 1.2s infinite both;
+            }
+            .chatbot-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+            .chatbot-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+            @keyframes typingBlink {
+                0%, 80%, 100% { opacity: 0.3; }
+                40% { opacity: 1; }
+            }
+            .chatbot-input {
+                display: flex;
+                border-top: 1px solid #e0e7ef;
+                background: #fff;
+                padding: 10px 10px 10px 16px;
+            }
+            .chatbot-input input {
+                flex: 1;
+                border: none;
+                outline: none;
+                font-size: 1rem;
+                background: transparent;
+                color: #222;
+            }
+            .chatbot-input button {
+                background: var(--primary);
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 7px 16px;
+                margin-left: 8px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            .chatbot-input button:hover { background: var(--secondary); }
+            @media (max-width: 600px) {
+                .chatbot-window { right: 2vw; width: 98vw; }
+                .chatbot-float-btn { right: 2vw; }
+            }
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .reason-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .reason-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .reason-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(247, 37, 133, 0.15) 0%, rgba(247, 37, 133, 0) 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px 20px;
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+            background: white;
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .social-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .social-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-social {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.95rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+        }
+
+        .floating-element {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(247, 37, 133, 0.4);
+            z-index: 100;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .floating-element.help {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .floating-element.chat {
+            bottom: 110px;
+            right: 30px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-element.help,
+            .floating-element.chat {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-element.chat {
+                bottom: 90px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .contact-section {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ការពន្យល់ពីការដកចេញនៃមុខងារ Register</h1>
+            <p>សូមអភ័យទោស ការចុះឈ្មោះគណនីថ្មីត្រូវបានបិទជាបណ្តោះអាសន្ន ដើម្បីធានាបាននូវគុណភាពការសិក្សា</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="2117">2117</span>
+                <span class="stat-label">គណនីដែលបានចុះឈ្មោះសរុប</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="29">100%</span>
+                <span class="stat-label">គណនីដែលសកម្មរាល់ថ្ងៃ</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="41">100%</span>
+                <span class="stat-label">គណនីដែលសកម្មកម្រិតមធ្យម</span>
+            </div>
+             <div class="stat-item">
+                <span class="stat-number" data-target="30">100%</span>
+                <span class="stat-label">គណនីដែលអសកម្ម ឬ មិនសកម្ម</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <i class="fas fa-info-circle card-icon"></i>
+                <h2>ហេតុអ្វីបានជាយើងដកមុខងារ Register ចេញ?</h2>
+                <p>យើងដកមុខងារ Register ចេញពីប្រព័ន្ធរបស់យើងដោយសារតែមានអ្នកប្រើប្រាស់មួយចំនួនមិនឲ្យតម្លៃការសិក្សា ដោយគ្រាន់តែបង្កើតគណនីចោល រួចមិនបានចូលរៀនតាមការគ្រោងទុក។</p>
+                
+                <ul class="reason-list">
+                    <li>យើងចង់ធានាថាអ្នកប្រើប្រាស់ទាំងអស់មានចំណាប់អារម្មណ៍ពិតប្រាកដ</li>
+                    <li>ការកំណត់ចំនួនអ្នកប្រើប្រាស់ដើម្បីផ្តល់ការគាំទ្របានល្អ</li>
+                    <li>ធានាគុណភាពការសិក្សាសម្រាប់សិស្សានុសិស្សទាំងអស់</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-users card-icon"></i>
+                <h2>តើធ្វើដូចម្តេចដើម្បីទទួលបានគណនី?</h2>
+                <p>ប្រសិនបើអ្នកពិតជាចង់ចូលរួមក្នុងកម្មវិធីសិក្សារបស់យើង សូមទាក់ទងមកយើងខ្ញុំផ្ទាល់តាមរយៈ៖</p>
+                
+                <div class="social-grid">
+                    <div class="social-card">
+                        <i class="fas fa-envelope social-icon" style="color: #ea4335;"></i>
+                        <h3>អ៊ីមែល</h3>
+                        <p>rotana@support.com</p>
+                        <a href="mailto:admin@studykhmer.com" class="btn btn-social">ផ្ញើអ៊ីមែល</a>
+                    </div>
+                    
+                    <div class="social-card">
+                        <i class="fas fa-phone social-icon" style="color: #34a853;"></i>
+                        <h3>ទូរស័ព្ទ</h3>
+                        <p>+855 99 4000 63</p>
+                        <a href="tel:+85512345678" class="btn btn-social">ទូរស័ព្ទទៅ</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-question-circle card-icon"></i>
+                <h2>ហេតុអ្វីបានជាយើងធ្វើដូច្នេះ?</h2>
+                <p>យើងធ្វើដូច្នេះដើម្បីធានាបាននូវ<span class="highlight">គុណភាពការសិក្សា</span>ខ្ពស់សម្រាប់សិស្សានុសិស្សទាំងអស់។ ការកំណត់ចំនួនអ្នកប្រើប្រាស់ឲ្យមាន<span class="highlight">កំណត់</span> នឹងជួយដល់ការគាំទ្រដែលមានគុណភាព និងធានាថាអ្នកប្រើប្រាស់គ្រប់រូបមាន<span class="highlight">ការខិតខំប្រឹងប្រែង</span>ក្នុងការសិក្សា។</p>
+                
+                <p>យើងជឿជាក់ថា ការកំណត់ចំនួនអ្នកប្រើប្រាស់នឹងជួយដល់គុណភាពការសិក្សារបស់សិស្សានុសិស្សទាំងអស់។</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>ទាក់ទងតាមរយៈបណ្តាញសង្គម</h2>
+            <p>អ្នកក៏អាចទាក់ទងមកយើងតាមរយៈបណ្តាញសង្គមផ្សេងៗផងដែរ</p>
+            
+            <div class="social-grid">
+                <div class="social-card">
+                    <i class="fab fa-telegram social-icon" style="color: #0088cc;"></i>
+                    <h3>Telegram</h3>
+                    <p>Nob Rotana</p>
+                    <a href="https://t.me/NobRotana" class="btn btn-social">ចាប់ផ្តើមជាមួយ</a>
+                </div>
+                
+                <div class="social-card">
+                    <i class="fab fa-facebook social-icon" style="color: #1877f2;"></i>
+                    <h3>Facebook</h3>
+                    <p>Rotana NOB </p>
+                    <a href="https://facebook.com/TheRotanaNob" class="btn btn-social">ទស្សនាទំព័រ</a>
+                </div>
+                
+                <div class="social-card">
+                    <i class="fab fa-instagram social-icon" style="color: #e4405f;"></i>
+                    <h3>Instagram</h3>
+                    <p>Rotana NOB</p>
+                    <a href="https://www.instagram.com/rotana__nob/" class="btn btn-social">តាមដាន</a>
+                </div>
+                
+                <div class="social-card">
+                    <i class="fab fa-youtube social-icon" style="color: #ff0000;"></i>
+                    <h3>YouTube</h3>
+                    <p>X-Flow Sharing</p>
+                    <a href="https://www.youtube.com/@X-FlowSharing" class="btn btn-social">ជាវឆាណែល</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="text-align: center; grid-column: 1 / -1;">
+            <i class="fas fa-handshake card-icon"></i>
+            <h2>សូមអរគុណសម្រាប់ការយោគយល់របស់អ្នក</h2>
+            <p>យើងសូមអរគុណចំពោះការយោគយល់របស់អ្នក និង សង្ឃឹមថាអ្នកនឹងចូលរួមក្នុងកម្មវិធីសិក្សារបស់យើងនៅពេលខាងមុខ។</p>
+            <a href="/register" class="btn btn-outline" style="margin-top: 20px;">ត្រឡប់ទៅកាន់កន្លែង ចុះឈ្មោះ វិញ</a>
+        </div>
+    </div>
+
+        <i class="fas fa-question"></i>
+    </div>
+    
+        <i class="fas fa-comment"></i>
+    </div>
+
+    <div class="footer">
+        <p>© Last updates ០៣/មិថុនា/២០២៥  Rotana E-learning . រក្សាសិទ្ធិគ្រប់យ៉ាង។ រាល់ការផ្លាស់ប្តូរត្រូវបានការពារដោយច្បាប់។</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card, .social-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Add click effect to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size/2;
+                    const y = e.clientY - rect.top - size/2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.5);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        top: ${y}px;
+                        left: ${x}px;
+                        width: ${size}px;
+                        height: ${size}px;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+            
+            // Add floating button functionality
+            const floatingButtons = document.querySelectorAll('.floating-element');
+            floatingButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.classList.contains('help')) {
+                        alert('សូមទាក់ទងមកយើងតាមរយៈអ៊ីមែល ទូរស័ព្ទ ឬបណ្តាញសង្គមដើម្បីទទួលបានជំនួយ។');
+                    } else if (this.classList.contains('chat')) {
+                        alert('សេវាកម្មជំនួយតាមរយៈការជជែកគ្នានឹងមកដល់ឆាប់ៗនេះ!');
+                    }
+                });
+            });
+            
+            // Stats counter animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+            let hasAnimated = false;
+            
+            function animateStats() {
+                if (hasAnimated) return;
+                
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const isPercentage = stat.innerText.includes('%');
+                    
+                    // Set initial value to 0
+                    stat.textContent = '0' + (isPercentage ? '%' : '');
+                    
+                    let current = 0;
+                    const duration = 2000; // Animation duration in ms
+                    const interval = 20; // Update every 20ms
+                    const steps = duration / interval;
+                    const increment = target / steps;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            stat.textContent = target + (isPercentage ? '%' : '');
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + (isPercentage ? '%' : '');
+                        }
+                    }, interval);
+                });
+                
+                hasAnimated = true;
+            }
+            
+            // Trigger animation when stats section is in view
+            const statsSection = document.querySelector('.stats');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                    }
+                });
+            }, { threshold: 0.1 }); // Changed to 0.1 to trigger earlier
+            
+            if(statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+        
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>
+  window.addEventListener('load', function() {
+    // ពិនិត្យមើលថា URL មានកន្ទុយនៅ?
+    if (!window.location.search) {
+        
+        // ១. បង្កើតផ្នែកតូចៗ (Random Parts)
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36);
+        
+        // ២. បូកបញ្ចូលគ្នា
+        const rawString = `RotanaLegacy-${part1}-${part2}-${part3}`;
+
+        // ៣. បំប្លែងទៅជា Base64 ឱ្យមើលទៅវែង
+        const longHash = btoa(rawString + rawString); 
+
+        // ៤. ផ្គុំ URL (វានឹងចាប់យក /oldversion ដោយស្វ័យប្រវត្តិ)
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_type=legacy_version' + 
+                       '&session=' + Date.now();
+        
+        // ៥. ប្តូរ URL ភ្លាមៗ
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+
+    
+</body>
+<!-- Chatbot Floating Button & Window -->
+<button class="chatbot-float-btn" id="chatbotOpenBtn" title="Chat with Rotana AI"><i class="fa fa-robot"></i></button>
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <img src="assets/img/images/logo.png" alt="Rotana Logo" />
+        Rotana AI Chatbot
+        <button class="chatbot-close" id="chatbotCloseBtn" title="Close">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-suggest" id="chatbotSuggest"></div>
+    <form class="chatbot-input" id="chatbotForm" autocomplete="off">
+        <input type="text" id="chatbotInput" placeholder="សួរ AI..." required />
+        <button type="submit">Send</button>
+    </form>
+</div>
+<script>
+// --- Simple Rotana AI Chatbot ---
+const chatbotOpenBtn = document.getElementById('chatbotOpenBtn');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotCloseBtn = document.getElementById('chatbotCloseBtn');
+const chatbotMessages = document.getElementById('chatbotMessages');
+const chatbotForm = document.getElementById('chatbotForm');
+const chatbotInput = document.getElementById('chatbotInput');
+const BOT_AVATAR = 'assets/img/images/logo.png';
+const USER_AVATAR = 'https://ui-avatars.com/api/?name=User&background=4361ee&color=fff&rounded=true&size=64';
+
+const qaPairs = [
+    { q: /register|ចុះឈ្មោះ|បង្កើតគណនី/i, a: 'ការចុះឈ្មោះត្រូវបានផ្អាកបណ្តោះអាសន្ន ដោយសារតែមានការប្រើប្រាស់មិនត្រឹមត្រូវ។ សូមអភ័យទោស!' },
+    { q: /login|ចូល/i, a: 'សូមចុចលើប៊ូតុង "Login" នៅផ្នែកខាងលើដើម្បីចូលប្រើប្រាស់។' },
+    { q: /contact|ទំនាក់ទំនង|ទាក់ទង/i, a: 'អ្នកអាចទាក់ទងតាម Telegram: @rotananob ឬ Email: rotana.nob@gmail.com' },
+    { q: /course|វគ្គសិក្សា|រៀន/i, a: 'វគ្គសិក្សាអាចរកបាននៅទំព័រ Dashboard។ សូមចុច "Dashboard" នៅ Menu។' },
+    { q: /ai|chatbot|bot|robot/i, a: 'ខ្ញុំជាឆាត BOT របស់ Rotana ELearning ! សូមសួរអ្វីក៏បាន។' },
+    { q: /website|គេហទំព័រ/i, a: 'គេហទំព័រ Rotana E-learning ផ្តល់វគ្គសិក្សាឥតគិតថ្លៃសម្រាប់អ្នកគ្រប់រូប។' },
+    { q: /free|ឥតគិតថ្លៃ/i, a: 'វគ្គសិក្សាទាំងអស់នៅទីនេះឥតគិតថ្លៃ 100%។' },
+    { q: /thanks|អរគុណ|thank/i, a: 'សូមអរគុណសម្រាប់ការសួរ! មានអ្វីសួរបានតែងតែ។' },
+    { q: /help|ជំនួយ|ជួយ/i, a: 'សូមសួរបានតាមចិត្ត ខ្ញុំនឹងព្យាយាមជួយឲ្យបានល្អបំផុត។' },
+    // --- Extra Q&A related to this page ---
+    { q: /register remove|ដកចេញ register|register មិនមាន/i, a: 'មុខងារ Register ត្រូវបានដកចេញដោយសារតែមានការប្រើប្រាស់មិនត្រឹមត្រូវ។' },
+    { q: /reason|មូលហេតុ|ពន្យល់/i, a: 'មូលហេតុដែលដកចេញ Register គឺដើម្បីការពារការប្រើប្រាស់មិនត្រឹមត្រូវ និងការបង្កើតគណនីច្រើន។' },
+    { q: /how to use|របៀបប្រើ|ប្រើប្រាស់/i, a: 'សូមអានព័ត៌មានលម្អិតនៅលើទំព័រ reason.html នេះ។ ប្រសិនបើមានសំណួរបន្ថែម សូមសួរតាម Chatbot។' },
+    { q: /privacy|ឯកជនភាព|data/i, a: 'គេហទំព័រនេះមិនប្រមូលព័ត៌មានឯកជនរបស់អ្នកឡើយ។' },
+    { q: /logo|រូបសញ្ញា|avatar/i, a: 'Logo របស់ Rotana E-learning គឺជារូបភាពដែលបង្ហាញនៅខាងលើ និងក្នុង Chatbot។' },
+    { q: /team|អ្នកបង្កើត|developer/i, a: 'គេហទំព័រនេះបង្កើតដោយលោក Nob Rotana និងក្រុមការងារ។' },
+    { q: /feedback|ផ្តល់យោបល់|suggestion/i, a: 'អ្នកអាចផ្ញើយោបល់តាម Telegram ឬ Email ដែលបានបង្ហាញខាងលើ។' },
+    { q: /update|បច្ចុប្បន្នភាព|news/i, a: 'ព័ត៌មានថ្មីៗនឹងត្រូវបានបង្ហាញនៅទំព័រ Dashboard និងផ្នែក News។' },
+    { q: /faq|សំណួរញឹកញាប់/i, a: 'សំណួរញឹកញាប់អាចរកបាននៅផ្នែក FAQ របស់គេហទំព័រ។' },
+    { q: /reason.html|ទំព័រ reason|about this page/i, a: 'ទំព័រ reason.html នេះបង្ហាញពីមូលហេតុដែលដកចេញមុខងារ Register និងព័ត៌មានសំខាន់ៗផ្សេងទៀត។' },
+    { q: /oldversion|ចូលទៅកាន់ version ចាស់/i, a: 'អ្នកអាចចូលទៅកាន់ version ចាស់តាមប៊ូតុង "ត្រឡប់ទៅទំព័រដើម"។' },
+    // fallback
+    { q: /.*/, a: 'សុំទោស ខ្ញុំមិនទាន់យល់សំណួរនេះទេ។ សូមសួរផ្សេងទៀត ឬសាកសួរជាភាសាខ្មែរ/អង់គ្លេស។' }
+];
+
+function addMessage(text, sender = 'bot', typing = false) {
+    const bubble = document.createElement('div');
+    bubble.className = 'chatbot-bubble ' + sender;
+    const avatar = document.createElement('img');
+    avatar.className = 'chatbot-avatar';
+    avatar.src = sender === 'bot' ? BOT_AVATAR : USER_AVATAR;
+    avatar.alt = sender === 'bot' ? 'Bot' : 'User';
+    bubble.appendChild(avatar);
+    if (typing) {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chatbot-typing';
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'chatbot-typing-dot';
+            typingDiv.appendChild(dot);
+        }
+        bubble.appendChild(typingDiv);
+    } else {
+        const textDiv = document.createElement('div');
+        textDiv.className = 'chatbot-text';
+        textDiv.textContent = text;
+        bubble.appendChild(textDiv);
+    }
+    chatbotMessages.appendChild(bubble);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// --- Animated Question Suggestions ---
+const chatbotSuggest = document.getElementById('chatbotSuggest');
+const SUGGESTIONS = [
+    'ការចុះឈ្មោះ',
+    'ចូលប្រើប្រាស់',
+    'ទំនាក់ទំនង',
+    'វគ្គសិក្សា',
+    'AI Chatbot គឺជាអ្វី?',
+    'គេហទំព័រ Rotana',
+    'វគ្គឥតគិតថ្លៃ',
+    'ជំនួយ',
+    'អរគុណ',
+];
+function showSuggestions() {
+    chatbotSuggest.innerHTML = '';
+    SUGGESTIONS.forEach((q, i) => {
+        setTimeout(() => {
+            const btn = document.createElement('button');
+            btn.className = 'chatbot-suggest-btn';
+            btn.textContent = q;
+            btn.onclick = () => {
+                chatbotInput.value = q;
+                chatbotForm.dispatchEvent(new Event('submit', {cancelable:true}));
+            };
+            chatbotSuggest.appendChild(btn);
+        }, 80*i);
+    });
+}
+function hideSuggestions() { chatbotSuggest.innerHTML = ''; }
+
+function botReply(userMsg) {
+    addMessage('', 'bot', true);
+    setTimeout(() => {
+        // Remove typing
+        const typingBubbles = chatbotMessages.querySelectorAll('.chatbot-bubble.bot');
+        typingBubbles[typingBubbles.length-1].remove();
+        // Find answer
+        let answer = qaPairs.find(pair => pair.q.test(userMsg));
+        addMessage(answer ? answer.a : qaPairs[qaPairs.length-1].a, 'bot');
+        setTimeout(showSuggestions, 400);
+    }, 1200 + Math.random()*600);
+}
+
+chatbotOpenBtn.onclick = () => {
+    chatbotWindow.classList.add('active');
+    chatbotOpenBtn.style.display = 'none';
+    if (chatbotMessages.childElementCount === 0) {
+        setTimeout(() => addMessage('សួស្តី! ខ្ញុំជាឆាត Bot របស់ Rotana ELearning ! សូមសួរអ្វីក៏បាន។', 'bot'), 400);
+        setTimeout(showSuggestions, 1200);
+    }
+    else {
+        showSuggestions();
+    }
+};
+chatbotCloseBtn.onclick = () => {
+    chatbotWindow.classList.remove('active');
+    chatbotOpenBtn.style.display = 'flex';
+    hideSuggestions();
+};
+chatbotForm.onsubmit = e => {
+    e.preventDefault();
+    const userMsg = chatbotInput.value.trim();
+    if (!userMsg) return;
+    addMessage(userMsg, 'user');
+    chatbotInput.value = '';
+    hideSuggestions();
+    botReply(userMsg);
+};
+</script>
+
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+
+</html>

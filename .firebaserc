@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "rotanafreecourse",
+    "firebase logout": "social-insta-c92af",
+    ".": "rotana-elearningg",
+    " ": "rotanafreecourse",
+    "staging": "rotana-elearningg"
+  },
+  "targets": {},
+  "etags": {}
+}

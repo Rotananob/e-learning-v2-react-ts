@@ -1,0 +1,511 @@
+﻿<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8" />
+  <link rel="canonical" href="https://rotana-elearningg.web.app/forget" />
+  <meta name="description" content="Rotana IT E-learning Hub វេទិកា​ផ្ដល់​វគ្គ​សិក្សាអាយធី(IT)​ឥត​គិតថ្លៃ​នៅ​កម្ពុជា។">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ភ្លេចពាក្យសម្ងាត់? • Reset Password</title>
+  <link rel="icon" type="image/png" href="assets/img/images/logo.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f1724;
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.04);
+      --muted:#9aa4b2;
+      --radius:14px;
+      --shadow: 0 14px 40px rgba(2,6,23,0.6);
+      --success:#10b981;
+      --danger:#ff6b6b;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial;
+      background:
+        radial-gradient(800px 500px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+        radial-gradient(700px 450px at 90% 90%, rgba(6,182,212,0.06), transparent 8%),
+        linear-gradient(180deg,#051025,#07112a);
+      color: #e6eef7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px; /* Reduced padding for mobile */
+      -webkit-font-smoothing:antialiased;
+      min-height: 100vh;
+    }
+
+    .wrap{
+      width:1000px;
+      max-width:100%;
+      display:grid;
+      grid-template-columns: 1fr 450px; /* Desktop Layout */
+      gap:28px;
+      align-items:center;
+    }
+
+    /* --- Left Panel Styling --- */
+    .panel-left{
+      padding:36px;
+      border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      min-height:450px;
+      position:relative;
+      overflow:hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container for Logo & Text */
+    .brand-container {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        margin-top: 140px; /* Default for Desktop */
+        transition: margin 0.3s ease;
+    }
+    
+    .logo {
+      flex-shrink: 0; /* Prevent shrinking */
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg,var(--accent1), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(124,58,237,0.18);
+      overflow: hidden;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .logop{
+      margin: 0;
+      color: lightskyblue;
+    }
+   
+    .panel-left h3{font-size:20px; line-height: 1.2;}
+    .panel-left p{color:var(--muted);line-height:1.5}
+    
+    .lead-text {
+        color:var(--muted);
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    /* --- Right Card Styling --- */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding:30px;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.03);
+      min-height:450px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      transition:transform .28s ease;
+      width: 100%;
+    }
+    .card:hover{ transform: translateY(-4px) }
+
+    h1{font-size:24px; margin:0 0 10px 0}
+    
+    form{display:grid;gap:16px}
+    .field{display:flex;flex-direction:column;gap:8px;background:var(--glass);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    label{font-size:14px;color:var(--muted)}
+    input[type="email"]{background:transparent;border:0;color:inherit;font-size:16px;padding:4px 0;outline:none; width: 100%;}
+
+    .actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px; flex-wrap: wrap; gap: 10px;}
+    
+    .btn-group {
+        display:flex;
+        gap:10px;
+        align-items: center;
+    }
+
+    .btn{
+      background:linear-gradient(90deg,var(--accent1), var(--accent2));
+      border:0;padding:12px 20px;border-radius:10px;color:white;font-weight:700;cursor:pointer;
+      box-shadow:0 8px 26px rgba(124,58,237,0.18);
+      transition:transform .12s ease, box-shadow .12s ease;
+      position:relative;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted);font-weight:600}
+    
+    .btn.loading{ pointer-events:none; opacity:0.9 }
+    .btn.loading::after{
+      content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);
+      width:16px;height:16px;border:3px solid #fff;border-radius:50%;border-top-color:transparent;animation:spin .8s linear infinite;
+    }
+    @keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+
+    .toast{
+      position:fixed;left:50%;transform:translateX(-50%);bottom:28px;
+      background:rgba(6,10,18,0.95);color:#fff;padding:12px 18px;border-radius:12px;
+      box-shadow:0 8px 30px rgba(2,6,23,0.6);z-index:999;display:none;min-width:260px;text-align:center;border:1px solid rgba(255,255,255,0.03);
+    }
+    .toast.success{background:linear-gradient(90deg,#059669,#10b981);}
+    .toast.error{background:linear-gradient(90deg,#ff6b6b,#ff8a8a);}
+
+    .muted{color:var(--muted);font-size:13px}
+    
+    /* Background SVG */
+    .bg-svg {
+        position:absolute;
+        right:-20px;
+        top:-30px;
+        opacity:0.08;
+        transform:rotate(8deg);
+        pointer-events: none;
+    }
+
+    /* ========= RESPONSIVE MEDIA QUERIES ========= */
+    
+    /* Tablet & Small Desktop (Max width 950px) */
+    @media (max-width: 950px){
+      .wrap{
+        grid-template-columns: 1fr; /* Switch to single column */
+        max-width: 500px; /* Limit width on tablet so it doesn't stretch too wide */
+      }
+      
+      .panel-left {
+          min-height: auto; /* Allow height to adjust to content */
+          padding: 30px;
+      }
+
+      /* Adjust Brand/Logo spacing on Mobile/Tablet */
+      .brand-container {
+          margin-top: 0; /* Remove large top margin */
+          margin-bottom: 20px;
+      }
+      
+      .bg-svg {
+          width: 300px;
+          height: 300px;
+      }
+    }
+
+    /* Mobile (Max width 480px) */
+    @media (max-width: 480px) {
+        body {
+            padding: 15px;
+            display: block; /* Remove flex centering to allow scrolling */
+        }
+        
+        .wrap {
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .panel-left, .card {
+            padding: 20px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .panel-left h3 {
+            font-size: 18px;
+        }
+        
+        h1 { font-size: 20px; }
+
+        /* Make buttons stack on very small screens */
+        .actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .btn-group {
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .muted#statusText {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
+    
+  </style>
+</head>
+<style>
+  .version-badge-v1 {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+    font-size: 1.15rem;
+    color: #fff;
+    background: linear-gradient(90deg, #2563eb 60%, #06d6a0 100%);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px #0002;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #fff3;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .version-badge-v1 i {
+    font-size: 1.3em;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 6px #0002);
+  }
+  @media (max-width: 600px) {
+    .version-badge-v1 {
+      font-size: 0.98rem;
+      padding: 7px 14px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 12px;
+    }
+    .version-badge-v1 i { font-size: 1em; }
+  }
+</style>
+<div class="version-badge-v1"><i class="fa fa-rocket"></i> Version 1.0</div>
+<body>
+<style>
+  /* Disable text selection for all elements */
+  * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    -moz-user-select: none !important;
+  }
+</style>
+<script>
+// Block F12, Ctrl+Shift+I, Ctrl+U, right-click, and copy/paste
+document.addEventListener('keydown', function(e) {
+  // F12
+  if (e.key === 'F12' || e.keyCode === 123) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+Shift+I
+  if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+    e.preventDefault();
+    return false;
+  }
+  // Ctrl+U
+  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+    e.preventDefault();
+    return false;
+  }
+});
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  return false;
+});
+document.addEventListener('paste', function(e) {
+  e.preventDefault();
+  return false;
+});
+</script>
+
+  <div class="wrap">
+    <div class="panel-left" aria-hidden="false">
+      <div class="brand-container">
+        <div class="logo"> 
+            <img src="assets/img/images/logo.png" alt="Rotana Logo">
+        </div>
+        <div>
+          <h3 class="logop">Rotana <br> E-learning</h3>
+          <p class="lead-text">ភ្លេចពាក្យសម្ងាត់? កុំទៅបារម្ភ។</p>
+        </div>
+      </div>
+
+      <svg class="bg-svg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#7C3AED" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 60h380M20 120h380M20 180h380M20 240h380M20 300h380" opacity="0.45"/>
+          <circle cx="60" cy="60" r="6" fill="#7C3AED"/>
+        </g>
+      </svg>
+
+      <div style="margin-top:auto; color:var(--muted); font-size:13px; line-height:1.5; padding-top: 20px;">
+        <strong>ចំណុចសំខាន់៖</strong>
+        <ul style="margin:8px 0 0 18px;padding:0;color:var(--muted)">
+          <li>មិនចាំបាច់បង្កើតពាក្យសម្ងាត់ថ្មី ប្រសិនបើអ្នកមានការចាំបាច់ភ្លាមៗអាចប្រើ link នៅក្នុងអ៊ីមែលវានឹង Auto ចូលរៀនបាន។</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" role="region" aria-label="Reset password panel">
+      <div>
+          <h1>ភ្លេចពាក្យសម្ងាត់?</h1>
+          <div class="muted">បញ្ចូលអ៊ីមែលដែលអ្នកបានប្រើពេលចុះឈ្មោះ — យើងនឹងផ្ញើតំណ Link ទៅអ្នកដើម្បីចូលប្រើប្រាស់។</div>
+      </div>
+
+      <div style="margin-top:24px">
+        <form id="resetForm" autocomplete="email">
+          <div class="field">
+            <label for="resetEmail">អ៊ីមែល</label>
+            <input id="resetEmail" type="email" placeholder="Ex: MnusSmos@gamil.com" required>
+          </div>
+
+          <div class="actions">
+            <div class="muted" id="statusText"></div>
+            
+            <div class="btn-group">
+              <button type="button" class="btn ghost" id="backToLogin">⬅️ ត្រលប់ក្រោយ</button>
+              <button type="submit" class="btn" id="sendBtn">ផ្ញើតំណ Link</button>
+            </div>
+          </div>
+        </form>
+        
+        <br>
+        
+        <div style="text-align: center;">
+            <a href="/MoreOption" style="text-decoration: none; color: rgb(119, 9, 215); font-weight: bold; font-size: 16px;">ជម្រើសផ្សេងទៀត</a>
+        </div>
+
+        <div class="accent-bar" style="height:6px;border-radius:6px;margin-top:24px;overflow:hidden;background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06));">
+          <div style="width:40%;height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));transform:skewX(-12deg);animation:slide 6s linear infinite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+    // ====== USE YOUR FIREBASE CONFIG (same as login/register) ======
+    const firebaseConfig = {
+      apiKey: "AIzaSyByOAeLSs6GItG-m0qzBQ19HgFhWSv-J6U",
+      authDomain: "x-flow-studio.firebaseapp.com",
+      databaseURL: "https://x-flow-studio-default-rtdb.firebaseio.com",
+      projectId: "x-flow-studio",
+      storageBucket: "x-flow-studio.firebasestorage.app",
+      messagingSenderId: "608679807495",
+      appId: "1:608679807495:web:403bea2d684dc324d338a2",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Elements
+    const resetForm = document.getElementById('resetForm');
+    const resetEmail = document.getElementById('resetEmail');
+    const sendBtn = document.getElementById('sendBtn');
+    const backToLogin = document.getElementById('backToLogin');
+    const statusText = document.getElementById('statusText');
+    const toastEl = document.getElementById('toast');
+
+    function showToast(msg, type='info', duration=3500){
+      toastEl.textContent = msg;
+      toastEl.className = 'toast ' + (type === 'success' ? 'success' : type === 'error' ? 'error' : '');
+      toastEl.style.display = 'block';
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=> toastEl.style.display='none', duration);
+    }
+
+    backToLogin.addEventListener('click', ()=> {
+      window.location.href='login';
+    });
+
+    resetForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = resetEmail.value.trim();
+      if (!email) {
+        statusText.textContent = 'សូមបញ្ចូលអ៊ីមែល។';
+        return;
+      }
+
+      // UI: show spinner
+      sendBtn.classList.add('loading');
+      statusText.textContent = '';
+
+      try {
+        await sendPasswordResetEmail(auth, email);
+
+        showToast('យើងបានផ្ញើតំណ link ទៅអ៊ីមែលរបស់អ្នកហើយអាចពិនិត្រមើលបាន។', 'success', 6000);
+        statusText.textContent = 'បើសិនជាមិនទទួលបាន Link ទេអ្នកអាចជ្រើសយកជម្រើសផ្សេងទៀតខាងក្រោមនេះ';
+      } catch (err) {
+        console.error(err);
+        let msg = 'មានកំហុស — សូមព្យាយាមម្តងទៀត។';
+        if (err.code === 'auth/user-not-found') msg = 'អ៊ីមែលនេះមិនបានចុះឈ្មោះនៅឡើយទេ។';
+        if (err.code === 'auth/invalid-email') msg = 'ទម្រង់អ៊ីមែលមិនបានត្រឹមត្រូវ។';
+        if (err.code === 'auth/too-many-requests') msg = 'ស្នើមិនបាន — សូមព្យាយាមនៅពេលក្រោយ។';
+        showToast(msg, 'error', 5000);
+        statusText.textContent = msg;
+      } finally {
+        sendBtn.classList.remove('loading');
+      }
+    });
+
+    // Optional: prefill email from query param or localStorage
+    (function prefill(){
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('email')) resetEmail.value = params.get('email');
+        else {
+          const stored = localStorage.getItem('lastEmail') || '';
+          if (stored) resetEmail.value = stored;
+        }
+      } catch(e){}
+    })();
+  </script>
+
+  <script>
+  window.addEventListener('load', function() {
+    if (!window.location.search) {
+        const part1 = Math.random().toString(36).substring(2);
+        const part2 = Math.random().toString(36).substring(2);
+        const part3 = Date.now().toString(36);
+        
+        const rawString = `Rotana-${part1}-${part2}-${part3}-Secure`;
+        const longHash = btoa(rawString + rawString); 
+
+        const newUrl = window.location.pathname + 
+                       '?srsltid=' + longHash + 
+                       '&ref_src=' + part1 + 
+                       '&camp_id=' + Date.now();
+        
+        window.history.replaceState(null, '', newUrl);
+    }
+  });
+</script>
+<script>
+  // Auto reload only on first load (not after reload)
+  if (!sessionStorage.getItem('firstLoadDone')) {
+    sessionStorage.setItem('firstLoadDone', 'yes');
+    location.reload();
+  }
+</script>
+</body>
+</html>
