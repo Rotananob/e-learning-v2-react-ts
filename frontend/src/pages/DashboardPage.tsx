@@ -8,32 +8,8 @@ import { db } from '../services/firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { getWeekId } from '../hooks/useLearningTimer';
 
-// ======= EXTENDED COURSES DATA (20+ COURSES) =======
-const defaultCourses: Course[] = [
-  { id: 'web-basic', title: 'Web Basic (HTML/CSS/JS)', category: 'Web Development', description: 'រៀន HTML, CSS, JavaScript ពីដំបូង', icon: <i className="fa-solid fa-globe" />, lessons: [{ name: 'ភាគ ១: HTML Intro', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' }, { name: 'ភាគ ២: CSS Basics', link: 'https://www.youtube.com/embed/yfoY53QXEnI' }, { name: 'ភាគ ៣: JavaScript Basics', link: 'https://www.youtube.com/embed/W6NZfCO5SIk' }, { name: 'ភាគ ៤: DOM Manipulation', link: 'https://www.youtube.com/embed/yfoY53QXEnI' }, { name: 'ភាគ ៥: Project ជាក់ស្ដែង', link: 'https://www.youtube.com/embed/qz0aGYrrlhU' }] },
-  { id: 'react', title: 'React JS', category: 'Web Development', description: 'React.js + Hooks + TypeScript', icon: <i className="fa-brands fa-react" />, lessons: [{ name: 'ភាគ ១: React Intro', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' }, { name: 'ភាគ ២: Components & Props', link: 'https://www.youtube.com/embed/w7ejDZ8SWv8' }, { name: 'ភាគ ៣: React Hooks', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' }, { name: 'ភាគ ៤: API Integration', link: 'https://www.youtube.com/embed/dpw9EHDh2bM' }] },
-  { id: 'vue', title: 'Vue.js', category: 'Web Development', description: 'Vue 3 Framework ដែលរីករាយក្នុងការប្រើប្រាស់', icon: <i className="fa-brands fa-vuejs" />, lessons: [{ name: 'Vue Intro', link: 'https://www.youtube.com/embed/FXpIoQ_rT_c' }] },
-  { id: 'nextjs', title: 'Next.js Fullstack', category: 'Web Development', description: 'Next.js 14 + TypeScript + Database', icon: <i className="fa-brands fa-neos" />, lessons: [{ name: 'Next.js Course', link: 'https://www.youtube.com/embed/ZjAqacIC_3c' }] },
-  { id: 'tailwind', title: 'Tailwind CSS', category: 'Web Development', description: 'រចនា UI យ៉ាងលឿន ដោយ Tailwind', icon: <i className="fa-brands fa-css3-alt" />, lessons: [{ name: 'Tailwind Basics', link: 'https://www.youtube.com/embed/UBOj6rqRUME' }] },
-  { id: 'typescript', title: 'TypeScript', category: 'Web Development', description: 'JavaScript ដែលមានប្រភេទ Type-Safe', icon: <i className="fa-solid fa-code" />, lessons: [{ name: 'TS Intro', link: 'https://www.youtube.com/embed/gieEQFIfgYc' }] },
-  { id: 'python', title: 'Python Programming', category: 'Programming', description: 'Python ពីចាប់ផ្ដើមដល់ Advanced', icon: <i className="fa-brands fa-python" />, lessons: [{ name: 'ភាគ ១: Python Intro', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }, { name: 'ភាគ ២: Variables & Types', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }, { name: 'ភាគ ៣: Functions & OOP', link: 'https://www.youtube.com/embed/rfscVS0vtbw' }] },
-  { id: 'java', title: 'Java Programming', category: 'Programming', description: 'Java OOP រៀង', icon: <i className="fa-brands fa-java" />, lessons: [{ name: 'Java Basics', link: 'https://www.youtube.com/embed/eIrMbAQSU34' }] },
-  { id: 'cpp', title: 'C++ Programming', category: 'Programming', description: 'C++ សម្រាប់ Development', icon: <i className="fa-solid fa-code" />, lessons: [{ name: 'C++ Basics', link: 'https://www.youtube.com/embed/vLnPwxZdW4Y' }] },
-  { id: 'csharp', title: 'C# .NET', category: 'Programming', description: 'C# សម្រាប់ Desktop & Web', icon: <i className="fa-brands fa-windows" />, lessons: [{ name: 'C# Intro', link: 'https://www.youtube.com/embed/GhQdlIFylQ8' }] },
-  { id: 'go', title: 'Go Programming', category: 'Programming', description: 'Go Language ម៉ូដែននិង Fast', icon: <i className="fa-solid fa-code" />, lessons: [{ name: 'Go Basics', link: 'https://www.youtube.com/embed/yyUHQIec83I' }] },
-  { id: 'php', title: 'PHP Backend', category: 'Programming', description: 'PHP សម្រាប់ Web Server', icon: <i className="fa-brands fa-php" />, lessons: [{ name: 'PHP Tutorial', link: 'https://www.youtube.com/embed/OK_JCtrrv-c' }] },
-  { id: 'flutter', title: 'Flutter Mobile', category: 'Mobile', description: 'Flutter + Dart សម្រាប់ iOS/Android', icon: <i className="fa-solid fa-mobile-screen" />, lessons: [{ name: 'Flutter Intro', link: 'https://www.youtube.com/embed/1gDhl4leEzA' }] },
-  { id: 'swift', title: 'Swift iOS', category: 'Mobile', description: 'Swift សម្រាប់ iOS Development', icon: <i className="fa-brands fa-apple" />, lessons: [{ name: 'Swift Basics', link: 'https://www.youtube.com/embed/KkSvVD9GYrw' }] },
-  { id: 'kotlin', title: 'Kotlin Android', category: 'Mobile', description: 'Kotlin សម្រាប់ Android', icon: <i className="fa-solid fa-mobile" />, lessons: [{ name: 'Kotlin Intro', link: 'https://www.youtube.com/embed/S8e3VI1KGU8' }] },
-  { id: 'sql', title: 'SQL Database', category: 'Data', description: 'SQL សម្រាប់ Database Management', icon: <i className="fa-solid fa-database" />, lessons: [{ name: 'SQL Basics', link: 'https://www.youtube.com/embed/19vT9Ro1TH8' }] },
-  { id: 'mongodb', title: 'MongoDB', category: 'Data', description: 'NoSQL MongoDB Database', icon: <i className="fa-solid fa-leaf" />, lessons: [{ name: 'MongoDB Course', link: 'https://www.youtube.com/embed/ofme2o29ngU' }] },
-  { id: 'docker', title: 'Docker', category: 'Tools', description: 'Docker Containerization', icon: <i className="fa-brands fa-docker" />, lessons: [{ name: 'Docker Tutorial', link: 'https://www.youtube.com/embed/pTFZFxd4hOI' }] },
-  { id: 'git', title: 'Git & GitHub', category: 'Tools', description: 'Git Version Control System', icon: <i className="fa-brands fa-github" />, lessons: [{ name: 'Git Crash Course', link: 'https://www.youtube.com/embed/8JJ101D3knE' }] },
-  { id: 'figma', title: 'Figma Design', category: 'Design', description: 'Figma UI/UX Design Tool', icon: <i className="fa-brands fa-figma" />, lessons: [{ name: 'Figma Course', link: 'https://www.youtube.com/embed/jwCmIBJ8Jtc' }] },
-  { id: 'ai-ml', title: 'AI & Machine Learning', category: 'Data', description: 'Machine Learning + AI', icon: <i className="fa-solid fa-robot" />, lessons: [{ name: 'ML Basics', link: 'https://www.youtube.com/embed/GwIoAwOUzIU' }] },
-];
-
-const CATEGORIES = ['all', 'Web Development', 'Programming', 'Mobile', 'Game', 'Design', 'Data', 'Tools'];
+import { ALL_COURSES as defaultCourses, CATEGORIES, QUIZ_QUESTIONS as quizQuestions } from '../data/coursesData';
+import { subscribeUserData, saveFavorites as apiSaveFavorites, saveCompletedLessons as apiSaveCompletedLessons, savePassedExams as apiSavePassedExams, saveProfile as apiSaveProfile, appendHistory } from '../services/userDataService';
 
 // ======= ENHANCED PROFILE INTERFACE =======
 interface UserProfile {
@@ -75,31 +51,6 @@ interface UserProfile {
   dataTracking: boolean;
 }
 
-// ======= QUIZ QUESTIONS (EXPANDED) =======
-const quizQuestions: Record<string, any[]> = {
-  'web-basic': [
-    { id: 'q1', question: 'HTML តើប្រើសម្រាប់អ្វី?', options: ['រចនាសម្ព័ន្ធគេហទំព័រ', 'រចនាផ្នែក', 'ក្រាហ្វិក', 'ម៉ាស៊ីនម្ហូប'], correct: 0 },
-    { id: 'q2', question: 'CSS តើប្រើសម្រាប់?', options: ['ដឹកនាំ', 'ទម្រង់', 'ក្រាហ្វិក', 'ឡូជីក'], correct: 1 },
-    { id: 'q3', question: 'JavaScript ជា?', options: ['ឯកសារ', 'ភាសាសរសេរកម្មវិធី', 'ឧបករណ៍', 'ម៉ាកាប់'], correct: 1 },
-    { id: 'q4', question: 'DIV តើប្រើសម្រាប់?', options: ['ដាក់ឯកសារ', 'រចនាសម្ព័ន្ធ', 'ឧបករណ៍', 'ទិន្នន័យ'], correct: 1 },
-    { id: 'q5', question: 'CSS Box Model មាន?', options: ['2 ផ្នែក', '3 ផ្នែក', '4 ផ្នែក', '5 ផ្នែក'], correct: 2 },
-  ],
-  'react': [
-    { id: 'q1', question: 'React គឺ?', options: ['ឧបករណ៍', 'ប្រអប់', 'បណ្ណាល័យ', 'ភាសា'], correct: 2 },
-    { id: 'q2', question: 'useState ជា?', options: ['វាលបញ្ជូន', 'Hook', 'ឧបករណ៍', 'ប្រអប់'], correct: 1 },
-    { id: 'q3', question: 'JSX គឺ?', options: ['ទ័ល', 'HTML+JS', 'ឡូជីក', 'គន្ថ'], correct: 1 },
-    { id: 'q4', question: 'Props ប្រើ?', options: ['ដេលតា', 'ទិន្នន័យ', 'កូដ', 'ឧបករណ៍'], correct: 1 },
-    { id: 'q5', question: 'Component ពីរ?', options: ['ប្រភេទ', 'មាត់', 'រៀង', 'លេខ'], correct: 0 },
-  ],
-  'python': [
-    { id: 'q1', question: 'Python បង្កើត?', options: ['1980', '1991', '2000', '2010'], correct: 1 },
-    { id: 'q2', question: 'Python ភាសា?', options: ['ល្អ', 'ងាយ', 'លឿន', 'ល្អ+ងាយ'], correct: 3 },
-    { id: 'q3', question: 'Comment Python?', options: ['// គ', '# គ', '/* គ */', '<!-- គ -->'], correct: 1 },
-    { id: 'q4', question: 'Python indent?', options: ['ជ្រើស', 'កាច', 'ដាច', 'សំខាន់'], correct: 3 },
-    { id: 'q5', question: 'Python modules?', options: ['កម្មវិធី', 'ឯកសារ', 'កូដ', 'លេខ'], correct: 2 },
-  ],
-};
-
 function embedUrl(link: string) {
   if (!link) return '';
   return link.replace('watch?v=', 'embed/');
@@ -126,33 +77,36 @@ export default function DashboardPageAdvanced() {
 
   // Profile states
   const [editingProfile, setEditingProfile] = useState(false);
-  const [userProfile, setUserProfile] = useState<UserProfile>(() => {
-    try {
-      return JSON.parse(localStorage.getItem('userProfile') || '{}');
-    } catch {
-      return {
-        bio: '', phone: '', location: '', website: '', github: '', linkedin: '', twitter: '',
-        profileImage: 'https://ui-avatars.com/api/?name=' + (currentUser?.displayName || 'User'),
-        joinDate: new Date().toLocaleDateString('km-KH'),
-        school: '', degree: '', graduationYear: '', field: '',
-        jobTitle: '', company: '', yearsExp: '',
-        skills: [], languages: [],
-        theme: 'dark', language: 'km', emailNotifications: true, pushNotifications: true,
-        profileVisibility: 'public', showActivity: true, allowMessages: true, dataTracking: true,
-      };
-    }
+  const [userProfile, setUserProfile] = useState<UserProfile>({
+    bio: '', phone: '', location: '', website: '', github: '', linkedin: '', twitter: '',
+    profileImage: 'https://ui-avatars.com/api/?name=' + (currentUser?.displayName || 'User'),
+    joinDate: new Date().toLocaleDateString('km-KH'),
+    school: '', degree: '', graduationYear: '', field: '',
+    jobTitle: '', company: '', yearsExp: '',
+    skills: [], languages: [],
+    theme: 'dark', language: 'km', emailNotifications: true, pushNotifications: true,
+    profileVisibility: 'public', showActivity: true, allowMessages: true, dataTracking: true,
   });
 
   // Learning data states
-  const [favorites, setFavorites] = useState<Favorite[]>(() => {
-    try { return JSON.parse(localStorage.getItem('favorites') || '[]'); } catch { return []; }
-  });
-  const [completedLessons, setCompletedLessons] = useState<string[]>(() => {
-    try { return JSON.parse(localStorage.getItem('completedLessons') || '[]'); } catch { return []; }
-  });
-  const [passedExams, setPassedExams] = useState<string[]>(() => {
-    try { return JSON.parse(localStorage.getItem('passedExams') || '[]'); } catch { return []; }
-  });
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [passedExams, setPassedExams] = useState<string[]>([]);
+  
+  // Real-time data sync with Firebase
+  useEffect(() => {
+    if (currentUser?.uid) {
+      const unsub = subscribeUserData(currentUser.uid, (data) => {
+        setFavorites(data.favorites as unknown as Favorite[]);
+        setCompletedLessons(data.completedLessons);
+        setPassedExams(data.passedExams);
+        if (data.profile && Object.keys(data.profile).length > 0) {
+          setUserProfile(prev => ({ ...prev, ...data.profile }));
+        }
+      });
+      return () => unsub();
+    }
+  }, [currentUser?.uid]);
   const [learningSeconds, setLearningSeconds] = useState(0);
   const [notifications, setNotifications] = useState<any[]>([]);
 
@@ -199,20 +153,33 @@ export default function DashboardPageAdvanced() {
   }, []);
 
   // Helper functions
-  const saveFavorites = (favs: Favorite[]) => {
+  // Helper functions
+  const updateFavorites = (favs: Favorite[]) => {
     setFavorites(favs);
-    localStorage.setItem('favorites', JSON.stringify(favs));
+    if (currentUser?.uid) apiSaveFavorites(currentUser.uid, favs as any);
   };
-  // const addFav = (f: Favorite) => { if (!favorites.find((x) => x.name === f.name)) saveFavorites([...favorites, f]); };
-  const removeFav = (f: Favorite) => saveFavorites(favorites.filter((x) => x.name !== f.name));
-  // const isFav = (f: Favorite) => !!favorites.find((x) => x.name === f.name);
+
+  const removeFav = (f: Favorite) => updateFavorites(favorites.filter((x) => x.name !== f.name));
 
   const markLessonDone = (courseId: string, lessonIndex: number) => {
     const lessonId = `${courseId}-${lessonIndex}`;
     if (!completedLessons.includes(lessonId)) {
       const updated = [...completedLessons, lessonId];
       setCompletedLessons(updated);
-      localStorage.setItem('completedLessons', JSON.stringify(updated));
+      if (currentUser?.uid) apiSaveCompletedLessons(currentUser.uid, updated);
+      
+      // Also record history
+      const course = defaultCourses.find(c => c.id === courseId);
+      const lesson = course?.lessons[lessonIndex];
+      if (currentUser?.uid && course && lesson) {
+        appendHistory(currentUser.uid, [], {
+          lessonId,
+          lessonName: lesson.name,
+          courseId,
+          courseTitle: course.title,
+          timestamp: Date.now()
+        });
+      }
     }
   };
 
@@ -224,7 +191,7 @@ export default function DashboardPageAdvanced() {
     if (!passedExams.includes(courseId)) {
       const updated = [...passedExams, courseId];
       setPassedExams(updated);
-      localStorage.setItem('passedExams', JSON.stringify(updated));
+      if (currentUser?.uid) apiSavePassedExams(currentUser.uid, updated);
       alert('🎉 អបអរសាទរ! អ្នកបានប្រឡងជាប់។ វិញ្ញាបនបត្ររបស់អ្នកត្រូវបានបង្កើត។');
     }
   };
@@ -236,14 +203,14 @@ export default function DashboardPageAdvanced() {
       reader.onloadend = () => {
         const newProfile = { ...userProfile, profileImage: reader.result as string };
         setUserProfile(newProfile);
-        localStorage.setItem('userProfile', JSON.stringify(newProfile));
+        if (currentUser?.uid) apiSaveProfile(currentUser.uid, newProfile);
       };
       reader.readAsDataURL(file);
     }
   };
 
   const saveProfileChanges = () => {
-    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+    if (currentUser?.uid) apiSaveProfile(currentUser.uid, userProfile);
     setEditingProfile(false);
     alert('ព័ត៌មានគណនីបានរក្សាទុកដោយជោគជ័យ!');
   };
@@ -372,13 +339,13 @@ export default function DashboardPageAdvanced() {
             Dashboard Pro
           </span>
 
-          <div style={{ position: 'relative', maxWidth: 340, width: '100%', display: window.innerWidth > 600 ? 'block' : 'none' }}>
+          <div className="search-container" style={{ position: 'relative', flexGrow: 1, maxWidth: 340, marginLeft: 'auto', marginRight: 16 }}>
             <input
               type="text"
-              placeholder="ស្វែងរក..."
+              placeholder="ស្វែងរកមេរៀន និងវគ្គសិក្សា..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ width: '100%', padding: '10px 14px 10px 40px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 24, color: '#f8fafc', fontSize: 14, fontFamily: 'inherit', outline: 'none' }}
+              style={{ width: '100%', padding: '10px 14px 10px 40px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 24, color: '#f8fafc', fontSize: 14, fontFamily: 'inherit', outline: 'none', transition: 'all 0.3s' }}
             />
             <i className="fa-solid fa-magnifying-glass" style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#64748b', fontSize: 14 }} />
           </div>
@@ -455,7 +422,7 @@ export default function DashboardPageAdvanced() {
                     <div key={course.id} style={{ background: 'linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))', borderRadius: 16, padding: 24, boxShadow: '0 4px 20px rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s', display: 'flex', flexDirection: 'column' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseOut={e => e.currentTarget.style.transform = 'none'}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 16 }}>
                         <div style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(37,99,235,0.2)', color: '#60a5fa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>
-                          {course.icon}
+                          {typeof course.icon === 'string' ? <i className={course.icon} /> : course.icon}
                         </div>
                         <div style={{ flexGrow: 1 }}>
                           <h3 style={{ color: '#f8fafc', margin: '0 0 6px', fontSize: 18, fontWeight: 600 }}>{course.title}</h3>
@@ -488,7 +455,7 @@ export default function DashboardPageAdvanced() {
                             if (isFav) newFavs = favorites.filter(f => f.link !== lesson.link);
                             else newFavs = [...favorites, { name: lesson.name, link: lesson.link }];
                             setFavorites(newFavs);
-                            localStorage.setItem('favorites', JSON.stringify(newFavs));
+                            if (currentUser?.uid) apiSaveFavorites(currentUser.uid, newFavs as any);
                           };
                           return (
                             <div key={li} style={{ padding: '10px 12px', background: 'rgba(15,23,42,0.5)', borderRadius: 8, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 10, border: '1px solid rgba(255,255,255,0.03)' }}>
