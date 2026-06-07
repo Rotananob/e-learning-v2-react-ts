@@ -32,19 +32,19 @@ app.use((req, res, next) => {
 });
 
 // Load API configuration from environment variables
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
 
-if (!GEMINI_API_KEY) {
-  console.error('\n❌ ERROR: GEMINI_API_KEY not found in .env file');
-  console.error('📋 Please set your API key in .env:\n   GEMINI_API_KEY=your_api_key_here\n');
+if (!DEEPSEEK_API_KEY) {
+  console.error('\n❌ ERROR: DEEPSEEK_API_KEY not found in .env file');
+  console.error('📋 Please set your API key in .env:\n   DEEPSEEK_API_KEY=your_api_key_here\n');
   process.exit(1);
 }
 
 // API Debug: Log configuration (without exposing full key)
 console.log(`\n🔑 API Configuration:`);
-console.log(`   API Key: ${GEMINI_API_KEY.substring(0, 10)}...`);
-console.log(`   Model: ${GEMINI_MODEL}\n`);
+console.log(`   API Key: ${DEEPSEEK_API_KEY.substring(0, 10)}...`);
+console.log(`   Model: ${DEEPSEEK_MODEL}\n`);
 
 // Chatbot endpoint
 app.post('/api/chatbot', async (req, res) => {
@@ -64,43 +64,20 @@ app.post('/api/chatbot', async (req, res) => {
 - និយាយដូចបងប្អូនជិតស្និទ្ធ មិនមែនផ្លូវការ
 - ជួយអប់រំដោយភាពរីករាយ`;
 
-    // Try multiple API endpoints with latest models
+    // Call DeepSeek API (OpenAI-compatible)
     const endpoints = [
-      // Try gemini-2.0-flash first (latest)
       {
-        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+        url: 'https://api.deepseek.com/chat/completions',
         payload: {
-          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+          model: DEEPSEEK_MODEL,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: prompt }
+          ],
+          temperature: 0.7,
+          max_tokens: 1000
         },
-        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
-      },
-      // Try gemini-1.5-pro
-      {
-        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${GEMINI_API_KEY}`,
-        payload: {
-          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
-        },
-        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
-      },
-      // Try gemini-1.5-flash
-      {
-        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-        payload: {
-          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
-        },
-        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
-      },
-      // Try using configured model
-      {
-        url: `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
-        payload: {
-          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
-        },
-        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
+        parser: (data) => data.choices?.[0]?.message?.content
       }
     ];
 
@@ -108,17 +85,22 @@ app.post('/api/chatbot', async (req, res) => {
     
     for (const endpoint of endpoints) {
       try {
-        console.log(`📤 Trying: ${endpoint.url.split('/').slice(-2).join('/')}`);
+        console.log(`📤 Calling DeepSeek API: ${DEEPSEEK_MODEL}`);
         
         const response = await fetch(endpoint.url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
+          },
           body: JSON.stringify(endpoint.payload),
-          timeout: 10000
+          timeout: 15000
         });
 
         if (!response.ok) {
-          lastError = `${response.status}`;
+          const errorText = await response.text();
+          lastError = `${response.status}: ${errorText}`;
+          console.log(`⚠️  API Error: ${lastError}`);
           continue;
         }
 
@@ -128,9 +110,12 @@ app.post('/api/chatbot', async (req, res) => {
         if (reply) {
           console.log(`✅ Success!`);
           return res.json({ reply });
+        } else {
+          console.log(`⚠️  No reply in response:`, JSON.stringify(data).substring(0, 200));
         }
       } catch (err) {
         lastError = err.message;
+        console.log(`❌ Error: ${lastError}`);
         continue;
       }
     }
@@ -152,22 +137,27 @@ app.post('/api/chatbot', async (req, res) => {
 // Simple health-check for quick verification
 app.get('/__health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 
-// POST proxy to Gemini (kept for compatibility)
-app.post('/ask-gemini', async (req, res) => {
+// POST proxy to DeepSeek (kept for compatibility)
+app.post('/ask-deepseek', async (req, res) => {
   const userMsg = req.body.message;
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents: [{ parts: [{ text: userMsg }] }] })
-      }
-    );
+    const response = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: DEEPSEEK_MODEL,
+        messages: [{ role: 'user', content: userMsg }],
+        temperature: 0.7,
+        max_tokens: 1000
+      })
+    });
     const data = await response.json();
     res.json(data);
   } catch (err) {
-    res.status(500).json({ error: 'Gemini API error', details: err.message });
+    res.status(500).json({ error: 'DeepSeek API error', details: err.message });
   }
 });
 
@@ -190,8 +180,8 @@ app.listen(PORT, () => {
 ║   🚀 Rotana E-Learning Server Started          ║
 ╚════════════════════════════════════════════════╝
 📍 Server: http://localhost:${PORT}
-🤖 Gemini Model: ${GEMINI_MODEL}
-🔑 API Key: ${GEMINI_API_KEY.substring(0, 10)}...
+🤖 AI Model: ${DEEPSEEK_MODEL}
+🔑 API Key: ${DEEPSEEK_API_KEY.substring(0, 10)}...
 📅 Start Time: ${new Date().toISOString()}
 ════════════════════════════════════════════════
   `);
