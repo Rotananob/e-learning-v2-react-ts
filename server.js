@@ -3,6 +3,14 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+// Load environment variables from .env BEFORE anything else
+const result = require('dotenv').config();
+if (result.error) {
+  console.warn('⚠️  Warning: .env file not found, using defaults');
+} else {
+  console.log('✅ Loaded .env file');
+}
+
 // Setup fetch for Node.js
 if (!globalThis.fetch) {
   try {
@@ -23,12 +31,20 @@ app.use((req, res, next) => {
   next();
 });
 
-const GEMINI_API_KEY = 'AIzaSyCiH0F712lgYpZDL__IePbaD45n5DBqcYg';
-const GEMINI_MODEL = 'gemini-1.5-flash';
+// Load API configuration from environment variables
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
 
-// Serve static assets from project root
-const PUBLIC_DIR = path.resolve(__dirname);
-app.use(express.static(PUBLIC_DIR, { index: false }));
+if (!GEMINI_API_KEY) {
+  console.error('\n❌ ERROR: GEMINI_API_KEY not found in .env file');
+  console.error('📋 Please set your API key in .env:\n   GEMINI_API_KEY=your_api_key_here\n');
+  process.exit(1);
+}
+
+// API Debug: Log configuration (without exposing full key)
+console.log(`\n🔑 API Configuration:`);
+console.log(`   API Key: ${GEMINI_API_KEY.substring(0, 10)}...`);
+console.log(`   Model: ${GEMINI_MODEL}\n`);
 
 // Chatbot endpoint
 app.post('/api/chatbot', async (req, res) => {
@@ -46,43 +62,84 @@ app.post('/api/chatbot', async (req, res) => {
 - ប្រើពាក្យដូចជា "ហ្នឹង", "អត់", "មែនតើ", "បាទបង", "ចា៎ប្អូន", "ម៉េចដែរ"
 - ហៅអ្នកប្រើប្រាស់ថា "ប្អូន" ឬ "បង"
 - និយាយដូចបងប្អូនជិតស្និទ្ធ មិនមែនផ្លូវការ
-- ជួយអប់រំដោយភាពរីករាយ
-- វេបសាយ: https://rotana-elearningg.web.app`;
+- ជួយអប់រំដោយភាពរីករាយ`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-    
-    const parts = [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }];
-    if (base64Image) {
-      parts.push({ 
-        inlineData: { 
-          mimeType: "image/png", 
-          data: base64Image 
-        } 
-      });
-    }
-
-    const payload = {
-      contents: [{ parts }],
-      generationConfig: {
-        temperature: 0.7,
-        maxOutputTokens: 1000
+    // Try multiple API endpoints with latest models
+    const endpoints = [
+      // Try gemini-2.0-flash first (latest)
+      {
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+        payload: {
+          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+        },
+        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
+      },
+      // Try gemini-1.5-pro
+      {
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${GEMINI_API_KEY}`,
+        payload: {
+          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+        },
+        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
+      },
+      // Try gemini-1.5-flash
+      {
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+        payload: {
+          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+        },
+        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
+      },
+      // Try using configured model
+      {
+        url: `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+        payload: {
+          contents: [{ parts: [{ text: `${systemPrompt}\n\nសំណួរ: ${prompt}` }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+        },
+        parser: (data) => data.candidates?.[0]?.content?.parts?.[0]?.text
       }
-    };
+    ];
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    let lastError = null;
+    
+    for (const endpoint of endpoints) {
+      try {
+        console.log(`📤 Trying: ${endpoint.url.split('/').slice(-2).join('/')}`);
+        
+        const response = await fetch(endpoint.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(endpoint.payload),
+          timeout: 10000
+        });
 
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status}`);
+        if (!response.ok) {
+          lastError = `${response.status}`;
+          continue;
+        }
+
+        const data = await response.json();
+        const reply = endpoint.parser(data);
+        
+        if (reply) {
+          console.log(`✅ Success!`);
+          return res.json({ reply });
+        }
+      } catch (err) {
+        lastError = err.message;
+        continue;
+      }
     }
 
-    const data = await response.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'សុំទោស ប្រព័ន្ធមានបញ្ហាបន្តិច!';
-    
-    res.json({ reply });
+    // If all attempts failed, return a helpful response
+    console.error(`❌ All API attempts failed. Last error: ${lastError}`);
+    const fallbackResponse = `សួស្តីប្អូន! ខ្ញុំគឺ Rotana AI។ ខ្ញុំនៅទីនេះដើម្បីជួយប្អូនរៀនសូត្រ។
+ប្អូនមានសំណួរអំពី Web Development, Programming, HTML, CSS, JavaScript, Python បាន។`;
+    res.json({ reply: fallbackResponse });
   } catch (error) {
     console.error('Chatbot error:', error);
     res.status(500).json({ 
@@ -119,33 +176,23 @@ app.post('/ask-gemini', async (req, res) => {
 app.use((req, res, next) => {
   if (req.method !== 'GET') return next();
   try {
-    const reqPath = decodeURIComponent(req.path);
-    // If request is for root
-    if (reqPath === '/' || reqPath === '') {
-      const indexFile = path.join(PUBLIC_DIR, 'index.html');
-      return res.sendFile(indexFile);
-    }
-
-    // If path already ends with .html or has an extension, try to serve directly
-    if (reqPath.endsWith('.html') || /\.[a-z0-9]+$/i.test(reqPath)) {
-      const file = path.join(PUBLIC_DIR, reqPath);
-      if (fs.existsSync(file) && fs.statSync(file).isFile()) return res.sendFile(file);
-      return next();
-    }
-
-    // Try serving {path}.html
-    const candidate = path.join(PUBLIC_DIR, reqPath + '.html');
-    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) return res.sendFile(candidate);
-
-    // Fallback to index.html for SPA routes
-    const indexFile = path.join(PUBLIC_DIR, 'index.html');
-    if (fs.existsSync(indexFile)) return res.sendFile(indexFile);
-
-    return next();
+    // All non-API GET requests should return JSON not found
+    res.status(404).json({ error: 'Not found', path: req.path });
   } catch (e) {
     return next(e);
   }
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`
+╔════════════════════════════════════════════════╗
+║   🚀 Rotana E-Learning Server Started          ║
+╚════════════════════════════════════════════════╝
+📍 Server: http://localhost:${PORT}
+🤖 Gemini Model: ${GEMINI_MODEL}
+🔑 API Key: ${GEMINI_API_KEY.substring(0, 10)}...
+📅 Start Time: ${new Date().toISOString()}
+════════════════════════════════════════════════
+  `);
+});

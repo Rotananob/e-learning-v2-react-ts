@@ -1,0 +1,107 @@
+🚀 START HERE - QUICK FIX FOR CHATBOT API ERROR
+
+════════════════════════════════════════════════════════════════
+
+❌ PROBLEM YOU'RE SEEING:
+   "[vite] http proxy error: /api/chatbot"
+
+✅ ROOT CAUSE:
+   Backend server is not running!
+   Frontend (Vite) tries to proxy /api/chatbot but can't find backend on port 3001
+
+════════════════════════════════════════════════════════════════
+
+🔧 SOLUTION - DO THIS NOW:
+
+STEP 1: Open a NEW Terminal (or use PowerShell)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Navigate to project root:
+$ cd "D:\WEB Development\Rotana-Elearning(New)"
+
+Install backend dependencies (ONE TIME ONLY):
+$ npm install
+
+Start backend server:
+$ npm run dev
+
+✅ Wait for message like:
+   "Server running on http://localhost:3001"
+   
+   🚀 Rotana E-Learning Server Started
+   📍 Server: http://localhost:3001
+   🤖 Gemini Model: gemini-1.5-flash
+   🔑 API Key: AQ.Ab8RN...
+   
+
+STEP 2: Open ANOTHER New Terminal
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Go to frontend folder:
+$ cd frontend
+
+Start frontend (Vite):
+$ npm run dev
+
+✅ Wait for message like:
+   "VITE v... ready in ... ms
+    
+    ➜  Local:   http://localhost:5173/
+    ➜  press h + enter to show help"
+
+
+STEP 3: Now Open Browser
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Go to: http://localhost:5173
+
+The Vite error should be GONE ✅
+Chatbot should work now! 🤖
+
+════════════════════════════════════════════════════════════════
+
+✨ EXPECTED RESULT:
+   Terminal 1: Backend server running on port 3001 ✅
+   Terminal 2: Frontend Vite server running on port 5173 ✅
+   Browser: http://localhost:5173 loads without proxy errors ✅
+   Chatbot: Works! Calls Gemini API through backend ✅
+
+════════════════════════════════════════════════════════════════
+
+🐛 IF STILL NOT WORKING:
+
+1. Check backend is truly running:
+   $ curl http://localhost:3001/__health
+   
+   Should show: {"ok":true,"time":"..."}
+
+2. Check frontend can reach backend:
+   Open browser DevTools (F12) → Network tab → Try chatbot
+   Look for POST /api/chatbot → should see response (not error)
+
+3. Check .env files exist:
+   ✅ Root: /.env (has GEMINI_API_KEY)
+   ✅ Frontend: /frontend/.env (has VITE_GEMINI_API_KEY)
+
+4. Check ports are free:
+   Windows: netstat -ano | findstr :3001
+   Mac/Linux: lsof -i :3001
+
+════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION:
+   
+   Complete guide: DEV_SETUP_GUIDE.md
+   Gemini setup: frontend/src/GEMINI_SETUP.md
+   Quick reference: frontend/src/GEMINI_QUICK_START.txt
+
+════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST:
+   □ Backend terminal running (npm run dev)
+   □ Frontend terminal running (cd frontend && npm run dev)
+   □ http://localhost:3001/__health returns OK
+   □ http://localhost:5173 loads without errors
+   □ Chatbot API works (test in DevTools Console)
+
+════════════════════════════════════════════════════════════════

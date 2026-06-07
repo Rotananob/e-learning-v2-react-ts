@@ -1,0 +1,217 @@
+/**
+ * 📚 GEMINI API QUICK START
+ * 
+ * Location: src/GEMINI_QUICK_START.txt
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 🎯 QUICK SETUP (5 minutes)
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 1. Root .env already configured with:
+ *    ✅ GEMINI_API_KEY=AQ.Ab8RN...
+ *    ✅ GEMINI_MODEL=gemini-1.5-flash
+ * 
+ * 2. Start server:
+ *    $ npm install          # One time only
+ *    $ npm run dev          # Development
+ *    $ npm start            # Production
+ * 
+ * 3. Server will run on: http://localhost:3001
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 💻 USAGE IN COMPONENTS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * EXAMPLE 1: Simple Chat
+ * ─────────────────────
+ * import { sendChatMessage } from '@/services/geminiService';
+ * 
+ * const response = await sendChatMessage('សូមបង្រៀនខ្ញុំពីJavaScript');
+ * console.log(response);  // AI response in Khmer
+ * 
+ * 
+ * EXAMPLE 2: Chat with Image
+ * ─────────────────────────
+ * import { sendChatMessage } from '@/services/geminiService';
+ * 
+ * const response = await sendChatMessage(
+ *   'តើលេខក្នុងរូបភាពនេះជាលេខប៉ុន្មាន?',
+ *   base64ImageString
+ * );
+ * 
+ * 
+ * EXAMPLE 3: Image Analysis
+ * ──────────────────────────
+ * import { analyzeImage } from '@/services/geminiService';
+ * 
+ * const analysis = await analyzeImage(
+ *   base64Image,
+ *   'វិភាគលម្អិតសម្រាប់រូបភាពនេះ'
+ * );
+ * 
+ * 
+ * EXAMPLE 4: Check Configuration
+ * ───────────────────────────────
+ * import { isGeminiConfigured, getGeminiStatus } from '@/services/geminiService';
+ * 
+ * if (isGeminiConfigured()) {
+ *   console.log(getGeminiStatus());
+ *   // Output: { configured: true, model: 'gemini-1.5-flash', ... }
+ * }
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 📁 FILES STRUCTURE
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Root Files:
+ *   └─ .env                          ← API keys configured here
+ *   └─ server.js                     ← Backend with /api/chatbot endpoint
+ *   └─ package.json                  ← With dotenv dependency
+ * 
+ * Frontend Files:
+ *   └─ frontend/.env                 ← Frontend env variables
+ *   └─ frontend/src/
+ *      ├─ services/
+ *      │  ├─ geminiService.ts        ← Main service file (USE THIS)
+ *      │  ├─ chatbotApi.ts           ← Alternative API client
+ *      │  └─ firebase.ts             ← Firebase config
+ *      └─ pages/
+ *         └─ ChatbotPage.tsx         ← Chatbot component example
+ * 
+ * Documentation:
+ *   └─ src/GEMINI_SETUP.md           ← Complete setup guide
+ *   └─ src/GEMINI_QUICK_START.txt    ← This file
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 🔗 API ENDPOINTS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * POST /api/chatbot
+ * ─────────────────
+ * Request:
+ * {
+ *   "prompt": "Your question here",
+ *   "base64Image": null or base64string,
+ *   "systemPrompt": "System instructions (optional)"
+ * }
+ * 
+ * Response:
+ * {
+ *   "reply": "AI response here"
+ * }
+ * 
+ * 
+ * GET /__health
+ * ─────────────
+ * Quick health check
+ * Response: { "ok": true, "time": "2026-01-15T10:30:00.000Z" }
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * ⚙️ SYSTEM PROMPTS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Default System Prompt (in geminiService.ts):
+ * ────────────────────────────────────────────
+ * - Language: Khmer with natural conversational style
+ * - Personality: Friendly, helpful teacher
+ * - Expertise: Programming, Web Dev, Python, Java, etc.
+ * - Style: Uses "ប្អូន", "បង", "ហ្នឹង" like friends talking
+ * - Focus: Educational and learning-oriented
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 🐛 COMMON ISSUES & FIXES
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Issue: Server won't start
+ * ───────────────────────
+ * Fix: npm install
+ *      npm run dev
+ * 
+ * 
+ * Issue: "Cannot POST /api/chatbot"
+ * ──────────────────────────────────
+ * Fix: Check server is running on localhost:3001
+ *      Check frontend is calling correct endpoint
+ * 
+ * 
+ * Issue: "API Key not configured"
+ * ───────────────────────────────
+ * Fix: Check .env file exists in root
+ *      Verify GEMINI_API_KEY is set
+ *      Restart server: npm run dev
+ * 
+ * 
+ * Issue: Empty or no response from AI
+ * ────────────────────────────────────
+ * Fix: Check internet connection
+ *      Check API quota on Google Cloud
+ *      Check server logs for errors
+ *      Verify API key is valid
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 🚀 DEPLOYMENT CHECKLIST
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Before deploying to production:
+ * ✅ Test server: npm run dev
+ * ✅ Test chat endpoint: curl -X POST http://localhost:3001/api/chatbot
+ * ✅ Test health: curl http://localhost:3001/__health
+ * ✅ Verify .env is NOT in git (check .gitignore)
+ * ✅ Set environment variables on production server
+ * ✅ Test API rate limiting if needed
+ * ✅ Monitor API usage and costs
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 📊 PERFORMANCE TIPS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 1. Response caching: Cache responses for similar queries
+ * 2. Image optimization: Compress images before sending (smaller = faster)
+ * 3. Batch requests: Group multiple queries if possible
+ * 4. Rate limiting: Implement to prevent abuse
+ * 5. Error handling: Show user-friendly fallback messages
+ * 6. Loading states: Show loading indicators during API calls
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 💡 PRO TIPS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 1. Use analyzeImage() for homework problems:
+ *    - Screenshot problem → send to Gemini → get solution
+ * 
+ * 2. Use sendChatMessage() for explanations:
+ *    - Ask about concepts → get detailed Khmer explanation
+ * 
+ * 3. Build context into prompts:
+ *    - Include what the user already knows
+ *    - Ask specific follow-up questions
+ * 
+ * 4. Use system prompts for different roles:
+ *    - Teacher mode, Tutor mode, Peer mode
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * 📞 SUPPORT CONTACTS
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Issues:
+ * - Check GEMINI_SETUP.md for full documentation
+ * - Review server logs: npm run dev
+ * - Check Google Cloud Console for API status
+ * 
+ * ═══════════════════════════════════════════════════════════════════════
+ * 
+ * Created: 2026-01-15
+ * Version: 1.0.0
+ * Status: ✅ Ready for production
+ * 
+ */
